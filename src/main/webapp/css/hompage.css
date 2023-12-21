@@ -1,0 +1,440 @@
+* {
+    font-family: 'Noto Sans KR Regular','Noto Sans CJK KR','Noto Sans KR','맑은 고딕',sans-serif;
+    font-weight: 400;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    word-break: keep-all;
+    line-height: 1.63;
+}
+
+/* 슬라이더 시작 */
+
+.image-container_top {
+    margin: 0; 
+    text-align: center;
+    max-width: 100%; 
+    overflow: hidden;
+}
+
+.image-container_top img {
+    margin: 0;
+    width: 100%; 
+    height: 490px; 
+}
+
+.top_img_wrapper {
+    margin: 0;
+    width: 500%;
+    display: flex;
+    transition: transform 0.5s ease
+}
+
+.img {
+    flex: 0 0 20%;
+    height: auto;
+}
+
+#prevButton {
+    position: absolute; 
+    left: 30px; 
+    top: 300px; 
+    transform: translateY(-50%); 
+}
+
+#nextButton {
+    position: absolute; 
+    right: 30px; 
+    top: 300px; 
+    transform: translateY(-50%); 
+}
+
+.arrow-button {
+    background-color: rgba(0, 0, 0, 0); 
+    color: #fff;
+    border: none;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+    cursor: pointer;
+    font-size: 40px;
+    border-radius: 50%; 
+    box-shadow: 0 20px 10px 0 rgba(5, 5, 5, 0.15);
+    transition: background-color 0.3s ease; 
+}
+
+.arrow-button:hover {
+    background-color: rgba(0, 174, 255, 0.7); 
+}
+
+.slide {
+    transform: translateX(-20%); 
+    transition: transform 0.5s ease; 
+}
+
+/* 슬라이더 끝 */
+
+
+/* mainInner 시작 */
+
+.middleBody {
+    width: 100%;
+    height: 910px;
+    position: absolute;
+    top: 490px;
+    background-color: rgb(243, 240, 240);
+}
+
+.mainInner {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.mainInner_Row {
+    margin-top: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+
+.mainInner_Row:first-child {
+    margin-top: 0;
+}
+
+[class*=mainCol]:first-child {
+    margin-left: 0;
+}
+
+[class*=mainCol] {
+    height: 205px;
+    float: left;
+    position: relative;
+    margin-left: 20px;
+    padding: 25px 30px 30px;
+}
+
+/* mainInner-상 */
+.mainCol01 {
+    width: 200px;
+}
+
+.bgColor01 {
+    background-color: #008ace;
+}
+
+.bgColor02 {
+    background-color: #2763ba;
+}
+
+.bgColor03 {
+    background-color: #2ca48f;
+}
+
+.mainLoginWrap {
+    background-color: #fff;
+    border: 1px solid #2763ba;
+}
+
+[class*=mainCol01] .btnWrap {
+    overflow: hidden;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 200px;
+    height: 38px;
+    margin: 0;
+    display: flex;
+    border-bottom: 1px solid #fff;
+}
+
+[class*=mainCol01] .btnWrap a {
+    flex: 1; 
+    height: 100%;
+    border: 1px solid #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 38px;
+    color: #fff; 
+    text-decoration: none;
+}
+
+.mainLoginWrap a {
+    background-color: #2763ba;
+}
+
+.m01_T_h {
+    position: absolute;
+    top: 8px;
+    color: #fff;
+}
+
+.m01_a_p {
+    position: absolute;
+    top: 75px;
+    color: #fff;
+}
+
+.m01_b_p {
+    position: absolute;
+    top: 101px;
+    color: #fff;
+}
+
+.m01_3_a {
+    position: absolute;
+    top: 75px;
+    color: #fff;
+}
+
+.m01_3_b {
+    position: absolute;
+    top: 110px;
+    color: #fff;
+}
+
+.m01_3_a_a {
+    position: absolute;
+    top: 65px;
+    left: 100px;
+    color: #fff;
+}
+
+.m01_3_b_a {
+    position: absolute;
+    top: 105px;
+    left: 125px;
+    color: #fff;
+}
+
+.m_L_h {
+    position: absolute;
+    top: 8px;
+    color: black;
+}
+/* mainInner-상 끝 */
+
+/* mainInner-중 시작 */
+.mainCol02 {
+    width: 480px;
+}
+
+.mainSearchWrap {
+    position: absolute;
+    left: 50px;
+    top: 305px;
+}
+
+.mainNews {
+    position: absolute;
+    top: 330px;
+    right: 80px;
+    background-color: #fff;
+}
+
+
+.m02_T_h {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    margin: -4px 0 17px;
+    font-size: 30px;
+}
+
+.m02_a_p {
+    position: absolute;
+    top: 80px;
+    left: 60px;
+    word-break: keep-all;
+    line-height: 1.63;
+}
+
+.m02_T_h_b {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    margin: -4px 0 17px;
+}
+/* mainInner-중 끝 */
+
+/* mainInner-하 시작 */
+.Issue {
+    position: absolute;
+    top: 610px;
+    left: 80px;
+    background-color: #fff;
+}
+
+.bgColor04 {
+    position: absolute;
+    top: 610px;
+    left: 622px;
+    background-color: #3298b7;
+}
+
+.bgColor05 {
+    position: absolute;
+    top: 610px;
+    left: 904px;
+    background-color: #627ad0;
+}
+
+.m3_1_2 {
+    position: absolute;
+    top: 75px;
+    color: #fff;
+}
+
+/* mainInner-하 끝 */
+
+/* mainInner 끝 */
+
+
+/* mainInner_b 시작 */
+
+.middleBody_b {
+    width: 100%;
+    height: 575px;
+    position: absolute;
+    top: 1400px;
+    background-color: #fff;
+}
+
+.mainInner_b {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.mainInner_b [class*=mainCol] {
+    height: 295px;
+    text-align: center;
+    color: #fff;
+}
+
+.mainInner_Row_b {
+    margin-top: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 160px;
+}
+
+.H_T {
+    position: absolute; 
+    top: 65px; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    margin: 0; 
+}
+
+.H_P {
+    position: absolute; 
+    top: 120px; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    margin: 0; 
+}
+
+.mainInner_b [class*=mainCol] strong {
+    display: block;
+    position: relative;
+    margin: 18px 0 14px;
+    padding-bottom: 18px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.mainInner_b [class*=mainCol] strong::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 30px;
+    height: 2px;
+    margin-left: -15px;
+    background-color: #fff;
+}
+
+.mainInner_Row_b:first-child {
+    margin-top: 0;
+}
+
+.mainInner_b > h3 {
+    margin: -10px 0 18px;
+    font-size: 30px;
+}
+
+
+
+.mainInner_b [class*=mainCol].bgType01 {
+    background: url(/2Project/src/main/webapp/imgs/bg_mainHealth01.jpg) no-repeat 50% 0;
+}
+
+.mainInner_b [class*=mainCol].bgType02 {
+    background: url(/2Project/src/main/webapp/imgs/bg_mainHealth02.jpg) no-repeat 50% 0;
+}
+
+.mainInner_b [class*=mainCol].bgType03 {
+    background: url(/2Project/src/main/webapp/imgs/bg_mainHealth03.jpg) no-repeat 50% 0;
+}
+
+.mainInner_b [class*=mainCol].bgType04 {
+    background: url(/2Project/src/main/webapp/imgs/bg_mainHealth04.jpg) no-repeat 50% 0;
+}
+
+/* mainInner_b 끝 */
+
+
+/* mainInner_c 시작 */
+
+.middleBody_c {
+    width: 100%;
+    height: 360px;
+    position: absolute;
+    top: 1977px;
+    background-color: rgb(243, 240, 240);
+}
+
+.mainInner_c {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bgColor06 {
+    background-color: #627ad0;
+}
+
+.bgColor07 {
+    background-color: #2763ba;
+}
+
+.bgColor08 {
+    background-color: #2ca48f;
+}
+
+.bgColor09 {
+    background-color: #3298b7;
+}
+
+.m3_1 {
+    position: absolute;
+    top: 73px;
+    color: #fff;
+}
+
+/* mainInner_c 끝 */

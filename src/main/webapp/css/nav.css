@@ -1,0 +1,144 @@
+nav {
+    font-size: 13pt;
+    font-family: 'PT Sans', Arial, Sans-serif;
+    position: relative;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0 auto;
+    width: auto;
+}
+
+nav a {
+    line-height: 80px;
+    height: 80px;
+}
+
+nav li a {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+nav li:last-child a {
+    border-right: 0;
+}
+
+nav a#pull {
+    display: none;
+}
+
+html {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    text-align: center;
+    color: #000;
+    list-style: none;
+    border-bottom: 1px solid lightgray;
+}
+
+li {
+    display: inline-block;
+}
+
+
+
+li a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    transition: 0.2s color;
+    margin-right: 40px; 
+}
+
+li a:hover {
+    color: #00aeff;
+    font-weight: normal;
+}
+
+.menu {
+    width: 100%;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.container-Logo > img {
+    position: absolute;
+    width: 20%;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+
+
+.util__item-area {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    right: 10%; 
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+.util__item-area_2 {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    right: 3%; 
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+.menu-item {
+    position: relative; 
+}
+
+.menu-item:hover {
+    border-bottom: 3px solid #00256c;
+}
+
+.menu-item:hover .sub-menu {
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+li:hover .sub-menu {
+    display: block;
+    text-align: left; 
+}
+
+.sub-menu a {
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.sub-menu a:hover {
+    background-color: white;
+} 
