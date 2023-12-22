@@ -28,6 +28,14 @@ public class PatientDTO { //환자
 		this.address = address;
 	}
 	
+	//테스트용 생성자
+	public PatientDTO(String name, String phone_number) {
+		super();
+		this.name = name;
+		this.phone_number = phone_number;
+	}
+	
+	
 	//메소드
 	public int getPatient_number() {
 		return patient_number;
