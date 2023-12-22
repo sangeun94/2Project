@@ -48,8 +48,6 @@ li {
     display: inline-block;
 }
 
-
-
 li a {
     display: inline-block;
     padding: 10px;
@@ -78,7 +76,6 @@ li a:hover {
     left: 10%;
     transform: translate(-50%, -50%);
 }
-
 
 .util__item-area {
     position: absolute;

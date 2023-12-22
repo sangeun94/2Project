@@ -1,5 +1,5 @@
 let currentIndex = 0;
-const totalImages = 5; 
+const totalImages = 7; 
 
 function nextImage() {
     currentIndex = (currentIndex + 1) % totalImages;
