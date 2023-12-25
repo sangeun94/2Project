@@ -11,14 +11,11 @@
 <body>
 	<% 
 		request.setCharacterEncoding("UTF-8"); //문자 인코딩 설정
-		String name = request.getParameter("name");
-		System.out.println(name);
-		String phone_number = request.getParameter("Phone_number");
 		
-		ReservationDAO reservationDAO = new ReservationDAO(); 
+		String department = request.getParameter("department");
 		
-		
-	
+		System.out.println(department);
+
 	%>
 	
 

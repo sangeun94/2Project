@@ -161,7 +161,7 @@ public class ReservationDAO {
 	
 	
 	// 선택한 과 의료진 정보 가져오는 메소드
-	public List<EmployeeDTO> findDepartmentEmployeetList(int department_number) {
+	public List<EmployeeDTO> findDepartmentEmployeetList(String department_number) {
 		conn = DBConnectionManager.connectDB();
 		
 		String sql = " SELECT * FROM Employee "
@@ -173,7 +173,7 @@ public class ReservationDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setInt(1, department_number);
+			psmt.setString(1, department_number);
 
 			rs = psmt.executeQuery();
 			employeeList = new ArrayList<EmployeeDTO>();

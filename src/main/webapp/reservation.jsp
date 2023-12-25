@@ -167,12 +167,12 @@
 		buildCalendar();
 	}
 	
-	
-	
 </script>
 
 <body>
 	<% 
+	String departmentNum = request.getParameter("department");
+	
 	String id = (String)session.getAttribute("id");
 	id = "user5";
 
@@ -181,7 +181,7 @@
 	PatientDTO info = reservationDAO.findPatientInfoById(id);
 	List<MedicalDepartmentDTO> medicalDepartmentList = reservationDAO.findMedicalDepartmentList();
 	List<EmployeeDTO> employeeList = reservationDAO.findEmployeetList();	
-	
+	List<EmployeeDTO> employeeList2 = reservationDAO.findDepartmentEmployeetList(departmentNum);	
 	
 	
 	%>
@@ -214,7 +214,7 @@
 					<div><span>회원예약</span></div>
 					<p>1. 본인 정보 확인</p>
 					<p> <label>성명 : </label> <span> <%=info.getName() %> </span></p>
-					<p> <label>전화번호 : </label><%=info.getPhone_number() %> </span> </p>
+					<p> <label>전화번호 : </label><%=info.getPhone_number() %> </p>
 					
 					<input id = "agree" type="radio" name = "agree"> <label for="agree">동의</label>
 					<input id = "disagree" type="radio" name = "agree"> <label for="disagree">비동의</label>
@@ -241,13 +241,17 @@
 					
 					<!-- 진료과 목록 출력 -->
 					<div id = "departmentList">
-						<% 
-							for(MedicalDepartmentDTO medicalDepartment : medicalDepartmentList){
-						%>
-							<button> <span><%=medicalDepartment.getDepartment_name() %></span> </button>
-						<%
-							}
-						%>
+						<form method="post">
+
+							<% 
+								for(MedicalDepartmentDTO medicalDepartment : medicalDepartmentList){
+							%>
+									<button name="department" value=<%=medicalDepartment.getDepartment_number()%>><%=medicalDepartment.getDepartment_number()%> <%=medicalDepartment.getDepartment_name()%></button>
+							<%
+								}
+							%>
+						</form>
+						<% System.out.println(departmentNum); %>
 					</div>
 					<br>
 					<button onclick = "prev3()">이전</button>
@@ -278,16 +282,17 @@
 			<div id="step4" class="box dsNone">
 				<div>
 					<span>진료예약-STEP2</span>
+					<div><%=departmentNum %></div>
 					<div>
-					<%
-					for (EmployeeDTO employee : employeeList) {
-					%>
-					<button>
-						<span><%=employee.getName()%></span>
-					</button>
-					<%
-					}
-					%>
+						<%
+						for (EmployeeDTO employee : employeeList2) {
+						%>
+						<button>
+							<span><%=employee.getName()%></span>
+						</button>
+						<%
+						}
+						%>
 					</div>
 				</div>
 				
@@ -393,6 +398,10 @@
 			step3_employee.classList.remove('dsNone');
 			step4.classList.remove('dsNone');
 		}
+		
+		function getDepartment_number(num) {
+			console.log(num);
+	}
 
 	</script>
 </body>
