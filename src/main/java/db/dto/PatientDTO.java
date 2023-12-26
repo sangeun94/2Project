@@ -2,18 +2,22 @@ package db.dto;
 
 public class PatientDTO { //환자
 	
-	public int patient_number;
-	public int patient_status_code;
-	public String id;
-	public String password;
-	public String email;
-	public String name;
-	public String jumin;
-	public String phone_number;
+	private int patient_number;
+	private int patient_status_code;
+	private String id;
+	private String password;
+	private String email;
+	private String name;
+	private String jumin;
+	private String phone_number;
 	public String address;
 	
 	//생성자
-	public PatientDTO() {}
+	
+	public PatientDTO(String id, String password) {
+		this.id = id;
+		this.password = password;
+	}
 	public PatientDTO(int patient_number, int patient_status_code, String id, String password, String email,
 			String name, String jumin, String phone_number, String address) {
 		super();
@@ -27,7 +31,7 @@ public class PatientDTO { //환자
 		this.phone_number = phone_number;
 		this.address = address;
 	}
-	
+	public PatientDTO() {}
 	//메소드
 	public int getPatient_number() {
 		return patient_number;
