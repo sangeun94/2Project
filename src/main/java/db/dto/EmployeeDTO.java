@@ -35,6 +35,12 @@ public class EmployeeDTO { //직원
 		this.position = position;
 		this.department_number = department_number;
 	}
+	//의료진 목록출력용 생성자
+	public EmployeeDTO(String name, int department_number) {
+		super();
+		this.name = name;
+		this.department_number = department_number;
+	}
 	
 	//메소드
 	public String getEmployee_number() {

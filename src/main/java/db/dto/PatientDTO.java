@@ -31,7 +31,19 @@ public class PatientDTO { //환자
 		this.phone_number = phone_number;
 		this.address = address;
 	}
+<<<<<<< HEAD
 	public PatientDTO() {}
+=======
+	
+	//테스트용 생성자
+	public PatientDTO(String name, String phone_number) {
+		super();
+		this.name = name;
+		this.phone_number = phone_number;
+	}
+	
+	
+>>>>>>> f508b74b4406e56e75076b839f468ea3d711e9f7
 	//메소드
 	public int getPatient_number() {
 		return patient_number;
