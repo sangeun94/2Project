@@ -228,4 +228,40 @@ public class PatientDAO {
             return "example_id".equals(id) && "example_password".equals(password);
         }
     }
+    
+    /*	이름을 자동으로 가져오게하는 */
+    
+    public PatientDTO getPatientInfoById(String patientId) {
+        Connection conn = null;
+        PreparedStatement psmt = null;
+        ResultSet rs = null;
+        PatientDTO patientDTO = null;
+
+        try {
+            conn = DBConnectionManager.connectDB();
+
+            String sql = "SELECT * FROM patient_table WHERE id = ?";
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, patientId);
+
+            rs = psmt.executeQuery();
+
+            if (rs.next()) {
+                // 결과가 있다면 PatientDTO에 정보를 설정
+                patientDTO = new PatientDTO();
+                patientDTO.setId(rs.getString("id"));
+                patientDTO.setName(rs.getString("name"));
+                // 나머지 필드도 설정...
+
+                // 필요에 따라 다른 정보를 설정
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionManager.closeDB(conn, psmt, rs);
+        }
+
+        return patientDTO;
+    }
 }

@@ -36,10 +36,13 @@
 <%
     BoardDAO boardDAO = new BoardDAO();
     List<BoardDTO> boardList = boardDAO.getAllPosts();
-    
+    // somePatientId는 예시로 주어진 환자의 아이디입니다. 실제로는 세션에서 로그인한 사용자의 아이디 등을 가져와야 합니다.
+    String somePatientId = "examplePatientId";
+    PatientDAO patientDAO = new PatientDAO();
+    PatientDTO patientDTO = patientDAO.getPatientInfoById(somePatientId);
  
 %>
-<h2>게시물 목록</h2>
+<h2>칭찬합니다.</h2>
 
 <%
     if (boardList == null || boardList.isEmpty()) {
@@ -49,27 +52,19 @@
     } else {
         for (BoardDTO board : boardList) {
 %>
-			<div class="tableboard">
-				<div class="smallboard1">
+			
+				
 					<%= board.getBoard_number() %>
-				</div>
-				<div class="smallboard2">
+				
 					<!-- <p>내용 : <%= board.getContent() %></p> -->
 					<h3>제목: <%= board.getTitle() %></h3>
-				</div>
-				<div class="smallboard3">
-					 <p>작성자 : <%= board.getName() %></p>
+				
+				
+					 <!-- <p>작성자 : <%= board.getName() %></p> -->
+				<p>작성자 :<%= patientDTO != null ? patientDTO.getName() : "Unknown" %></p>
 					
-					
-				</div>
-			</div>
-             <div>
-                
-                
-               
-                
-                <hr>
-            </div>
+				
+             
 <%
         }
         
