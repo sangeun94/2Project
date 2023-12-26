@@ -1,4 +1,4 @@
-<%@page import="java.sql.SQLException"%>
+<%@ page import="java.sql.SQLException"%>
 <%@page import="db.dao.admin.AdminMedicalTreatmentDAO"%>
 <%@page import="db.dao.admin.AdminReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

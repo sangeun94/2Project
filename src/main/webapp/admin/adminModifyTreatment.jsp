@@ -1,4 +1,4 @@
-<%@page import="db.dto.MedicalTreatmentDTO"%>
+<%@ page import="db.dto.MedicalTreatmentDTO"%>
 <%@page import="db.dao.admin.AdminMedicalTreatmentDAO"%>
 <%@page import="db.dto.ReservationDTO"%>
 <%@page import="db.dao.admin.AdminReservationDAO"%>
