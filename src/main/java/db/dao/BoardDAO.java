@@ -125,4 +125,47 @@ public class BoardDAO {
 
 	        return boardList;
 	    }
- }   
+	    /*게시판 번호 자동부여*/
+	    public int insertBoard(BoardDTO boardDTO) {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        int generatedKey = -1;
+
+	        try {
+	            conn = DBConnectionManager.connectDB();
+
+	            // 시퀀스로부터 다음 값을 가져옴
+	            String seqSql = "SELECT board_number_seq.NEXTVAL FROM DUAL";
+	            pstmt = conn.prepareStatement(seqSql);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	                // 다음 시퀀스 값을 가져와서 boardDTO에 설정
+	                boardDTO.setBoard_number(rs.getInt(1));
+	            }
+
+	            // 게시물 등록 SQL
+	            String sql = "INSERT INTO board (board_number, title, content, name) VALUES (?, ?, ?, ?)";
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setInt(1, boardDTO.getBoard_number());
+	            pstmt.setString(2, boardDTO.getTitle());
+	            pstmt.setString(3, boardDTO.getContent());
+	            pstmt.setString(4, boardDTO.getName());
+
+	            // 게시물 등록 실행
+	            pstmt.executeUpdate();
+
+	            // 등록한 게시물 번호를 반환
+	            generatedKey = boardDTO.getBoard_number();
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            DBConnectionManager.closeDB(conn, pstmt, rs);
+	        }
+
+	        return generatedKey;
+	    }
+	}
+	   
