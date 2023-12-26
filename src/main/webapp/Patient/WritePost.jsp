@@ -1,4 +1,4 @@
-<%@ page import="db.dao.BoardDAO" %>
+<%@ page import="db.dao.Patient.BoardDAO" %>
 <%@ page import="db.dto.BoardDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

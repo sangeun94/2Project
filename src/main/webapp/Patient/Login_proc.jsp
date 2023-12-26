@@ -1,6 +1,6 @@
-<%@ page import="db.dao.PatientDAO" %>
+<%@ page import="db.dao.Patient.PatientDAO" %>
 <%@ page import="db.dto.PatientDTO" %>
-<%@ page import="db.dao.LoginDAO" %>
+<%@ page import="db.dao.Patient.LoginDAO" %>
 <%@ page import="db.dto.PatientDTO" %>
 <%@ page import="java.util.regex.Pattern" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

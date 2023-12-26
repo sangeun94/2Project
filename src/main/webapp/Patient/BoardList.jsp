@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="db.dao.BoardDAO" %>
+<%@ page import="db.dao.Patient.BoardDAO" %>
 <%@ page import="db.dto.BoardDTO" %>
-<%@ page import = "db.dao.PatientDAO" %>
+<%@ page import = "db.dao.Patient.PatientDAO" %>
 <%@ page import="db.dto.PatientDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
