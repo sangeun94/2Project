@@ -9,6 +9,7 @@ public class MedicalTreatmentDTO { //진료
 	public int patient_number;
 	public String hospitalization_status;
 	public String treatment_content;
+	public String name;
 		
 	//생성자
 	public MedicalTreatmentDTO() {}
@@ -23,6 +24,17 @@ public class MedicalTreatmentDTO { //진료
 		this.patient_number = patient_number;
 		this.hospitalization_status = hospitalization_status;
 		this.treatment_content = treatment_content;
+	}
+	
+	public MedicalTreatmentDTO(int treatment_number, String treatment_date, String treatment_time,
+			int patient_number, String name, String treatment_content) {
+		super();
+		this.treatment_number = treatment_number;
+		this.treatment_date = treatment_date;
+		this.treatment_time = treatment_time;
+		this.patient_number = patient_number;
+		this.treatment_content = treatment_content;
+		this.name = name;
 	}
 	
 	
@@ -83,6 +95,13 @@ public class MedicalTreatmentDTO { //진료
 		this.treatment_content = treatment_content;
 	}
 
+	public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 	
 
 	
