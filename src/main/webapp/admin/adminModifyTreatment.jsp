@@ -29,7 +29,7 @@
             if (medicalTreatment != null) {
     %>       
                 <!-- 진료 정보 입력 폼 -->
-                <form action="ModifyTreatment_proc.jsp" method="post">
+                <form action="adminModifyTreatment_proc.jsp" method="post">
                     <input type="hidden" name="treatment_number" value="<%=treatment_number%>">
                     입원여부: Y <input type="radio" name="hospitalization_status" value="Y" <%= "Y".equals(medicalTreatment.getHospitalization_status()) ? "checked" : "" %>>
                             N <input type="radio" name="hospitalization_status" value="N" <%= "N".equals(medicalTreatment.getHospitalization_status()) ? "checked" : "" %>><br>

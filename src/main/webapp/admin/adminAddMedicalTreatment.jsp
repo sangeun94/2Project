@@ -32,6 +32,7 @@
             
               <!-- 진료 정보 입력 폼 -->
 		    <form action="adminAddMedicalTreatment_proc.jsp" method="post">
+		    	<!-- 진료번호는 시퀀스로 자동으로 1씩증가하는 형태로! -->
 		    	<input type="hidden" name="treatment_date" value="<%=reservation.getReservation_date()%>">
 		        <input type="hidden" name="treatment_time" value="<%=reservation.getReservation_time()%>">
 		        <input type="hidden" name="patient_number" value="<%=reservation.getPatient_number()%>">

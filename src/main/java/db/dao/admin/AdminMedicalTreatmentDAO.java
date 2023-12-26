@@ -32,7 +32,7 @@ public class AdminMedicalTreatmentDAO {
 
 			String sql =  " select treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date,  TO_CHAR(treatment_time, 'HH24:MI') treatment_time, employee_number, patient_number, hospitalization_status, treatment_content "
 					+ "from medical_treatment "
-					+ "order by treatment_date " ;
+					+ "order by treatment_number " ;
 
 			List<MedicalTreatmentDTO> medicaltreatmentList = null;
 
