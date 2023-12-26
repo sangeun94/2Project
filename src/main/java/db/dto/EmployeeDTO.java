@@ -2,7 +2,7 @@ package db.dto;
 
 public class EmployeeDTO { //직원
 
-	public String employee_number;
+	public String employee_number; //사번
 	public int employee_code;
 	public String employee_status;
 	public String password;
@@ -16,6 +16,10 @@ public class EmployeeDTO { //직원
 	
 	//생성자
 	public EmployeeDTO() {}
+	public EmployeeDTO(String employee_number, String password) {
+		this.employee_number = employee_number;
+		this.password = password;
+	}
 	public EmployeeDTO(String employee_number, int employee_code, String employee_status, String password, String name,
 			String gender, String phone_number, String address, String email, String position, int department_number) {
 		super();
