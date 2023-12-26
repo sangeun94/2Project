@@ -192,42 +192,42 @@ public class PatientDAO {
     
     /* ----------------------------------------------------*/
     
-    public class LoginServlet extends HttpServlet {
-        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            // 사용자가 입력한 아이디와 비밀번호 가져오기
-            String id = request.getParameter("id");
-            String password = request.getParameter("password");
-
-            // 아이디와 비밀번호를 검증하는 코드 (예시)
-            boolean loginSuccessful = yourAuthenticationLogic(id, password);
-
-            if (loginSuccessful) {
-                // 로그인 성공 시 사용자 정보를 세션에 저장
-                HttpSession session = request.getSession();
-                PatientDTO loggedInUser = getPatientInfo(id);  // 예시: 아이디에 해당하는 사용자 정보를 가져오는 메서드
-                session.setAttribute("loggedInUser", loggedInUser);
-
-                // 로그인 성공 후 리다이렉트 또는 다른 동작 수행
-                response.sendRedirect("/home");  // 예시: 로그인 성공 후 이동할 페이지
-            } else {
-                // 로그인 실패 처리 (예시: 다시 로그인 페이지로 이동)
-                response.sendRedirect("/login.jsp?error=1");
-            }
-        }
-
-        // 아이디에 해당하는 사용자 정보를 가져오는 메서드 (예시)
-        private PatientDTO getPatientInfo(String id) {
-            // 실제로는 데이터베이스에서 아이디에 해당하는 정보를 조회하여 반환하는 로직을 작성
-            // 예시로 사용자의 정보를 담은 가상의 PatientDTO를 반환
-            return new PatientDTO(/* 정보 설정 */);
-        }
-
-        // 실제로는 아이디와 비밀번호를 검증하는 로직을 작성
-        private boolean yourAuthenticationLogic(String id, String password) {
-            // 예시: 간단한 로그인 검증 (실제로는 데이터베이스 등을 이용하여 안전하게 구현해야 함)
-            return "example_id".equals(id) && "example_password".equals(password);
-        }
-    }
+//    public class LoginServlet extends HttpServlet {
+//        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//            // 사용자가 입력한 아이디와 비밀번호 가져오기
+//            String id = request.getParameter("id");
+//            String password = request.getParameter("password");
+//
+//            // 아이디와 비밀번호를 검증하는 코드 (예시)
+//            boolean loginSuccessful = yourAuthenticationLogic(id, password);
+//
+//            if (loginSuccessful) {
+//                // 로그인 성공 시 사용자 정보를 세션에 저장
+//                HttpSession session = request.getSession();
+//                PatientDTO loggedInUser = getPatientInfo(id);  // 예시: 아이디에 해당하는 사용자 정보를 가져오는 메서드
+//                session.setAttribute("loggedInUser", loggedInUser);
+//
+//                // 로그인 성공 후 리다이렉트 또는 다른 동작 수행
+//                response.sendRedirect("/home");  // 예시: 로그인 성공 후 이동할 페이지
+//            } else {
+//                // 로그인 실패 처리 (예시: 다시 로그인 페이지로 이동)
+//                response.sendRedirect("/login.jsp?error=1");
+//            }
+//        }
+//
+//        // 아이디에 해당하는 사용자 정보를 가져오는 메서드 (예시)
+//        private PatientDTO getPatientInfo(String id) {
+//            // 실제로는 데이터베이스에서 아이디에 해당하는 정보를 조회하여 반환하는 로직을 작성
+//            // 예시로 사용자의 정보를 담은 가상의 PatientDTO를 반환
+//            return new PatientDTO(/* 정보 설정 */);
+//        }
+//
+//        // 실제로는 아이디와 비밀번호를 검증하는 로직을 작성
+//        private boolean yourAuthenticationLogic(String id, String password) {
+//            // 예시: 간단한 로그인 검증 (실제로는 데이터베이스 등을 이용하여 안전하게 구현해야 함)
+//            return "example_id".equals(id) && "example_password".equals(password);
+//        }
+//    }
     
     /*	이름을 자동으로 가져오게하는 */
     
