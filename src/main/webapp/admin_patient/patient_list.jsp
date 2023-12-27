@@ -4,11 +4,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../admin_layout/header.jsp" %>
 <%@ include file="../admin_layout/_lnb_patient.jsp" %>
-	<%
-		request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
-		AdminPatientInfoDAO patientInfoDAO = new AdminPatientInfoDAO();
-		List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
-	%>
+<%
+	request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
+	AdminPatientInfoDAO patientInfoDAO = new AdminPatientInfoDAO();
+	List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
+%>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
 
 <section id="contents">
 	<%@ include file="../admin_layout/hgroup.jsp" %>
@@ -21,9 +25,6 @@
         let title = '환자 정보 조회';
 	</script>
 	
-	
-	
-
 	<article>
 		<fieldset class="search_box">
 			<label>등록일자 : </label>
@@ -89,7 +90,7 @@
 		</div>
 
 		<p class="total_top">총 <b>00</b>개</p>
-		<table class="listTable" style="margin-top:20px;">
+		<table id="patientTable" class="listTable" style="margin-top:20px;">
 			<colgroup>
                 <col width="5%" /><col width="8%" /><col width="10%" /><col width="5%" /><col width="15%" /><col width="15%" /><col width="20%" /><col width="10%" /><col width="*" />
 			</colgroup>
@@ -129,7 +130,9 @@
 				}
 			%>
 			</tbody>
-		</table>	
+		</table>
+
+		
 		<div class="btns_top mt20">
 			<a href="" class="red">선택 삭제</a>
 		</div>		
@@ -157,6 +160,7 @@
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
 $(function() {
 	$("#idStartDate").datepicker($.datepicker.regional.ko);
@@ -164,5 +168,17 @@ $(function() {
 	$("#idRegStartDate").datepicker($.datepicker.regional.ko);
 	$("#idRegEndDate").datepicker($.datepicker.regional.ko);	
 });
+</script>
+<!-- DataTables JS -->
+<script>
+	$(document).ready(function() {
+		// DataTables 초기화
+		var table = $('#patientTable').DataTable({
+			"paging": true,      // 페이징 활성화
+			"pageLength": 30,    // 한 페이지에 표시될 목록 수
+			"lengthMenu": [30, 50, 100, 200],  // 목록 수 선택 옵션
+			"ordering": false   // 정렬 비활성화
+		});
+	});
 </script>
 <%@ include file="../admin_layout/footer.jsp" %>
