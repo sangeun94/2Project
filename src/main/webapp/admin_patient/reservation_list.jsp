@@ -45,24 +45,21 @@
                     <option value="">경상남도</option>
 				</select>	
 			<p>	
-			<label>생년월일 : </label>
-				<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
-				<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
-			</p>	
-			<p>		
-				</select>	
-			<label></label>
-				<select style="width:120px;">				
-					<option value="">이름</option>
-					<option value="">예약번호</option>
-                    <option value="">환자번호</option>
-					<option value="">주민등록번호</option>
-					<option value="">휴대전화번호</option>
-					<option value="">진료의</option>
-					<option value="">진료과</option>
-				</select>				
-				<input type="text" class="txt" style="width:200px" >	
-			<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
+				<label>생년월일 : </label>
+					<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
+					<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
+				<label></label>
+					<select style="width:120px;">				
+						<option value="">이름</option>
+						<option value="">예약번호</option>
+	                    <option value="">환자번호</option>
+						<option value="">주민등록번호</option>
+						<option value="">휴대전화번호</option>
+						<option value="">진료의</option>
+						<option value="">진료과</option>
+					</select>				
+					<input type="text" class="txt" style="width:200px" >	
+				<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
 			</p>
 		</fieldset>
 

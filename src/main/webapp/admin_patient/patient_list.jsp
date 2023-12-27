@@ -104,7 +104,7 @@
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>1</td>				
-				<td><a href="./_layer_patient_detail.html">홍길동</a></td>
+				<td><a href="./_layer_patient_detail.jsp">홍길동</a></td>
 				<td>남성</td>
 				<td>950101-1234567</td>
 				<td>010-1111-1111</td>
