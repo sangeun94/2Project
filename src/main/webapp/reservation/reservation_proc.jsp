@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="db.dao.ReservationDAO" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,7 @@
 		String department = request.getParameter("department");
 		
 		System.out.println(department);
-
+		
 	%>
 	
 
