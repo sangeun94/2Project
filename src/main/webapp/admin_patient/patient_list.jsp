@@ -118,7 +118,7 @@
 				<td><input type="checkbox"></td>
 				<td><%=patientInfo.getPatient_number()%></td>				
 				<td><a href="./_layer_patient_detail.jsp?id=<%=patientInfo.getName()%>"><%=patientInfo.getName()%></a></td>
-				<td>남성</td>
+				<td><%=patientInfo.getGender()%></td>
 				<td><%=patientInfo.getJumin()%></td>
 				<td><%=patientInfo.getPhone_number()%></td>
                 <td><%=patientInfo.getEmail()%></td>

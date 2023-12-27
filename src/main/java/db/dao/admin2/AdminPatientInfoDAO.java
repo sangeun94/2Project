@@ -20,7 +20,13 @@ public class AdminPatientInfoDAO {
 
 		conn = DBConnectionManager.connectDB();
 
-		String sql = " SELECT * FROM patient ";
+		String sql = " SELECT patient_number, patient_status_code, id, password, email, name, jumin, phone_number, address, "
+					+ " CASE "
+					+ " WHEN SUBSTR(jumin, 7, 1) IN ('1', '3') THEN '남성' "
+					+ " WHEN SUBSTR(jumin, 7, 1) IN ('2', '4') THEN '여성' "
+					+ " ELSE '알 수 없음' "
+					+ " END AS gender "
+					+ " FROM patient ";
 		
 		List<PatientDTO> PatientInfoList = null; //return하기 위해 선언
 
@@ -211,4 +217,6 @@ public class AdminPatientInfoDAO {
 
 		return PatientInfoList;
 	}
+
+
 }
