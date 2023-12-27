@@ -31,9 +31,11 @@ public class AdminMedicalTreatmentDAO {
 			//DBConnectionManager 만들어준 connection 을 활용
 			conn = DBConnectionManager.connectDB();
 
-			String sql =  " select treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date,  TO_CHAR(treatment_time, 'HH24:MI') treatment_time, employee_number, patient_number, hospitalization_status, treatment_content "
-					+ "from medical_treatment "
-					+ "order by treatment_number " ;
+			String sql =  " select m.treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date, TO_CHAR(treatment_time, 'HH24:MI') treatment_time, "
+					+ " m.employee_number, m.patient_number, p.name, m.hospitalization_status, m.treatment_content "
+					+ " from medical_treatment m, patient p "
+					+ " where m.patient_number = p.patient_number "
+					+ " order by treatment_number " ;
 
 			List<MedicalTreatmentDTO> medicaltreatmentList = null;
 
@@ -46,7 +48,7 @@ public class AdminMedicalTreatmentDAO {
 
 				while(rs.next()) { 	
 					MedicalTreatmentDTO medicalTreatmentDTO = new MedicalTreatmentDTO(rs.getInt("treatment_number"), rs.getString("treatment_date")
-							,rs.getString("treatment_time"), rs.getString("employee_number"), rs.getInt("patient_number")
+							,rs.getString("treatment_time"), rs.getString("employee_number"), rs.getInt("patient_number"), rs.getString("name")
 							,rs.getString("hospitalization_status"), rs.getString("treatment_content") );
 
 					medicaltreatmentList.add(medicalTreatmentDTO);
@@ -64,11 +66,11 @@ public class AdminMedicalTreatmentDAO {
 	    public MedicalTreatmentDTO findAdminMedicalTreatmentById(int treatment_number) {
 	    	conn = DBConnectionManager.connectDB();
 	    	
-            String sql = "SELECT Treatment_Number, TO_CHAR(Treatment_Date, 'YYYY-MM-DD') Treatment_Date, " +
-                         "TO_CHAR(Treatment_time, 'HH24:MI') Treatment_time, Employee_Number, " +
-                         "Patient_Number, Hospitalization_Status, Treatment_Content " +
-                         "FROM Medical_Treatment " +
-                         "WHERE Treatment_Number = ?";
+            String sql = " SELECT m.Treatment_Number, TO_CHAR(Treatment_Date, 'YYYY-MM-DD') Treatment_Date, " +
+                         " TO_CHAR(Treatment_time, 'HH24:MI') Treatment_time, m.Employee_Number, " +
+                         " m.Patient_Number, p.name, m.Hospitalization_Status, m.Treatment_Content " +
+                         " FROM Medical_Treatment m, patient p" +
+                         " WHERE m.patient_number = p.patient_number AND Treatment_Number = ?";
 
             MedicalTreatmentDTO medicalTreatment = null;
             
@@ -86,6 +88,7 @@ public class AdminMedicalTreatmentDAO {
 	                    rs.getString("Treatment_time"),
 	                    rs.getString("Employee_Number"),
 	                    rs.getInt("Patient_Number"),
+	                    rs.getString("name"),
 	                    rs.getString("Hospitalization_Status"),
 	                    rs.getString("Treatment_Content")
 	                );

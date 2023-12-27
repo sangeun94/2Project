@@ -27,7 +27,14 @@
             MedicalTreatmentDTO medicalTreatment = dao.findAdminMedicalTreatmentById(treatment_number);
 
             if (medicalTreatment != null) {
-    %>       
+    %>                   
+                <p>진료번호: <%=medicalTreatment.getTreatment_number()%></p> 
+				<p>진료일: <%=medicalTreatment.getTreatment_date()%></p>
+				<p>진료시간: <%=medicalTreatment.getTreatment_time()%></p>
+				<p>의사번호: <%=medicalTreatment.getEmployee_number()%></p>
+				<p>환자번호: <%=medicalTreatment.getPatient_number()%></p>
+				<p>환자이름: <%=medicalTreatment.getName()%></p>
+				
                 <!-- 진료 정보 입력 폼 -->
                 <form action="adminModifyTreatment_proc.jsp" method="post">
                     <input type="hidden" name="treatment_number" value="<%=treatment_number%>">

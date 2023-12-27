@@ -92,6 +92,46 @@ public class AdminHospitalizationDAO {
 		return hospitalizationList;
 	}
 	
+	//입원내역 수정하기전에 보여질 정보(입원번호 환자번호 환자이름) 
+	
+	
+	//입원 번호로 정보가져오기 -> 수정하기 화면에서 자동으로 적용되는 기본정보?
+	 public HospitalizationDTO findAdminHospitalizationById(int hospitalization_number) {
+	    conn = DBConnectionManager.connectDB();
+	    	
+        String sql = " select h.hospitalization_number, TO_CHAR(hospitalization_date, 'YYYY-MM-DD') hospitalization_date, TO_CHAR(discharge_date, 'YYYY-MM-DD') discharge_date, "
+        		+ " h.inpatient_room_number, h.patient_number, p.name "
+        		+ " from Hospitalization h, patient p "
+        		+ " where h.patient_number = p.patient_number AND hospitalization_number = ? ";
+
+        HospitalizationDTO hospitalization = null;
+         
+	        try {
+	            psmt = conn.prepareStatement(sql);
+	            
+	            psmt.setInt(1, hospitalization_number);
+
+	            rs = psmt.executeQuery();
+
+	            if (rs.next()) {
+	            	hospitalization = new HospitalizationDTO(
+	                    rs.getInt("hospitalization_number"),
+	                    rs.getString("hospitalization_date"),
+	                    rs.getString("discharge_date"),
+	                    rs.getString("inpatient_room_number"),
+	                    rs.getInt("Patient_Number"),
+	                    rs.getString("name")
+	                );
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            DBConnectionManager.closeDB(conn, psmt, rs);
+	        }
+
+	        return hospitalization;
+	    }
+	
 	//저장 INSERT -> save
 	 public int addHospitalization(String hospitalization_date, String discharge_date, String inpatient_room_number, int patient_number) {
 			//DBConnectionManager 만들어준 connection 을 활용
@@ -122,15 +162,16 @@ public class AdminHospitalizationDAO {
 	
 	 
 	//수정 UPDATE -> modify
-	public int modifyMedicalTreatmentInfo(MedicalTreatmentDTO medicalTreatment) { //포장박스(DTO)불러오면 그안에 있는 id name 사용가능!
+	public int modifyHospitalizationInfo(HospitalizationDTO hospitalization) { //포장박스(DTO)불러오면 그안에 있는 id name 사용가능!
 		//해당 아이디에 맞는 사람의 이름을 수정!
 		
 		conn = DBConnectionManager.connectDB();
 
-		 String sql = "UPDATE Medical_Treatment SET " +
-                     "Hospitalization_Status = ?, " +
-                     "Treatment_Content = ? " +
-                     "WHERE Treatment_Number = ?";
+		 String sql = "UPDATE Hospitalization "
+		 		+ " SET Hospitalization_Date = TO_DATE(?, 'YYYY-MM-DD'), "
+		 		+ " Discharge_Date = TO_DATE(?, 'YYYY-MM-DD'), "
+		 		+ " Inpatient_Room_Number = ? "
+		 		+ " WHERE Hospitalization_Number = ? ";
 
 
 		int result = 0;
@@ -139,9 +180,10 @@ public class AdminHospitalizationDAO {
 			psmt = conn.prepareStatement(sql);
 			//Connection 활용해서 sql 명령을 실행하는 객체
 			
-			psmt.setString(1, medicalTreatment.getHospitalization_status());
-            psmt.setString(2, medicalTreatment.getTreatment_content());
-            psmt.setInt(3, medicalTreatment.getTreatment_number());
+			psmt.setString(1, hospitalization.getHospitalization_date());
+            psmt.setString(2, hospitalization.getDischarge_date());
+            psmt.setString(3, hospitalization.getInpatient_room_number());
+            psmt.setInt(4, hospitalization.getHospitalization_number());
 			
 			result = psmt.executeUpdate(); // 1, 0
 			//rs = psmt.executeQuery(); //준비된 sql 쿼리문 실행! -> SELECT문일때!

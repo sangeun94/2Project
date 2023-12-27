@@ -26,6 +26,7 @@
 			진료시간: <%=medicalTreatmentInfo.getTreatment_time()%> 
 			의사번호: <%=medicalTreatmentInfo.getEmployee_number()%>
 			환자번호: <%=medicalTreatmentInfo.getPatient_number()%>
+			환자이름: <%=medicalTreatmentInfo.getName()%>
 			입원여부: <%=medicalTreatmentInfo.getHospitalization_status()%> 
 			진료내용: <%=medicalTreatmentInfo.getTreatment_content()%>
 			<button onclick="location.href='adminModifyTreatment.jsp?treatment_number=<%=medicalTreatmentInfo.getTreatment_number()%>'" type="button">수정하기</button> 

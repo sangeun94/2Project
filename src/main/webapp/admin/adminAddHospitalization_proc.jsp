@@ -10,12 +10,14 @@
 <body>
 	<%
 	    request.setCharacterEncoding("UTF-8");
-	
+		
 	 	String hospitalization_date = request.getParameter("hospitalization_date");
 	    String discharge_date = request.getParameter("discharge_date");
 	    String inpatient_room_number = request.getParameter("inpatient_room_number");
 	    int patient_number = Integer.parseInt(request.getParameter("patient_number"));
 
+	    System.out.println("patient_number: " + patient_number); // 디버깅 출력
+	    
 	    AdminHospitalizationDAO dao = new AdminHospitalizationDAO();
 	    int result = dao.addHospitalization(hospitalization_date, discharge_date, inpatient_room_number, patient_number);
 	

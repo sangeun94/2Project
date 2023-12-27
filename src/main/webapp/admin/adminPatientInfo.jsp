@@ -11,7 +11,7 @@
 <body>
 	<h1>환자정보</h1>
 <%
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 
     String patient_number = request.getParameter("patient_number");
     System.out.println("patientInfo 파라미터 : " + patient_number);

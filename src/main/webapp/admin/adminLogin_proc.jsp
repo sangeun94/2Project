@@ -37,7 +37,7 @@
 	%>			
 				<script>
 					alert('로그인 성공');
-					location.href = 'adminHospitalizationInfo.jsp?employee_number=<%=employee_number%>'; //해당 경로로 페이지 이동
+					location.href = 'adminMyHsospitalization.jsp?employee_number=<%=employee_number%>'; //해당 경로로 페이지 이동
 				</script>
 			<%	
 				} else {

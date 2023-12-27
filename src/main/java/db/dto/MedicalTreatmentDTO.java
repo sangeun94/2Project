@@ -37,7 +37,20 @@ public class MedicalTreatmentDTO { //진료
 		this.name = name;
 	}
 	
-	
+	public MedicalTreatmentDTO(int treatment_number, String treatment_date, String treatment_time,
+			String employee_number, int patient_number, String name, String hospitalization_status, 
+			String treatment_content) {
+		super();
+		this.treatment_number = treatment_number;
+		this.treatment_date = treatment_date;
+		this.treatment_time = treatment_time;
+		this.employee_number = employee_number;
+		this.patient_number = patient_number;
+		this.hospitalization_status = hospitalization_status;
+		this.treatment_content = treatment_content;
+		this.name = name;
+	}
+
 	//메소드
 	public int getTreatment_number() {
 		return treatment_number;
