@@ -1,4 +1,4 @@
-<%@ page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page import="db.dto.ReservationDTO"%>
 <%@page import="db.dao.admin.AdminReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

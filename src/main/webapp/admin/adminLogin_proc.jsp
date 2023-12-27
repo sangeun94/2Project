@@ -1,12 +1,11 @@
 <%@ page import="db.dto.EmployeeDTO"%>
-<%@page import="db.dao.admin.AdminLoginDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page import="db.dao.admin.AdminLoginDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head> 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>	
 	<%
@@ -31,12 +30,14 @@
 			location.href = "adminLogin.jsp";
 		</script>
 	<%	
-		} else {
+		} else { 
 			if(employee_number.equals(employeeInfo.getEmployee_number()) && password.equals(employeeInfo.getPassword())) {
+				//로그인 성공
+				session.setAttribute("loginId", employee_number);
 	%>			
 				<script>
 					alert('로그인 성공');
-					location.href = 'adminMyTreatment.jsp?employee_number=<%=employee_number%>'; //해당 경로로 페이지 이동
+					location.href = 'adminHospitalizationInfo.jsp?employee_number=<%=employee_number%>'; //해당 경로로 페이지 이동
 				</script>
 			<%	
 				} else {
