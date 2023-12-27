@@ -16,7 +16,6 @@
 	if(session != null && session.getAttribute("loginId") != null){
 		String id = session.getAttribute("loginId").toString(); //현재 로그인한 사람 아이디
 		//해당 아이디 가지고 조회 예약정보 조회
-		System.out.println("마이페이지 id : " + id);
 	%>
 
 	<section id="container">

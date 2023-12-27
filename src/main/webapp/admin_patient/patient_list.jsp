@@ -1,7 +1,14 @@
+<%@ page import="db.dto.PatientDTO"%>
+<%@ page import="java.util.List"%>
+<%@ page import="db.dao.admin2.AdminPatientInfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../admin_layout/header.jsp" %>
 <%@ include file="../admin_layout/_lnb_patient.jsp" %>
-
+	<%
+		request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
+		AdminPatientInfoDAO patientInfoDAO = new AdminPatientInfoDAO();
+		List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
+	%>
 
 <section id="contents">
 	<%@ include file="../admin_layout/hgroup.jsp" %>
@@ -13,6 +20,9 @@
         let lnbDep3 = 0;
         let title = '환자 정보 조회';
 	</script>
+	
+	
+	
 
 	<article>
 		<fieldset class="search_box">
@@ -98,20 +108,26 @@
 			</thead>
 			<tbody>
 			<!-- 환자 검색 결과 -->
-			<tr>
+			<!-- <tr>
 				<td class="no-data" colspan="8">검색결과 없음</td>
-			</tr>			
+			</tr>		 -->	
+			<%
+				for(PatientDTO patientInfo : PatientInfoList){
+			%>
 			<tr>
 				<td><input type="checkbox"></td>
-				<td>1</td>				
-				<td><a href="./_layer_patient_detail.jsp">홍길동</a></td>
+				<td><%=patientInfo.getPatient_number()%></td>				
+				<td><a href="./_layer_patient_detail.jsp?id=<%=patientInfo.getName()%>"><%=patientInfo.getName()%></a></td>
 				<td>남성</td>
-				<td>950101-1234567</td>
-				<td>010-1111-1111</td>
-                <td>user1@example.com</td>
-				<td class="s_txt1">user1</td>
-				<td>서울특별시</td>
+				<td><%=patientInfo.getJumin()%></td>
+				<td><%=patientInfo.getPhone_number()%></td>
+                <td><%=patientInfo.getEmail()%></td>
+				<td class="s_txt1"><%=patientInfo.getId()%></td>
+				<td><%=patientInfo.getAddress()%></td>
 			</tr>
+			<%
+				}
+			%>
 			</tbody>
 		</table>	
 		<div class="btns_top mt20">
