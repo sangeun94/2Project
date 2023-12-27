@@ -35,7 +35,7 @@
 			<ul id="gnb">
 				<li><a href="../admin_patient/patient_list.jsp">환자 관리</a></li>
 				<li><a href="/">직원 관리</a></li>
-				<li><a href="/">사이트 관리</a></li>
+				<li><a href="../admin_website/website_user_list.jsp">사이트 관리</a></li>
 				<li><a href="/">Setting</a></li>
 			</ul>
 		</header>

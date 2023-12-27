@@ -3,22 +3,22 @@
 <%@ page import="db.dao.admin2.AdminPatientInfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../admin_layout/header.jsp" %>
-<%@ include file="../admin_layout/_lnb_patient.jsp" %>
+<%@ include file="../admin_layout/_lnb_system.jsp" %>
 	<%
 		request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
 		AdminPatientInfoDAO patientInfoDAO = new AdminPatientInfoDAO();
-		List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
+		List<PatientDTO> PatientInfoList = patientInfoDAO.findWebsiteUserList();
 	%>
 
 <section id="contents">
 	<%@ include file="../admin_layout/hgroup.jsp" %>
 
 	<script>
-        let gnbDep1 = 1;
+        let gnbDep1 = 3;
         let lnbDep1 = 1;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
-        let title = '환자 정보 조회';
+        let title = '웹사이트 회원 조회';
 	</script>
 	
 	
@@ -91,18 +91,18 @@
 		<p class="total_top">총 <b>00</b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="8%" /><col width="10%" /><col width="5%" /><col width="15%" /><col width="15%" /><col width="20%" /><col width="10%" /><col width="*" />
+                <col width="5%" /><col width="8%" /><col width="10%" /><col width="10%" /><col width="5%" /><col width="15%" /><col width="15%" /><col width="20%" /><col width="*" />
 			</colgroup>
 			<thead>
 			<tr>
 				<th><input type="checkbox"></th>
 				<th>환자번호</th>
+				<th>회원아이디</th>
 				<th>이름</th>
 				<th>성별</th>
 				<th>주민등록번호</th>
 				<th>휴대전화번호</th>
                 <th>이메일</th>
-				<th>회원아이디</th>
 				<th>주소</th>
 			</tr>
 			</thead>
@@ -118,11 +118,11 @@
 				<td><input type="checkbox"></td>
 				<td><%=patientInfo.getPatient_number()%></td>				
 				<td><a href="./_layer_patient_detail.jsp?id=<%=patientInfo.getName()%>"><%=patientInfo.getName()%></a></td>
+				<td class="s_txt1"><%=patientInfo.getId()%></td>
 				<td>남성</td>
 				<td><%=patientInfo.getJumin()%></td>
 				<td><%=patientInfo.getPhone_number()%></td>
                 <td><%=patientInfo.getEmail()%></td>
-				<td class="s_txt1"><%=patientInfo.getId()%></td>
 				<td><%=patientInfo.getAddress()%></td>
 			</tr>
 			<%
