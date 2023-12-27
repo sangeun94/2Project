@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="db.dto.PatientDTO" %> 
 <%@ page import="db.dto.ReservationDTO" %> 
-<%@ page import="db.dao.ReservationDAO" %> 
+
+<%@page import="db.dao.Reservation.ReservationDAO"%>
 <%@ page import="db.dto.MedicalDepartmentDTO" %> 
 <%@ page import="db.dto.EmployeeDTO" %> 
 <%@ page import="java.util.List" %> 
@@ -18,7 +19,7 @@
 		padding: 0;
 		box-sizing: border-box;
 	}
-
+ 
 	.alignCenter{
 		text-align: center;
 	}
