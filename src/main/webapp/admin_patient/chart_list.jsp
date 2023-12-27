@@ -45,25 +45,22 @@
                     <option value="">경상남도</option>
 				</select>	
 			<p>	
-			<label>생년월일 : </label>
-				<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
-				<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
-			</p>	
-			<p>		
-				</select>	
-			<label></label>
-				<select style="width:120px;">				
-					<option value="">이름</option>
-                    <option value="">환자번호</option>
-					<option value="">진료번호</option>
-					<option value="">진료과</option>
-					<option value="">진료의</option>
-					<option value="">주민등록번호</option>
-					<option value="">휴대전화번호</option>
-					<option value="">주소</option>
-				</select>				
-				<input type="text" class="txt" style="width:200px" >	
-			<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
+				<label>생년월일 : </label>
+					<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
+					<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
+				<label></label>
+					<select style="width:120px;">				
+						<option value="">이름</option>
+	                    <option value="">환자번호</option>
+						<option value="">진료번호</option>
+						<option value="">진료과</option>
+						<option value="">진료의</option>
+						<option value="">주민등록번호</option>
+						<option value="">휴대전화번호</option>
+						<option value="">주소</option>
+					</select>				
+					<input type="text" class="txt" style="width:200px" >	
+				<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
 			</p>
 		</fieldset>
 
@@ -83,7 +80,7 @@
 		<p class="total_top">총 <b>00</b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="5%" /><col width="10%" /><col width="10%" /><col width="20%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10" /><col width="*" />
+                <col width="5%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="*" /><col width="*" />
 			</colgroup>
 			<thead>
 			<tr>
@@ -112,9 +109,9 @@
 				<td>가정의학과</td>	
 				<td>김민지</td>
 				<td>1</td>
-				<td><a href="./_layer_patient_detail.html">홍길동</a></td>
+				<td>홍길동</td>
 				<td>고혈압</td>
-				<td><a href="./_layer_chart_detail.html">차트 작성하기</a></td>
+				<td><a href="./_layer_chart_detail.jsp">차트 작성하기</a></td>
 			</tr>
 			</tbody>
 		</table>	
