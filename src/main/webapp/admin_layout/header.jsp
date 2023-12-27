@@ -16,9 +16,11 @@
         <h1><a href="#"><img src="../resources/img/humc_logo_239x25.png" alt="HUMC LOGO"></a></h1>
         <p><b></b>님 <a href="javascript:FuncLogout();">로그아웃</a></p>
         <ul id="gnb">
-            <li><a href="../patient/patient_list.html">환자 관리</a></li>
+            <li><a href="../admin_patient/patient_list.jsp">환자 관리</a></li>
             <li><a href="/">직원 관리</a></li>
             <li><a href="/">사이트 관리</a></li>
             <li><a href="/">Setting</a></li>
         </ul>
     </header>
+</body>
+</html>
