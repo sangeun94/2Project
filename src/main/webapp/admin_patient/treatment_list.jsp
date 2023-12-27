@@ -1,6 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../admin_layout/header.jsp" %>
+<%@ include file="../admin_layout/_lnb_patient.jsp" %>
+
 <!-- 환자 관리 - 진료 내역 확인 -->
 <section id="contents">
-	
+	<%@ include file="../admin_layout/hgroup.jsp" %>
+
 	<script>
         let gnbDep1 = 1;
         let lnbDep1 = 4;
@@ -146,3 +151,4 @@ $(function() {
 	$("#idtreatmentDate").datepicker($.datepicker.regional.ko);
 });
 </script>
+<%@ include file="../admin_layout/footer.jsp" %>

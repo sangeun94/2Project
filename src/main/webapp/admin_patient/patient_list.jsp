@@ -137,8 +137,7 @@
 			<a href=""><img src="../resources/img/btn/paging4.png" alt="마지막" /></a>
 		</p>			
 	</article>
-
-
+</section>
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
@@ -150,5 +149,4 @@ $(function() {
 	$("#idRegEndDate").datepicker($.datepicker.regional.ko);	
 });
 </script>
-</section>	
 <%@ include file="../admin_layout/footer.jsp" %>

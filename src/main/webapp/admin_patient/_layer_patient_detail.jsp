@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!-- 환자 상세 -->
 <section id="contents">
 	<script>
@@ -10,7 +12,6 @@
 	<article>
 	</article>
 </section>		
-	
 	<!--pop-->
 	<div class="pop_wrap">
 		<div class="pop_ct large">

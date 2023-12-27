@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!-- 차트 작성하기 상세 -->
 <section id="contents">
+	
 	<script>
 	let gnbDep1 = 1;
     let lnbDep1 = 5;

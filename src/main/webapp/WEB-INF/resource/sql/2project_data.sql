@@ -352,11 +352,11 @@ SELECT * FROM patient;
 
 --입원
 CREATE TABLE Hospitalization (
-  Hospitalization_Date DATE NOT NULL,
-  Discharge_Date DATE,
-	Inpatient_Room_Number VARCHAR2(10) NOT NULL, -- 701~801 층마다 5개 무조건 6인실
-  Patient_Number NUMBER, -- 1, 2, 3, 4 
-  PRIMARY KEY (Patient_Number)
+    Hospitalization_Date DATE NOT NULL,
+    Discharge_Date DATE,
+    Inpatient_Room_Number VARCHAR2(10), -- 701~801 층마다 5개 무조건 6인실
+    Patient_Number NUMBER, -- 1, 2, 3, 4 
+    PRIMARY KEY (Patient_Number)
 );
 
 INSERT INTO hospitalization(Hospitalization_Date,Discharge_Date,Patient_Number)
@@ -418,3 +418,4 @@ CREATE TABLE Reservation (
 	PRIMARY KEY (Reservation_Number)
 );
 
+commit;
