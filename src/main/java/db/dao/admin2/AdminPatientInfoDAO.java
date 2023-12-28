@@ -22,8 +22,8 @@ public class AdminPatientInfoDAO {
 
 		String sql = " SELECT patient_number, patient_status_code, id, password, email, name, jumin, phone_number, address, "
 					+ " CASE "
-					+ " WHEN SUBSTR(jumin, 7, 1) IN ('1', '3') THEN '남성' "
-					+ " WHEN SUBSTR(jumin, 7, 1) IN ('2', '4') THEN '여성' "
+					+ " WHEN SUBSTR(jumin, 8, 1) IN ('1', '3') THEN '남성' "
+					+ " WHEN SUBSTR(jumin, 8, 1) IN ('2', '4') THEN '여성' "
 					+ " ELSE '알 수 없음' "
 					+ " END AS gender "
 					+ " FROM patient ";
@@ -47,7 +47,8 @@ public class AdminPatientInfoDAO {
 						rs.getString("name"),
 						rs.getString("jumin"),
 						rs.getString("phone_number"),
-						rs.getString("address")
+						rs.getString("address"),
+						rs.getString("gender")
 						);	//한줄
 				PatientInfoList.add(PatientDTO);
 			}
