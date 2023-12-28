@@ -1,4 +1,4 @@
-package db.dao;
+package db.dao.Patient;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

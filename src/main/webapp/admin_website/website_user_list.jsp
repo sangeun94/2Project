@@ -97,8 +97,8 @@
 			<tr>
 				<th><input type="checkbox"></th>
 				<th>환자번호</th>
-				<th>회원아이디</th>
 				<th>이름</th>
+				<th>회원아이디</th>
 				<th>성별</th>
 				<th>주민등록번호</th>
 				<th>휴대전화번호</th>
@@ -117,7 +117,7 @@
 			<tr>
 				<td><input type="checkbox"></td>
 				<td><%=patientInfo.getPatient_number()%></td>				
-				<td><a href="./_layer_patient_detail.jsp?id=<%=patientInfo.getName()%>"><%=patientInfo.getName()%></a></td>
+				<td><a href="../admin_patient/_layer_patient_detail.jsp?id=<%=patientInfo.getName()%>"><%=patientInfo.getName()%></a></td>
 				<td class="s_txt1"><%=patientInfo.getId()%></td>
 				<td>남성</td>
 				<td><%=patientInfo.getJumin()%></td>

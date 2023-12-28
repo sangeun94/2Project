@@ -27,7 +27,7 @@
 			<h2>해당 사용자 정보가 없습니다.</h2>
 		<script> //alert창 뜨고 로그인페이지로 보내버리는!
 			alert('잘못된 접근입니다.');
-			location.href = "adminLogin.jsp";
+			location.href = "../admin_patient/patient_list.jsp";
 		</script>
 	<%	
 		} else { 
