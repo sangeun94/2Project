@@ -140,11 +140,6 @@ p {
     background-color: #2ca48f;
 }
 
-.mainLoginWrap {
-    background-color: #fff;
-    border: 1px solid #2763ba;
-}
-
 [class*=mainCol01] .btnWrap {
     overflow: hidden;
     position: absolute;
@@ -166,10 +161,6 @@ p {
     line-height: 38px;
     color: #fff; 
     text-decoration: none;
-}
-
-.mainLoginWrap a {
-    background-color: #2763ba;
 }
 
 .m01_T_h {
@@ -216,11 +207,6 @@ p {
     color: #fff;
 }
 
-.m_L_h {
-    position: absolute;
-    top: 8px;
-    color: black;
-}
 /* mainInner-상 끝 */
 
 /* mainInner-중 시작 */
@@ -241,7 +227,6 @@ p {
     background-color: #fff;
 }
 
-
 .m02_T_h {
     position: absolute;
     top: 50px;
@@ -252,7 +237,7 @@ p {
 
 .m02_a_p {
     position: absolute;
-    top: 80px;
+    top: 100px;
     left: 60px;
     word-break: keep-all;
     line-height: 1.63;
@@ -263,6 +248,79 @@ p {
     top: 30px;
     left: 30px;
     margin: -4px 0 17px;
+}
+
+.s_1 {
+    position: absolute;
+    top: 90px;
+}
+
+.s_2 {
+    position: absolute;
+    top: 130px;
+}
+
+.s_3 {
+    position: absolute;
+    top: 170px;
+}
+
+.s_4 {
+    position: absolute;
+    top: 210px;
+}
+
+.p_1 {
+    position: absolute;
+    top: 70px;
+    right: 25px;
+    color: #999999;
+}
+
+.p_2 {
+    position: absolute;
+    top: 110px;
+    right: 25px;
+    color: #999999;
+}
+
+.p_3 {
+    position: absolute;
+    top: 150px;
+    right: 25px;
+    color: #999999;
+}
+
+.p_4 {
+    position: absolute;
+    top: 190px;
+    right: 25px;
+    color: #999999;
+}
+
+.s_1::before,
+.s_2::before,
+.s_3::before,
+.s_4::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: -10px;
+    width: 3px;
+    height: 3px;
+    background-color: #888;
+}
+
+.s_1 a,
+.s_2 a,
+.s_3 a,
+.s_4 a {
+    text-decoration: none;
+    color: black;
+}
+
+.mainSearchWrap a {
+    color: black;
 }
 /* mainInner-중 끝 */
 
@@ -293,6 +351,8 @@ p {
     top: 75px;
     color: #fff;
 }
+
+
 /* mainInner-하 끝 */
 
 /* mainInner 끝 */
@@ -391,6 +451,11 @@ p {
 
 .mainInner_b [class*=mainCol].bgType04 {
     background: url(/2Project/src/main/webapp/imgs/bg_mainHealth04.jpg) no-repeat 50% 0;
+}
+
+.mainInner_Row_b [class*mainCol]
+.btnWrap {
+    overflow: visible;
 }
 
 /* mainInner_b 끝 */
