@@ -12,6 +12,7 @@ public class ReservationDTO { //예약
 	public String employee_number;
 	public String department_number;
 	
+
 	//생성자
 	public ReservationDTO() {}
 	
@@ -80,6 +81,7 @@ public class ReservationDTO { //예약
 	public void setDepartment_number(String department_number) {
 		this.department_number = department_number;
 	}
+	
 
 	
 	

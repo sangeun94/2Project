@@ -28,11 +28,12 @@ public class PatientDTO { //환자
 		this.address = address;
 	}
 	
-	//테스트용 생성자
-	public PatientDTO(String name, String phone_number) {
+	//예약 환자 정보 불러오기 위한 생성자
+	public PatientDTO(String name, String phone_number, int patient_number) {
 		super();
 		this.name = name;
 		this.phone_number = phone_number;
+		this.patient_number = patient_number;
 	}
 	
 	
