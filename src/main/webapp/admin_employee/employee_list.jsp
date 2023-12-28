@@ -1,30 +1,29 @@
-<%@ page import="db.dto.PatientDTO"%>
+<%@ page import="db.dto.EmployeeDTO"%>
 <%@ page import="java.util.List"%>
-<%@ page import="db.dao.admin2.AdminPatientInfoDAO"%>
+<%@page import="db.dao.admin2.AdminEmployeeInfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../admin_layout/header.jsp" %>
-<%@ include file="../admin_layout/_lnb_patient.jsp" %>
-<%
-	request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
-	AdminPatientInfoDAO patientInfoDAO = new AdminPatientInfoDAO();
-	List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
-%>
-
-<!-- DataTables CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-
+<%@ include file="../admin_layout/_lnb_employee.jsp" %>
+	<%
+		request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
+		AdminEmployeeInfoDAO employeeInfoDAO = new AdminEmployeeInfoDAO();
+		List<EmployeeDTO> EmployeeInfoList = employeeInfoDAO.findAllEmployeeInfoList();
+	%>
 
 <section id="contents">
 	<%@ include file="../admin_layout/hgroup.jsp" %>
 
 	<script>
-        let gnbDep1 = 1;
+        let gnbDep1 = 2;
         let lnbDep1 = 1;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
-        let title = '환자 정보 조회';
+        let title = '임직원 조회';
 	</script>
 	
+	
+	
+
 	<article>
 		<fieldset class="search_box">
 			<label>등록일자 : </label>
@@ -60,7 +59,6 @@
 			<label>생년월일 : </label>
 				<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 				<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
-				</select>	
 			<label></label>
 				<select style="width:120px;">				
 					<option value="">이름</option>
@@ -90,49 +88,60 @@
 		</div>
 
 		<p class="total_top">총 <b>00</b>개</p>
-		<table id="patientTable" class="listTable" style="margin-top:20px;">
+		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="8%" /><col width="10%" /><col width="8%" /><col width="15%" /><col width="15%" /><col width="*" /><col width="*" /><col width="*" />
+                <col width="5%" /><col width="12%" /><col width="10%" /><col width="10%" /><col width="15%" /><col width="*" /><col width="*" />
 			</colgroup>
 			<thead>
 			<tr>
 				<th><input type="checkbox"></th>
-				<th>환자번호</th>
+				<th>직원번호(ID)</th>
 				<th>이름</th>
-				<th>성별</th>
-				<th>주민등록번호</th>
+				<th>분류</th>
+				<th>직급</th>
 				<th>휴대전화번호</th>
                 <th>이메일</th>
-				<th>회원아이디</th>
-				<th>주소</th>
 			</tr>
 			</thead>
 			<tbody>
-			<!-- 환자 검색 결과 -->
+			<!-- 검색 결과 -->
 			<!-- <tr>
 				<td class="no-data" colspan="8">검색결과 없음</td>
 			</tr>		 -->	
 			<%
-				for(PatientDTO patientInfo : PatientInfoList){
+				for (EmployeeDTO employeeInfo : EmployeeInfoList) {
+			        String employeeCategory = "";
+			        int employeeCode = employeeInfo.getEmployee_code();
+	
+			        switch (employeeCode) {
+			            case 1:
+			                employeeCategory = "의사";
+			                break;
+			            case 2:
+			                employeeCategory = "간호사";
+			                break;
+			            case 3:
+			                employeeCategory = "행정";
+			                break;
+			            default:
+			                employeeCategory = "알 수 없음";
+			                break;
+		        }
 			%>
 			<tr>
 				<td><input type="checkbox"></td>
-				<td><%=patientInfo.getPatient_number()%></td>				
-				<td><a href="./_layer_patient_detail.jsp?id=<%=patientInfo.getName()%>"><%=patientInfo.getName()%></a></td>
-				<td><%=patientInfo.getGender()%></td>
-				<td><%=patientInfo.getJumin()%></td>
-				<td><%=patientInfo.getPhone_number()%></td>
-                <td><%=patientInfo.getEmail()%></td>
-				<td class="s_txt1"><%=patientInfo.getId()%></td>
-				<td><%=patientInfo.getAddress()%></td>
+				<td><%=employeeInfo.getEmployee_number()%></td>	
+				<td><%-- <a href="./_layer_Employee_detail.jsp?id=<%=EmployeeInfo.getName()%>"></a> --%><%=employeeInfo.getName()%></td>
+				<td><%=employeeCategory%></td>			
+				<td><%=employeeInfo.getPosition()%></td>
+				<td><%=employeeInfo.getPhone_number()%></td>
+                <td><%=employeeInfo.getEmail()%></td>
 			</tr>
 			<%
 				}
 			%>
 			</tbody>
-		</table>
-
-		
+		</table>	
 		<div class="btns_top mt20">
 			<a href="" class="red">선택 삭제</a>
 		</div>		
@@ -160,7 +169,6 @@
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
 $(function() {
 	$("#idStartDate").datepicker($.datepicker.regional.ko);
@@ -168,17 +176,5 @@ $(function() {
 	$("#idRegStartDate").datepicker($.datepicker.regional.ko);
 	$("#idRegEndDate").datepicker($.datepicker.regional.ko);	
 });
-</script>
-<!-- DataTables JS -->
-<script>
-	$(document).ready(function() {
-		// DataTables 초기화
-		var table = $('#patientTable').DataTable({
-			"paging": true,      // 페이징 활성화
-			"pageLength": 30,    // 한 페이지에 표시될 목록 수
-			"lengthMenu": [30, 50, 100, 200],  // 목록 수 선택 옵션
-			"ordering": false   // 정렬 비활성화
-		});
-	});
 </script>
 <%@ include file="../admin_layout/footer.jsp" %>

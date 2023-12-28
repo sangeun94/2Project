@@ -13,6 +13,8 @@ public class EmployeeDTO { //직원
 	public String email;
 	public String position;
 	public int department_number;
+	public String employee_category;
+	public String department_name;
 	
 	//생성자
 	public EmployeeDTO() {}
@@ -35,6 +37,20 @@ public class EmployeeDTO { //직원
 		this.position = position;
 		this.department_number = department_number;
 	}
+	
+	
+	//직원 목록 생성자
+	public EmployeeDTO(String employee_number, String employee_category, String position, String name,
+			String phone_number, String email) {
+		super();
+		this.employee_number = employee_number;
+		this.employee_category = employee_category;
+		this.position = position;
+		this.name = name;
+		this.phone_number = phone_number;
+		this.email = email;
+	}
+	
 	//의료진 목록출력용 생성자
 	public EmployeeDTO(String name, int department_number) {
 		super();
@@ -108,6 +124,18 @@ public class EmployeeDTO { //직원
 	}
 	public void setDepartment_number(int department_number) {
 		this.department_number = department_number;
+	}
+	public String getEmployee_category() {
+		return employee_category;
+	}
+	public void setEmployee_category(String employee_category) {
+		this.employee_category = employee_category;
+	}
+	public String getDepartment_name() {
+		return department_name;
+	}
+	public void setDepartment_name(String department_Name) {
+		this.department_name = department_Name;
 	}
 	
 	
