@@ -184,7 +184,8 @@ public class AdminPatientInfoDAO {
 		conn = DBConnectionManager.connectDB();
 
 		String sql = " SELECT * FROM patient "
-				+ " WHERE id is not null ";
+				+ " WHERE id is not null "
+				+ " AND patient_status_code = 1 ";
 		
 		List<PatientDTO> PatientInfoList = null; //return하기 위해 선언
 
