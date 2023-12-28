@@ -4,7 +4,7 @@ public class EmployeeDTO { //직원
 
 	public String employee_number; //사번
 	public int employee_code;
-	public String employee_status;
+	public String employment_status;
 	public String password;
 	public String name;
 	public String gender;
@@ -20,12 +20,12 @@ public class EmployeeDTO { //직원
 		this.employee_number = employee_number;
 		this.password = password;
 	}
-	public EmployeeDTO(String employee_number, int employee_code, String employee_status, String password, String name,
+	public EmployeeDTO(String employee_number, int employee_code, String employment_status, String password, String name,
 			String gender, String phone_number, String address, String email, String position, int department_number) {
 		super();
 		this.employee_number = employee_number;
 		this.employee_code = employee_code;
-		this.employee_status = employee_status;
+		this.employment_status = employment_status;
 		this.password = password;
 		this.name = name;
 		this.gender = gender;
@@ -52,14 +52,14 @@ public class EmployeeDTO { //직원
 	public int getEmployee_code() {
 		return employee_code;
 	}
-	public void setEmployee_code(int employee_code) {
+	public void setEmployee_code(int employment_code) {
 		this.employee_code = employee_code;
 	}
-	public String getEmployee_status() {
-		return employee_status;
+	public String getEmployment_status() {
+		return employment_status;
 	}
-	public void setEmployee_status(String employee_status) {
-		this.employee_status = employee_status;
+	public void setEmployment_status(String employment_status) {
+		this.employment_status = employment_status;
 	}
 	public String getPassword() {
 		return password;

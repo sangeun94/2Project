@@ -31,7 +31,12 @@ public class AdminReservationDAO {
 		//DBConnectionManager 만들어준 connection 을 활용
 		conn = DBConnectionManager.connectDB();
 
-		String sql =  " select TO_CHAR(reservation_date, 'YYYY-MM-DD') reservation_Date, TO_CHAR(reservation_time, 'HH24:MI') reservation_time, Reservation_Number, reservation_status, patient_Number, Reservation_Content, Employee_Number, Department_Number from Reservation order by Reservation_Date, Reservation_time " ;
+		String sql =  " select r.Reservation_Number, r.patient_Number, TO_CHAR(reservation_date, 'YYYY-MM-DD') reservation_Date, TO_CHAR(reservation_time, 'HH24:MI') reservation_time, "
+				+ " r.reservation_status, m.department_name, e.name employee_name, p.name patient_name, r.Reservation_Content "
+				+ " from Reservation r, Medical_Department m, Employee e, patient p "
+				+ " where r.department_number = m.department_number AND m.department_number = e.department_number "
+				+ " AND e.Employee_Number = r.Employee_Number AND p.patient_number = r.patient_number "
+				+ " order by Reservation_number " ;
 
 		List<ReservationDTO> reservationList = null;
 
@@ -43,9 +48,17 @@ public class AdminReservationDAO {
 			reservationList = new ArrayList<ReservationDTO>();
 
 			while(rs.next()) { 	
-				ReservationDTO reservationDTO = new ReservationDTO(rs.getString("reservation_date"), rs.getString("reservation_time")
-						,rs.getString("reservation_number") , rs.getString("reservation_status"), rs.getInt("patient_number")
-						,rs.getString("reservation_content"), rs.getString("employee_number"), rs.getString("department_number") );
+				ReservationDTO reservationDTO = new ReservationDTO(
+						rs.getString("reservation_number"),
+						rs.getInt("patient_number"),
+						rs.getString("reservation_date"), 
+						rs.getString("reservation_time"), 
+						rs.getString("reservation_status"), 
+						rs.getString("department_name"),
+						rs.getString("employee_name"),
+						rs.getString("patient_name"),
+						rs.getString("reservation_content")
+				);
 
 				reservationList.add(reservationDTO);
 			}
@@ -64,13 +77,13 @@ public class AdminReservationDAO {
 		
 		conn = DBConnectionManager.connectDB();
 		
-		String sql = "SELECT TO_CHAR(reservation_date, 'YYYY-MM-DD') reservation_Date, " +
-                "TO_CHAR(reservation_time, 'HH24:MI') reservation_time, " +
-                "Reservation_Number, reservation_status, patient_Number, " +
-                "Reservation_Content, Employee_Number, Department_Number " +
-                "FROM Reservation " +
-                "WHERE employee_number = ? " +
-                "ORDER BY Reservation_Date, Reservation_time";
+		String sql =  " select r.Reservation_Number, r.patient_Number, TO_CHAR(reservation_date, 'YYYY-MM-DD') reservation_Date, TO_CHAR(reservation_time, 'HH24:MI') reservation_time, "
+				+ " r.reservation_status, m.department_name, e.name employee_name, p.name patient_name, r.Reservation_Content "
+				+ " from Reservation r, Medical_Department m, Employee e, patient p "
+				+ " where r.department_number = m.department_number AND m.department_number = e.department_number "
+				+ " AND e.Employee_Number = r.Employee_Number AND p.patient_number = r.patient_number "
+				+ " AND r.employee_number = ? "
+				+ " order by Reservation_number " ;
 		
 		List<ReservationDTO> reservationList = null;
 
@@ -83,14 +96,15 @@ public class AdminReservationDAO {
 	        
 	        while (rs.next()) {
 	            ReservationDTO reservation = new ReservationDTO(
-	                rs.getString("reservation_date"), 
-	                rs.getString("reservation_time"), 
-	                rs.getString("reservation_number"), 
-	                rs.getString("reservation_status"), 
-	                rs.getInt("patient_number"),
-	                rs.getString("reservation_content"), 
-	                rs.getString("employee_number"), 
-	                rs.getString("department_number")
+					rs.getString("reservation_number"),
+					rs.getInt("patient_number"),
+					rs.getString("reservation_date"), 
+					rs.getString("reservation_time"), 
+					rs.getString("reservation_status"), 
+					rs.getString("department_name"),
+					rs.getString("employee_name"),
+					rs.getString("patient_name"),
+					rs.getString("reservation_content")
 	            );
 
 	            reservationList.add(reservation);
@@ -145,13 +159,13 @@ public class AdminReservationDAO {
 		conn = DBConnectionManager.connectDB();
 	    
 	    // sql 변수를 올바르게 선언하고 초기화
-	    String sql = " SELECT TO_CHAR(reservation_date, 'YYYY-MM-DD') reservation_Date, " +
-	                 " TO_CHAR(reservation_time, 'HH24:MI') reservation_time, " +
-	                 " Reservation_Number, reservation_status, patient_Number, " +
-	                 " Reservation_Content, Employee_Number, Department_Number " +
-	                 " FROM Reservation " +
-	                 " WHERE employee_number = ? AND reservation_status = 'Y' " +
-	                 " ORDER BY Reservation_Date, Reservation_time ";
+	    String sql = " select r.Reservation_Number, r.patient_Number, TO_CHAR(reservation_date, 'YYYY-MM-DD') reservation_Date, TO_CHAR(reservation_time, 'HH24:MI') reservation_time, "
+	    		+ " r.reservation_status, m.department_name, e.name employee_name, p.name patient_name, r.Reservation_Content "
+	    		+ " from Reservation r, Medical_Department m, Employee e, patient p "
+	    		+ " where r.department_number = m.department_number AND m.department_number = e.department_number "
+	    		+ " AND e.Employee_Number = r.Employee_Number AND p.patient_number = r.patient_number "
+	    		+ " AND r.employee_number = ? AND r.reservation_status = 'Y' "
+	    		+ " order by Reservation_number ";
 
 	    List<ReservationDTO> reservationInfoList = null;
 
@@ -164,14 +178,15 @@ public class AdminReservationDAO {
 	        
 	        while (rs.next()) {
 	            ReservationDTO reservationDTO = new ReservationDTO(
-	                rs.getString("reservation_date"), 
-	                rs.getString("reservation_time"), 
-	                rs.getString("reservation_number"), 
-	                rs.getString("reservation_status"), 
-	                rs.getInt("patient_number"),
-	                rs.getString("reservation_content"), 
-	                rs.getString("employee_number"), 
-	                rs.getString("department_number")
+					rs.getString("reservation_number"),
+					rs.getInt("patient_number"),
+					rs.getString("reservation_date"), 
+					rs.getString("reservation_time"), 
+					rs.getString("reservation_status"), 
+					rs.getString("department_name"),
+					rs.getString("employee_name"),
+					rs.getString("patient_name"),
+					rs.getString("reservation_content")
 	            );
 
 	            reservationInfoList.add(reservationDTO);

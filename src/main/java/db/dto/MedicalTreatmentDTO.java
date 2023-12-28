@@ -9,7 +9,10 @@ public class MedicalTreatmentDTO { //진료
 	public int patient_number;
 	public String hospitalization_status;
 	public String treatment_content;
-	public String name;
+	
+	public String department_name;
+	public String employee_name;
+	public String patient_name;	
 		
 	//생성자
 	public MedicalTreatmentDTO() {}
@@ -27,18 +30,18 @@ public class MedicalTreatmentDTO { //진료
 	}
 	
 	public MedicalTreatmentDTO(int treatment_number, String treatment_date, String treatment_time,
-			int patient_number, String name, String treatment_content) {
+			int patient_number, String patient_name, String treatment_content) {
 		super();
 		this.treatment_number = treatment_number;
 		this.treatment_date = treatment_date;
 		this.treatment_time = treatment_time;
 		this.patient_number = patient_number;
 		this.treatment_content = treatment_content;
-		this.name = name;
+		this.patient_name = patient_name;
 	}
 	
 	public MedicalTreatmentDTO(int treatment_number, String treatment_date, String treatment_time,
-			String employee_number, int patient_number, String name, String hospitalization_status, 
+			String employee_number, int patient_number, String patient_name, String hospitalization_status, 
 			String treatment_content) {
 		super();
 		this.treatment_number = treatment_number;
@@ -48,7 +51,23 @@ public class MedicalTreatmentDTO { //진료
 		this.patient_number = patient_number;
 		this.hospitalization_status = hospitalization_status;
 		this.treatment_content = treatment_content;
-		this.name = name;
+		this.patient_name = patient_name;
+	}
+	
+	
+	public MedicalTreatmentDTO(int treatment_number, String treatment_date, String treatment_time,
+			String hospitalization_status, String department_name, String employee_name, 
+			int patient_number, String patient_name, String treatment_content) {
+		super();
+		this.treatment_number = treatment_number;
+		this.treatment_date = treatment_date;
+		this.treatment_time = treatment_time;
+		this.patient_number = patient_number;
+		this.hospitalization_status = hospitalization_status;
+		this.treatment_content = treatment_content;
+		this.department_name = department_name;
+		this.employee_name = employee_name;
+		this.patient_name = patient_name;
 	}
 
 	//메소드
@@ -108,13 +127,30 @@ public class MedicalTreatmentDTO { //진료
 		this.treatment_content = treatment_content;
 	}
 
-	public String getName() {
-        return name;
-    }
+	public String getDepartment_name() {
+		return department_name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
+	}
+
+	public String getEmployee_name() {
+		return employee_name;
+	}
+
+	public void setEmployee_name(String employee_name) {
+		this.employee_name = employee_name;
+	}
+
+	public String getPatient_name() {
+		return patient_name;
+	}
+
+	public void setPatient_name(String patient_name) {
+		this.patient_name = patient_name;
+	}
+
 	
 
 	

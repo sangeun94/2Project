@@ -11,7 +11,13 @@
 </head>
 <body>
 	<%
-	    request.setCharacterEncoding("UTF-8");
+	// 로그인 확인
+    if (session != null && session.getAttribute("loginId") != null) {
+        // 세션에 저장된 로그인 아이디 사용
+        String loggedInEmployeeNumber = session.getAttribute("loginId").toString();
+        System.out.println("로그인 id : " + loggedInEmployeeNumber);
+        
+        request.setCharacterEncoding("UTF-8");
 	
 	    String patient_number = request.getParameter("patient_number");
 	    String employee_number = request.getParameter("employee_number");
@@ -40,6 +46,16 @@
 	        </script>
 	<%
 	    }
+    } else {
+        // 로그인되지 않은 경우 처리
+%>
+        <script>
+            alert('로그인이 필요합니다.');
+            location.href = "adminLogin.jsp"; // 로그인 페이지로 이동
+        </script>
+<%
+    }
+%>
 	%>
 </body>
 </html>

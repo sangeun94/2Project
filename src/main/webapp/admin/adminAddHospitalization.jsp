@@ -16,58 +16,74 @@
 	
 	<hr>
     <%
-        String patient_number = request.getParameter("patient_number");
-        System.out.println("patient_number: " + patient_number); // 디버깅 출력
-        AdminMedicalTreatmentDAO dao = new AdminMedicalTreatmentDAO();
-        MedicalTreatmentDTO medicalTreatment = dao.findAdminMedicalTreatmentListById2(patient_number);
-        
-        AdminHospitalizationDAO dao2 = new AdminHospitalizationDAO();
-        List<InpatientRoomDTO> inpatientRoomList = dao2.findInpatientRoomList(); // 입원실 현재 인원 조회
+	 	// 로그인 확인
+	    if (session != null && session.getAttribute("loginId") != null) {
+	        // 세션에 저장된 로그인 아이디 사용
+	        String loggedInEmployeeNumber = session.getAttribute("loginId").toString();
+	        System.out.println("로그인 id : " + loggedInEmployeeNumber);
+    	
+	        String patient_number = request.getParameter("patient_number");
+	        System.out.println("patient_number: " + patient_number); // 디버깅 출력
+	        AdminMedicalTreatmentDAO dao = new AdminMedicalTreatmentDAO();
+	        MedicalTreatmentDTO medicalTreatment = dao.findAdminMedicalTreatmentListById2(patient_number);
+	        
+	        AdminHospitalizationDAO dao2 = new AdminHospitalizationDAO();
+	        List<InpatientRoomDTO> inpatientRoomList = dao2.findInpatientRoomList(); // 입원실 현재 인원 조회
 	
     %>
-    	<h2>각 입원실의 현재 인원</h2>
+    		<h2>각 입원실의 현재 인원</h2>
     	
     <%
-        for (InpatientRoomDTO room : inpatientRoomList) {
+        	for (InpatientRoomDTO room : inpatientRoomList) {
     %>
-            <p>
-                입원실 번호: <%= room.getInpatient_room_number() %><br>
-                현재 인원: <%= room.getPatient_number() %><br>
-            </p>
-            
+	            <p>
+	                입원실 번호: <%= room.getInpatient_room_number() %><br>
+	                현재 인원: <%= room.getPatient_number() %><br>
+	            </p>
+	            
     <%
-        }
+        	}
     %>	
-    	<hr>
+    		<hr>
     <%
-        if (medicalTreatment != null) {
+        	if (medicalTreatment != null) {
     %>
-            <p>
-                진료날짜: <%=medicalTreatment.getTreatment_date()%><br>
-                진료시간: <%=medicalTreatment.getTreatment_time()%><br>
-                환자번호: <%=medicalTreatment.getPatient_number()%><br>
-                환자이름: <%=medicalTreatment.getName()%><br>
-                진료내용: <%=medicalTreatment.getTreatment_content()%><br>
-            </p>
-            
-            <hr>
-            
-            <!-- 입원 정보 입력 폼 -->
-		    <form action="adminAddHospitalization_proc.jsp" method="post">
-			    <!-- 입원번호는 시퀀스로 자동으로 1씩증가하는 형태로! -->
-			    <input type="hidden" name="patient_number" value="<%=medicalTreatment.getPatient_number()%>">
-			    <label>입원일 : </label><input type="date" name="hospitalization_date"><br>
-			    <label>퇴원일 : </label><input type="date" name="discharge_date"><br>
-			    <label>입원실번호 : </label><input type="text" name="inpatient_room_number"><br>
-			    <button type="submit">입원 정보 추가</button>
-			</form> 
+            	<p>
+	                진료날짜: <%=medicalTreatment.getTreatment_date()%><br>
+	                진료시간: <%=medicalTreatment.getTreatment_time()%><br>
+	                환자번호: <%=medicalTreatment.getPatient_number()%><br>
+	                환자이름: <%=medicalTreatment.getPatient_name()%><br>
+	                진료내용: <%=medicalTreatment.getTreatment_content()%><br>
+	            </p>
+	            
+	            <hr>
+	            
+	            <!-- 입원 정보 입력 폼 -->
+			    <form action="adminAddHospitalization_proc.jsp" method="post">
+				    <!-- 입원번호는 시퀀스로 자동으로 1씩증가하는 형태로! -->
+				    <input type="hidden" name="patient_number" value="<%=medicalTreatment.getPatient_number()%>">
+				    <label>입원일 : </label><input type="date" name="hospitalization_date"><br>
+				    <label>퇴원일 : </label><input type="date" name="discharge_date"><br>
+				    <label>입원실번호 : </label><input type="text" name="inpatient_room_number"><br>
+				    <button type="submit">입원 정보 추가</button>
+				</form> 
 
     <%
-        } else {
+        	} else {
     %>
-            <p>진료 정보를 찾을 수 없습니다.</p>
+            	<p>진료 정보를 찾을 수 없습니다.</p>
+    <%
+        	}
+	    } else {
+            // 로그인되지 않은 경우 처리
+    %>
+            <script>
+                alert('로그인이 필요합니다.');
+                location.href = "adminLogin.jsp"; // 로그인 페이지로 이동
+            </script>
     <%
         }
+    %>
     %>
 	
 	

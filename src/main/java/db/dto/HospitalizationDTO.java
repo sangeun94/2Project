@@ -7,7 +7,8 @@ public class HospitalizationDTO { //입원
 	public String discharge_date;
 	public String inpatient_room_number;
 	public int patient_number;
-	public String name;
+	
+	public String patient_name;
 	
 	//생성자
 	public HospitalizationDTO() {}	
@@ -23,14 +24,14 @@ public class HospitalizationDTO { //입원
 	}
 	
 	public HospitalizationDTO(int hospitalization_number, String hospitalization_date, String discharge_date,
-			String inpatient_room_number, int patient_number, String name) {
+			String inpatient_room_number, int patient_number, String patient_name) {
 		super();
 		this.hospitalization_number = hospitalization_number;
 		this.hospitalization_date = hospitalization_date;
 		this.discharge_date = discharge_date;
 		this.inpatient_room_number = inpatient_room_number;
 		this.patient_number = patient_number;
-		this.name = name;
+		this.patient_name = patient_name;
 	}
 
 	//메소드
@@ -74,12 +75,12 @@ public class HospitalizationDTO { //입원
 		this.patient_number = patient_number;
 	}
 	
-	public String getName() {
-        return name;
+	public String getPatient_name() {
+        return patient_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPatient_name(String patient_name) {
+        this.patient_name = patient_name;
     }
 	
 	
