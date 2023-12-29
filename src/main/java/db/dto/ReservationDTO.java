@@ -11,6 +11,8 @@ public class ReservationDTO { //예약
 	public String reservation_content;
 	public String employee_number;
 	public String department_number;
+	public String department_name;
+	public String employee_name;
 	
 
 	//생성자
@@ -28,6 +30,27 @@ public class ReservationDTO { //예약
 		this.reservation_content = reservation_content;
 		this.employee_number = employee_number;
 		this.department_number = department_number;
+	}
+	
+	//예약조회용 생성자1
+	public ReservationDTO(String reservation_status,
+			String reservation_date, String reservation_time, String reservation_content, String employee_name,
+			String department_name, String reservation_number) {
+		super();
+		this.reservation_status = reservation_status;
+		this.reservation_date = reservation_date;
+		this.reservation_time = reservation_time;
+		this.reservation_content = reservation_content;
+		this.employee_name = employee_name;
+		this.department_name = department_name;
+		this.reservation_number = reservation_number;
+	}
+	
+	//예약조회용 생성자2
+	public ReservationDTO(String reservation_status,String reservation_number) {
+		super();
+		this.reservation_status = reservation_status;
+		this.reservation_number = reservation_number;
 	}
 	
 	
@@ -81,8 +104,24 @@ public class ReservationDTO { //예약
 	public void setDepartment_number(String department_number) {
 		this.department_number = department_number;
 	}
-	
 
+	public String getDepartment_name() {
+		return department_name;
+	}
+
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
+	}
+
+	public String getEmployee_name() {
+		return employee_name;
+	}
+
+	public void setEmployee_name(String employee_name) {
+		this.employee_name = employee_name;
+	}
+	
+	
 	
 	
 

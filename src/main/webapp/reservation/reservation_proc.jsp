@@ -32,7 +32,7 @@
 		
 		ReservationDAO reservationDAO = new ReservationDAO();
 		
-		int result = reservationDAO.saveReservaiton(patientNum, reservation_status, date, dateTime, content, employeeNum, department_number);
+		int result = reservationDAO.saveReservation(patientNum, reservation_status, date, dateTime, content, employeeNum, department_number);
 		
 		if(result > 0){
 	%>

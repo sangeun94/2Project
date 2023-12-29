@@ -77,6 +77,10 @@
 	<% 
 	String id = (String)session.getAttribute("id");
 	id = "user5";
+	session.setAttribute("id", id);
+	
+	String patientNumber = (String)session.getAttribute("patientNum");
+	session.setAttribute("patientNum", patientNumber);
 
 	ReservationDAO reservationDAO = new ReservationDAO();
 	PatientDTO info = reservationDAO.findPatientInfoById(id);
@@ -95,6 +99,9 @@
 				
 				<div><span>회원정보</span></div>
 				<div> <span>어서오세요!</span> <span> <%=info.getName() %> 님</span> </div>
+				<form action="reservationInfo.jsp" method="post">
+					<div><button name="patientNum" value="<%=info.getPatient_number() %>">예약내역조회</button> </div>
+				</form>
 				
 				<br>
 				
@@ -124,7 +131,6 @@
 	
 		document.getElementById('emplo').addEventListener('click',()=>{
 				let form = document.getElementById('reservationStep0');
-				//form.action = 'reservationStep1Employee.jsp';
 				form.action = 'agree_proc1.jsp';
 				form.submit();
 			
@@ -132,11 +138,12 @@
 		
 		document.getElementById('depart').addEventListener('click',()=>{
 			let form = document.getElementById('reservationStep0');
-			//form.action = 'reservationStep1Department.jsp';
 			form.action = 'agree_proc2.jsp';
 			form.submit();
 		
 		});
+
+		
 		
 	</script>
 </body>

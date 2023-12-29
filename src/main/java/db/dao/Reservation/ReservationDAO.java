@@ -10,6 +10,7 @@ import java.util.List;
 import db.dto.EmployeeDTO;
 import db.dto.MedicalDepartmentDTO;
 import db.dto.PatientDTO;
+import db.dto.ReservationDTO;
 import db.util.DBConnectionManager;
 
 public class ReservationDAO {
@@ -223,7 +224,7 @@ public class ReservationDAO {
 		
 		
 		// 예약정보 저장
-		public int saveReservaiton(int patient_Number, String reservation_Status, String reservation_Date, String reservation_Time, String reservation_Content, String employee_Number, String department_Number) {
+		public int saveReservation(int patient_Number, String reservation_Status, String reservation_Date, String reservation_Time, String reservation_Content, String employee_Number, String department_Number) {
 			conn = DBConnectionManager.connectDB();
 			
 			String sql = " INSERT INTO Reservation "
@@ -254,13 +255,111 @@ public class ReservationDAO {
 
 				DBConnectionManager.closeDB(conn, psmt, rs);
 			}
+			return result;
+			}
+		
+		
+		//예약정보 조회
+		public List<ReservationDTO> reservationInfoList(String patient_Number) {
+			conn = DBConnectionManager.connectDB();
+
+			String sql = " SELECT reservation_status, TO_CHAR(reservation_date, 'YYYY-MM-DD') reservation_date, TO_CHAR(reservation_time, 'HH24:MI') reservation_time, reservation_content, name, department_name, reservation_number FROM reservation r, employee e, medical_Department m " + 
+							" WHERE r.patient_number = ? " +
+							" AND r.employee_number = e.employee_number " +
+							" AND e.department_number = m.department_number " +
+							" ORDER BY reservation_number " ;
 
 			
-			return result;
+			List<ReservationDTO> reservationList = null ;
+			
+
+			try {
+				psmt = conn.prepareStatement(sql);
 				
+				psmt.setString(1, patient_Number);
+				
+				rs = psmt.executeQuery();
+				reservationList = new ArrayList<ReservationDTO>();
+				
+				while (rs.next()) {
+					ReservationDTO reservationDTO = new ReservationDTO( rs.getString("reservation_status"),
+																		rs.getString("reservation_date"),
+																		rs.getString("reservation_time"),
+																		rs.getString("reservation_content"),
+																		rs.getString("name"),
+																		rs.getString("department_name"),
+																		rs.getString("reservation_number"));
+					reservationList.add(reservationDTO);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+
+				DBConnectionManager.closeDB(conn, psmt, rs);
+			}
+			return reservationList;
 			}
 		
 	
+		//예약취소
+		public int cancelReservation(String reservation_number) {
+			conn = DBConnectionManager.connectDB();
+			
+			String sql = " UPDATE reservation "
+						+ " SET reservation_status = ? " 
+						+ " WHERE reservation_number = ? ";
+			int result = 0;
+			
+
+			try {
+				psmt = conn.prepareStatement(sql);
+				
+
+				psmt.setString(1, "N");
+				psmt.setString(2, reservation_number);
+				
+				
+				result = psmt.executeUpdate();
+				
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+
+				DBConnectionManager.closeDB(conn, psmt, rs);
+			}
+			return result;
+			}
+		
+		
+		//선택 예약 정보 조회용
+		public ReservationDTO findReservationByNum(String num) {
+			conn = DBConnectionManager.connectDB();
+			
+			String sql = " SELECT * FROM reservation "
+							+ " WHERE reservation_number = ? " ;
+					
+			ReservationDTO reservation = null;
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setString(1, num);
+
+				rs = psmt.executeQuery(); // 준비된 sql 쿼리문 실행!
+				
+				if(rs.next()) {
+					reservation = new ReservationDTO(rs.getString("reservation_status"),
+														rs.getString("reservation_number"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBConnectionManager.closeDB(conn, psmt, rs);
+			}
+			
+			return reservation;
+		}
 	
 	
 
