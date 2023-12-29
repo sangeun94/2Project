@@ -11,7 +11,7 @@
 
 	<script>
         let gnbDep1 = 1;
-        let lnbDep1 = 5;
+        let lnbDep1 = 4;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
         let title = '진료차트 작성하기';
@@ -100,7 +100,7 @@
 				<th>진료의</th>
 				<th>환자이름</th>
 				<th>예약내용</th>
-				<th>차트</th>
+				<th>진료차트</th>
 			</tr>
 			</thead>
 			<tbody>

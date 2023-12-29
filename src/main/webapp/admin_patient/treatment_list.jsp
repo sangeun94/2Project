@@ -11,7 +11,7 @@
 
 	<script>
         let gnbDep1 = 1;
-        let lnbDep1 = 4;
+        let lnbDep1 = 5;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
         let title = '진료 내역 확인';
@@ -51,9 +51,8 @@
 			<label>생년월일 : </label>
 				<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 				<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
-			</p>	
-			<p>		
-				</select>	
+					
+				
 			<label></label>
 				<select style="width:120px;">				
 					<option value="">이름</option>
@@ -100,7 +99,7 @@
 				<th>환자번호</th>
 				<th>환자이름</th>
 				<th>진료내용</th>
-				<th>차트수정</th>
+				<th>진료차트수정</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -121,8 +120,7 @@
 				<td><%=medicalTreatmentInfo.getPatient_number()%></td>
 				<td><%=medicalTreatmentInfo.getPatient_name()%></td>
 				<td><%=medicalTreatmentInfo.getTreatment_content()%></td>
-				<td><a href="./_layer_patient_detail.jsp?treatment_number=<%=medicalTreatmentInfo.getTreatment_number()%>">수정하기</a></td>
-				
+				<td><a href="./_layer_chart_modify.jsp?treatment_number=<%=medicalTreatmentInfo.getTreatment_number()%>">수정하기</a></td>				
 			</tr>
 			
 	<%

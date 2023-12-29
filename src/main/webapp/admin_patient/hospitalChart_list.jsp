@@ -12,7 +12,7 @@
 
 	<script>
         let gnbDep1 = 1;
-        let lnbDep1 = 5;
+        let lnbDep1 = 6;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
         let title = '입원차트 작성하기';
@@ -110,7 +110,7 @@
 					<th>환자번호</th>
 					<th>환자이름</th>
 					<th>진료내용</th>
-					<th>차트</th>
+					<th>입원차트</th>
 				</tr>
 			</thead>
 			<tbody>

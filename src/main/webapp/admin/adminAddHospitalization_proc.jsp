@@ -32,7 +32,7 @@
     %>
                 <script>
                     alert("입원 정보가 성공적으로 추가되었습니다.");
-                    location.href = "adminHospitalizationInfo.jsp";
+                    location.href = "../admin_patient/hospitalization_list.jsp";
                 </script>
     <%
             } else {
