@@ -1,18 +1,24 @@
-<!-- 환자 관리 - MY 예약 확인 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../admin_layout/header.jsp" %>
+<%@ include file="../admin_layout/_lnb_patient.jsp" %>
+
+
+<!-- 환자 상세 -->
 <section id="contents">
-	
+	<%@ include file="../admin_layout/hgroup.jsp" %>
 	<script>
-        let gnbDep1 = 1;
-        let lnbDep1 = 3;
-        let lnbDep2 = 0;
-        let lnbDep3 = 0;
-        let title = 'MY 예약 확인';
+	let gnbDep1 = 1;
+    let lnbDep1 = 1;
+    let lnbDep2 = 0;
+    let lnbDep3 = 0;
+    let title = '환자 정보 조회';
 	</script>
 
 	<article>
-		<!-- <fieldset class="search_box">
-			<label>예약일 : </label>
-				<input type="text" id="idReservationDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
+		<fieldset class="search_box">
+			<label>등록일자 : </label>
+				<input type="text" id="idRegStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
+				<input type="text" id="idRegEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>					
 			<label>성별 : </label>
 				<select style="width:200px;">
 					<option value="">전체</option>
@@ -43,23 +49,21 @@
 			<label>생년월일 : </label>
 				<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 				<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
-			</p>	
-			<p>		
 				</select>	
 			<label></label>
 				<select style="width:120px;">				
 					<option value="">이름</option>
-					<option value="">예약번호</option>
+					<option value="">회원아이디</option>
                     <option value="">환자번호</option>
+					<option value="">이메일</option>
 					<option value="">주민등록번호</option>
 					<option value="">휴대전화번호</option>
-					<option value="">진료의</option>
-					<option value="">진료과</option>
+					<option value="">주소</option>
 				</select>				
 				<input type="text" class="txt" style="width:200px" >	
 			<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
 			</p>
-		</fieldset> -->
+		</fieldset>
 
 		<div class="sort_area">
 			<select id="idListSize">
@@ -77,38 +81,36 @@
 		<p class="total_top">총 <b>00</b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="5%" /><col width="5%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="20%" /><col width="*" />
+                <col width="5%" /><col width="5%" /><col width="10%" /><col width="5%" /><col width="20%" /><col width="20%" /><col width="15%" /><col width="10%" /><col width="10%" />
 			</colgroup>
 			<thead>
 			<tr>
 				<th><input type="checkbox"></th>
-				<th>예약번호</th>
 				<th>환자번호</th>
-				<th>예약일</th>
-				<th>예약시간</th>
-				<th>진료과</th>
-				<th>진료의</th>
 				<th>이름</th>
+				<th>성별</th>
 				<th>주민등록번호</th>
 				<th>휴대전화번호</th>
+                <th>이메일</th>
+				<th>회원아이디</th>
+				<th>주소</th>
 			</tr>
 			</thead>
 			<tbody>
-			<!-- 검색 결과 -->
-			<!-- <tr>
-				<td class="no-data" colspan="10">검색결과 없음</td>
-			</tr>			 -->
+			<!-- 환자 검색 결과 -->
+			<tr>
+				<td class="no-data" colspan="8">검색결과 없음</td>
+			</tr>			
 			<tr>
 				<td><input type="checkbox"></td>
-				<td>1</td>
-				<td>1</td>
-				<td>2023-12-01</td>
-				<td>2시</td>
-				<td>이비인후과</td>
-				<td>김다영</td>
-				<td><a href="./_layer_patient_detail.html">홍길동</a></td>
+				<td>1</td>				
+				<td><a href="./_layer_patient_detail.jsp">홍길동</a></td>
+				<td>남성</td>
 				<td>950101-1234567</td>
 				<td>010-1111-1111</td>
+                <td>user1@example.com</td>
+				<td class="s_txt1">user1</td>
+				<td>서울특별시</td>
 			</tr>
 			</tbody>
 		</table>	
@@ -136,14 +138,90 @@
 		</p>			
 	</article>
 </section>	
+	<!--pop-->
+	<div class="pop_wrap">
+		<div class="pop_ct large">
+			<h3></h3>			
+			<div class="tabArea">
+				<ul class="tab">
+					<li style="width:50%"><a href="#tab_sub1" class="on">기본 정보</a></li>
+					<li style="width:50%"><a href="#tab_sub2">관리 메모</a></li>
+				</ul>			
+	
+			<!-- 기본 정보 -->
+			<div id="tab_sub1">
+				<table class="viewTable">
+					<colgroup><col width="220px" /><col width="15%" /><col width="*" /><col width="15%" /><col width="*" /></colgroup>
+					<tbody>
+					<tr>
+						<td rowspan="5">
+							<p class="pic_area">
+								<span id="idPic">Profile Image</span>
+							</p>
+						</td>
+						<th>환자번호</th>
+						<td>1</td>					
+						<th>이름</th>
+						<td>홍길동</td>
+					</tr>
+					<tr>
+						<th>성별</th>
+						<td>남</td>
+						<th>주민등록번호</th>
+						<td>950101-1234567</td>
+					</tr>
+					<tr>
+						<th>휴대전화번호</th>
+						<td>010-1111-1111</td>
+						<th>이메일주소</th>
+						<td>user1@example.com</td>
+					</tr>
+					<tr>
+						<th>회원아이디</th>
+                        <td>user1</td>
+						<th>주소</th>
+						<td>서울특별시</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			
 
-<link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
-<script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
-<script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
-<!-- <script type="text/javascript">
-$(function() {
-	$("#idStartDate").datepicker($.datepicker.regional.ko);
-	$("#idEndDate").datepicker($.datepicker.regional.ko);
-	$("#idReservationDate").datepicker($.datepicker.regional.ko);
-});
-</script> -->
+			<!-- 관리 메모 -->
+			<div id="tab_sub2">	
+				<table class="viewTable">
+					<colgroup><col width="20%" /><col width="*" /></colgroup>
+					<tbody>
+					<tr>
+						<th>관리 메모</th>
+						<td><textarea placeholder="환자 관련 내용을 입력하세요."></textarea></td>
+					</tr>					
+					</tbody>
+				</table>
+				<p class="btn_c">
+					<a href="" class="red">등록하기</a>
+				</p>					
+			</div>				
+			<button class="pop_close">닫기</button>
+		</div>
+	</div>				
+	<!--// pop-->
+  <script>
+  $( function() {
+	//tab
+	$(".tabArea .tab a").click(function(){
+		$($(this).attr("href")).fadeIn(300);
+		$(this).addClass("on");
+		$($(this).parents(".tabArea").children("div")).not($(this).attr("href")).fadeOut(0);
+		$($(this).parents(".tab").find("a")).not(this).removeClass("on");
+		return false;
+	});	
+	
+	//피드구분 다중선택
+	$(".tag_multi>li>span").click(function(){
+		$(this).toggleClass("on");		
+	});
+  } );
+  </script>	
+  <%@ include file="../admin_layout/footer.jsp" %>
+  

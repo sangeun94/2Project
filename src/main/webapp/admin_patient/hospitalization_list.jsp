@@ -1,7 +1,10 @@
-<link rel="stylesheet" href="">
-link
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../admin_layout/header.jsp" %>
+<%@ include file="../admin_layout/_lnb_patient.jsp" %>
+
 <!-- 환자 관리 - 입퇴원 관리 -->
 <section id="contents">
+	<%@ include file="../admin_layout/hgroup.jsp" %>
 	
 	<script>
         let gnbDep1 = 1;
@@ -22,35 +25,36 @@ link
 					<option value="">전체</option>
 					<option value="">여성</option>
 					<option value="">남성</option>
-				</select>		
-			<label>입원실 : </label>
-				<select style="width:200px;">
-					<option value="">전체</option>
-                    <option value="">701</option>
-                    <option value="">702</option>
-                    <option value="">703</option>
-                    <option value="">704</option>
-                    <option value="">705</option>
-                    <option value="">801</option>
-                    <option value="">802</option>
-                    <option value="">803</option>
-                    <option value="">804</option>
-                    <option value="">805</option>
-				</select>	
-			<p>		
-			<label></label>
-				<select style="width:120px;">				
-					<option value="">이름</option>
-                    <option value="">환자번호</option>
-					<option value="">진료번호</option>
-					<option value="">진료과</option>
-					<option value="">진료의</option>
-					<option value="">주민등록번호</option>
-					<option value="">휴대전화번호</option>
-					<option value="">주소</option>
-				</select>				
-				<input type="text" class="txt" style="width:200px" >	
-			<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
+				</select>
+			<p>			
+				<label>입원실 : </label>
+					<select style="width:200px;">
+						<option value="">전체</option>
+	                    <option value="">701</option>
+	                    <option value="">702</option>
+	                    <option value="">703</option>
+	                    <option value="">704</option>
+	                    <option value="">705</option>
+	                    <option value="">801</option>
+	                    <option value="">802</option>
+	                    <option value="">803</option>
+	                    <option value="">804</option>
+	                    <option value="">805</option>
+					</select>	
+					
+				<label></label>
+					<select style="width:120px;">				
+						<option value="">이름</option>
+	                    <option value="">환자번호</option>
+						<option value="">진료번호</option>
+						<option value="">진료과</option>
+						<option value="">진료의</option>
+						<option value="">주민등록번호</option>
+						<option value="">휴대전화번호</option>
+						<option value="">주소</option>
+					</select>				
+					<input type="text" class="txt" style="width:200px" >	
+				<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
 			</p>
 		</fieldset>
 
@@ -70,7 +74,7 @@ link
 		<p class="total_top">총 <b>00</b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="15%" /><col width="15%" /><col width="15%" /><col width="20%" /><col width="*" />
+                <col width="5%" /><col width="15%" /><col width="15%" /><col width="15%" /><col width="20%" /><col width="35%" />
 			</colgroup>
 			<thead>
 			<tr>
@@ -131,3 +135,4 @@ $(function() {
 	$("#idDischargeDate").datepicker($.datepicker.regional.ko);
 });
 </script>
+<%@ include file="../admin_layout/footer.jsp" %>

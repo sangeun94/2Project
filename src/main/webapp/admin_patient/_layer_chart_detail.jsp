@@ -1,5 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../admin_layout/header.jsp" %>
+<%@ include file="../admin_layout/_lnb_patient.jsp" %>
+
+
 <!-- 차트 작성하기 상세 -->
 <section id="contents">
+	<%@ include file="../admin_layout/hgroup.jsp" %>
 	<script>
 	let gnbDep1 = 1;
     let lnbDep1 = 5;
@@ -96,4 +102,4 @@
 	});
   } );
   </script>	
-  
+  <%@ include file="../admin_layout/footer.jsp" %>

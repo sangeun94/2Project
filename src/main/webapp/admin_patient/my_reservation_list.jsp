@@ -1,18 +1,23 @@
-<!-- 환자 관리 - 차트 작성하기 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../admin_layout/header.jsp" %>
+<%@ include file="../admin_layout/_lnb_patient.jsp" %>
+
+<!-- 환자 관리 - MY 예약 확인 -->
 <section id="contents">
-	
+	<%@ include file="../admin_layout/hgroup.jsp" %>
+
 	<script>
         let gnbDep1 = 1;
-        let lnbDep1 = 5;
+        let lnbDep1 = 3;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
-        let title = '차트 작성하기';
+        let title = 'MY 예약 확인';
 	</script>
 
 	<article>
-		<fieldset class="search_box">
-			<label>진료일 : </label>
-				<input type="text" id="idtreatmentDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
+		<!-- <fieldset class="search_box">
+			<label>예약일 : </label>
+				<input type="text" id="idReservationDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 			<label>성별 : </label>
 				<select style="width:200px;">
 					<option value="">전체</option>
@@ -49,18 +54,17 @@
 			<label></label>
 				<select style="width:120px;">				
 					<option value="">이름</option>
+					<option value="">예약번호</option>
                     <option value="">환자번호</option>
-					<option value="">진료번호</option>
-					<option value="">진료과</option>
-					<option value="">진료의</option>
 					<option value="">주민등록번호</option>
 					<option value="">휴대전화번호</option>
-					<option value="">주소</option>
+					<option value="">진료의</option>
+					<option value="">진료과</option>
 				</select>				
 				<input type="text" class="txt" style="width:200px" >	
 			<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
 			</p>
-		</fieldset>
+		</fieldset> -->
 
 		<div class="sort_area">
 			<select id="idListSize">
@@ -78,38 +82,38 @@
 		<p class="total_top">총 <b>00</b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="5%" /><col width="10%" /><col width="10%" /><col width="20%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10" /><col width="*" />
+                <col width="5%" /><col width="5%" /><col width="5%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="20%" /><col width="*" />
 			</colgroup>
 			<thead>
 			<tr>
 				<th><input type="checkbox"></th>
-				<th>진료번호</th>
-				<th>진료일</th>
-				<th>진료시간</th>
+				<th>예약번호</th>
+				<th>환자번호</th>
+				<th>예약일</th>
+				<th>예약시간</th>
 				<th>진료과</th>
 				<th>진료의</th>
-				<th>환자번호</th>
 				<th>이름</th>
-				<th>진료내용</th>
-				<th>차트</th>
+				<th>주민등록번호</th>
+				<th>휴대전화번호</th>
 			</tr>
 			</thead>
 			<tbody>
-			<!-- 환자 검색 결과 -->
-			<tr>
-				<td class="no-data" colspan="8">검색결과 없음</td>
-			</tr>			
+			<!-- 검색 결과 -->
+			<!-- <tr>
+				<td class="no-data" colspan="10">검색결과 없음</td>
+			</tr>			 -->
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>1</td>
-				<td>2023-12-25</td>			
-				<td>2시</td>	
-				<td>가정의학과</td>	
-				<td>김민지</td>
 				<td>1</td>
+				<td>2023-12-01</td>
+				<td>2시</td>
+				<td>이비인후과</td>
+				<td>김다영</td>
 				<td><a href="./_layer_patient_detail.html">홍길동</a></td>
-				<td>고혈압</td>
-				<td><a href="./_layer_chart_detail.html">차트 작성하기</a></td>
+				<td>950101-1234567</td>
+				<td>010-1111-1111</td>
 			</tr>
 			</tbody>
 		</table>	
@@ -141,10 +145,11 @@
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(function() {
 	$("#idStartDate").datepicker($.datepicker.regional.ko);
 	$("#idEndDate").datepicker($.datepicker.regional.ko);
-	$("#idtreatmentDate").datepicker($.datepicker.regional.ko);
+	$("#idReservationDate").datepicker($.datepicker.regional.ko);
 });
-</script>
+</script> -->
+<%@ include file="../admin_layout/footer.jsp" %>
