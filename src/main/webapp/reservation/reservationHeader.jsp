@@ -5,8 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./CSS/reservation.css">
+<link rel="stylesheet" href="./CSS/reservation_header.css">
 </head>
 <body>
-	<h1>휴먼병원/온라인예약</h1>
+	<div id="header">
+         <div class = "logo"><img id = "logo" src="./img/humc_logo.png"></div>
+        <div class="reservationText" ><span>&nbsp온라인예약</span></div>
+    </div>
 </body>
 </html>

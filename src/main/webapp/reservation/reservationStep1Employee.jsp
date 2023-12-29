@@ -8,47 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>온라인 예약</title>
-<style>
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	
-	html, body{
-		height: 100%;
-	}
-	
-	#container{
-		width: 100%;
-		height: 100%;
-	}
 
-	
-	#employeeList{
-		width: 1200px;
-		display: flex;
-		flex-wrap: wrap;
-	
-	}
-	
-	
-	#employeeBox{
-		width: 200px;
-		height: 300px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	
-	.employeeButton{
-		width: 150px;
-		height: 80px;
-	}
-
-</style>
 </head>
 <body>
 
@@ -72,7 +32,7 @@
 						for(EmployeeDTO employee : employeeList){
 					%>
 					<div id="employeeBox">
-						<img alt="<%=employee.getName()%>" src="prof.png" width="150" height="150">
+						<img alt="<%=employee.getName()%>" src="./img/prof.png" width="150" height="150">
 						<button name="employee" value="<%=employee.getEmployee_number()%>" class="employeeButton">
 							<%=employee.getDepartment_name()%> <br> <%=employee.getName() %>
 						</button>

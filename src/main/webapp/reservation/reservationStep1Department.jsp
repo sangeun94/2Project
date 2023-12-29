@@ -8,26 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>온라인 예약</title>
-<style>
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
 
-	.departmentButton{
-		width: 150px;
-		height: 80px;
-	}
-	
-	#departmentList{
-		width: 100%;
-		height: 100%;
-		display: flex;
-		border: 1px solid black;
-	}
-
-</style>
 </head>
 <body>
 	<%@ include file="reservationHeader.jsp" %>

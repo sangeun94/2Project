@@ -1,0 +1,22 @@
+#header{
+	height: 90px;
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+}
+
+#logo{
+	width: 400px;
+}
+
+.logo{
+	padding-left: 10px;
+}
+
+.reservationText{
+	padding-left: 10px;
+	font-size: 35px;
+	color: rgb(192, 192, 192);
+	font-weight: bolder;
+}
