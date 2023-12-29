@@ -31,10 +31,11 @@ public class AdminMedicalTreatmentDAO {
 			//DBConnectionManager 만들어준 connection 을 활용
 			conn = DBConnectionManager.connectDB();
 
-			String sql =  " select m.treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date, TO_CHAR(treatment_time, 'HH24:MI') treatment_time, "
-					+ " m.employee_number, m.patient_number, p.name patient_name, m.hospitalization_status, m.treatment_content "
-					+ " from medical_treatment m, patient p "
-					+ " where m.patient_number = p.patient_number "
+			String sql =  " select t.treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date, TO_CHAR(treatment_time, 'HH24:MI') treatment_time, "
+					+ " t.hospitalization_status, d.department_name, e.name employee_name, t.patient_number, p.name patient_name, t.treatment_content "
+					+ " from medical_treatment t, Medical_Department d, Employee e, patient p "
+					+ " where e.Employee_Number = t.Employee_Number AND e.Department_Number = d.Department_Number "
+					+ " AND p.patient_number = t.Patient_Number "
 					+ " order by treatment_number " ;
 
 			List<MedicalTreatmentDTO> medicaltreatmentList = null;
@@ -46,10 +47,18 @@ public class AdminMedicalTreatmentDAO {
 				rs = psmt.executeQuery(); //준비된 sql 쿼리문 실행!
 				medicaltreatmentList = new ArrayList<MedicalTreatmentDTO>();
 
-				while(rs.next()) { 	
-					MedicalTreatmentDTO medicalTreatmentDTO = new MedicalTreatmentDTO(rs.getInt("treatment_number"), rs.getString("treatment_date")
-							,rs.getString("treatment_time"), rs.getString("employee_number"), rs.getInt("patient_number"), rs.getString("patient_name")
-							,rs.getString("hospitalization_status"), rs.getString("treatment_content") );
+				while(rs.next()) { 	 
+					MedicalTreatmentDTO medicalTreatmentDTO = new MedicalTreatmentDTO (
+			                rs.getInt("treatment_number"), 
+			                rs.getString("treatment_date"), 
+			                rs.getString("treatment_time"), 
+			                rs.getString("hospitalization_status"),
+			                rs.getString("department_name"),
+			                rs.getString("employee_name"),
+			                rs.getInt("patient_number"),
+			                rs.getString("patient_name"),	
+			                rs.getString("treatment_content")
+					);
 
 					medicaltreatmentList.add(medicalTreatmentDTO);
 				}

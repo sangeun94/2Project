@@ -1,18 +1,15 @@
-<%@ page import="db.dto.MedicalTreatmentDTO"%>
-<%@page import="db.dao.admin.AdminMedicalTreatmentDAO"%>
-<%@page import="db.dto.ReservationDTO"%>
-<%@page import="db.dao.admin.AdminReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>진료내역 수정</title>
+<title>예약내역 수정</title>
 </head>
 <body>
-	<h1>진료내역 수정</h1>
-	<%
+	
+	<h1>예약내역 수정</h1>
+	<%-- <%
 		// 로그인 확인
 	    if (session != null && session.getAttribute("loginId") != null) {
 		    // 세션에 저장된 로그인 아이디 사용
@@ -23,7 +20,7 @@
 	        if (treatmentNumberStr == null || treatmentNumberStr.isEmpty()) {
     %>
 	            <script>
-	                alert("오류: 올바른 진료 번호가 제공되지 않았습니다.");
+	                alert("오류: 올바른 예약 번호가 제공되지 않았습니다.");
 	                history.back();
 	            </script>
     <%
@@ -51,7 +48,7 @@
     <%
             	} else {
     %>
-                	<p>진료 정보를 찾을 수 없습니다.</p>
+                	<p>예약 정보를 찾을 수 없습니다.</p>
     <%
 	            }
 	        }
@@ -64,7 +61,8 @@
             </script>
     <%
         }
-    %>
-	
+    %> --%>
+
+
 </body>
 </html>

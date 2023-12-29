@@ -34,7 +34,7 @@
 	%>
 	        <script>
 	            alert("진료 정보가 성공적으로 추가되었습니다.");
-	            location.href = "adminMedicalTreatmentInfo.jsp";
+	            location.href = "../admin_patient/treatment_list.jsp";
 	        </script>
 	<%
 	    } else {

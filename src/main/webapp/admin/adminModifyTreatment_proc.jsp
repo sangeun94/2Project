@@ -38,7 +38,7 @@
 	%>
 		        <script>
 		            alert("진료 정보가 성공적으로 수정되었습니다.");
-		            location.href = "adminMedicalTreatmentInfo.jsp"; // 성공 시 진료 목록 페이지로 리디렉션
+		            location.href = "../admin_patient/treatment_list.jsp"; // 성공 시 진료 목록 페이지로 리디렉션
 		        </script>
 	<%
 	    	} else {

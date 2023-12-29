@@ -13,7 +13,7 @@
 	<h1>진료차트 작성</h1>
 	
 	<hr>
-      <%
+	<%
    		// 로그인 확인
 	    if (session != null && session.getAttribute("loginId") != null) {
 	        // 세션에 저장된 로그인 아이디 사용
@@ -26,11 +26,12 @@
 	        ReservationDTO reservation = dao.findAdminMyReservationById2(reservation_number);
 	
 	        if (reservation != null) {
-    %>
+	%>
 	            <p>
-	                예약날짜: <%=reservation.getReservation_date()%><br>
+	                예약일: <%=reservation.getReservation_date()%><br>
 	                예약시간: <%=reservation.getReservation_time()%><br>
 	                환자번호: <%=reservation.getPatient_number()%><br>
+	                환자이름: <%=reservation.getPatient_name()%><br>
 	                의사번호: <%=reservation.getEmployee_number()%><br>
 	               	예약내용: <%=reservation.getReservation_content()%><br>
 	            </p>

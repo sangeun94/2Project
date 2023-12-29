@@ -23,7 +23,10 @@ public class AdminHospitalizationDAO {
 		
 		conn = DBConnectionManager.connectDB();
 		
-        String sql = "SELECT Inpatient_Room_Number, COUNT(Patient_Number) patient_count FROM Hospitalization GROUP BY Inpatient_Room_Number";
+        String sql = " SELECT Inpatient_Room_Number, COUNT(Patient_Number) patient_count "
+        		+ " FROM Hospitalization "
+        		+ " GROUP BY Inpatient_Room_Number "
+        		+ " ORDER BY Inpatient_Room_Number ";
 
         List<InpatientRoomDTO> inpatientRoomList = null;
         
@@ -200,6 +203,26 @@ public class AdminHospitalizationDAO {
 		}
 		
 		return result;
-	}	 
+	}
+	/*
+	 * String sql = "UPDATE Reservation SET " + "Reservation_Date = ?, " +
+	 * "Reservation_Time = ?, " + "Reservation_Status = ?, " +
+	 * "Department_Number = (SELECT Department_Number FROM Medical_Department WHERE Department_Name = ?), "
+	 * +
+	 * "Employee_Number = (SELECT Employee_Number FROM Employee WHERE Name = ? AND Department_Number = "
+	 * +
+	 * "(SELECT Department_Number FROM Medical_Department WHERE Department_Name = ?)) "
+	 * + "WHERE Reservation_Number = ?";
+	 * 
+	 * PreparedStatement ps = connection.prepareStatement(sql);
+	 * 
+	 * //각 ?에 해당하는 값을 설정합니다. ps.setString(1, newReservationDate); ps.setString(2,
+	 * newReservationTime); ps.setString(3, newReservationStatus); ps.setString(4,
+	 * newDepartmentName); ps.setString(5, newDoctorName); ps.setString(6,
+	 * newDepartmentName); // 진료과 이름이 두 번 필요합니다. ps.setString(7,
+	 * targetReservationNumber);
+	 * 
+	 * int result = ps.executeUpdate();
+	 */
 	
 }

@@ -53,6 +53,22 @@ public class ReservationDTO { //예약
 		this.employee_name = employee_name;
 		this.patient_name = patient_name;
 	}
+	
+	public ReservationDTO(String reservation_number, int patient_number, String reservation_date, String reservation_time, 
+			String reservation_status, String employee_number, String department_name,
+			String employee_name, String patient_name, String reservation_content) {
+		super();
+		this.reservation_date = reservation_date;
+		this.reservation_time = reservation_time;
+		this.reservation_number = reservation_number;
+		this.reservation_status = reservation_status;
+		this.patient_number = patient_number;
+		this.reservation_content = reservation_content;
+		this.employee_number = employee_number;
+		this.department_name = department_name;
+		this.employee_name = employee_name;
+		this.patient_name = patient_name;
+	}
 
 	//메소드
 	public String getReservation_date() {

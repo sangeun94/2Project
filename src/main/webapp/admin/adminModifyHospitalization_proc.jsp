@@ -42,7 +42,7 @@
 	%>
 		        <script>
 		            alert("입원 정보가 성공적으로 수정되었습니다.");
-		            location.href = "adminHospitalizationInfo.jsp"; // 성공 시 입원 목록 페이지로 리디렉션
+		            location.href = "../admin_patient/hospitalization_list.jsp"; // 성공 시 입원 목록 페이지로 리디렉션
 		        </script>
 	<%
 	    	} else {
