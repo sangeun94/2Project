@@ -36,7 +36,7 @@
 				session.setAttribute("loginId", employee_number);
 	%>			
 				<script>
-					alert('로그인 성공');
+					/* alert('로그인 성공'); */
 					location.href = '../admin_patient/patient_list.jsp?employee_number=<%=employee_number%>'; //해당 경로로 페이지 이동
 				</script>
 			<%	

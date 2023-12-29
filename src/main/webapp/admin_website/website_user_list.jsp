@@ -3,7 +3,7 @@
 <%@ page import="db.dao.admin2.AdminPatientInfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../admin_layout/header.jsp" %>
-<%@ include file="../admin_layout/_lnb_system.jsp" %>
+<%@ include file="../admin_layout/_lnb_website.jsp" %>
 	<%
 		request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
 		AdminPatientInfoDAO patientInfoDAO = new AdminPatientInfoDAO();

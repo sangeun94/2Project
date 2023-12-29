@@ -418,4 +418,42 @@ CREATE TABLE Reservation (
 	PRIMARY KEY (Reservation_Number)
 );
 
+
+--***예약 정보 샘플 INSERT
+--가정의학과 박지윤
+INSERT INTO reservation 
+(Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
+VALUES 
+('1', 1, 'Y', TO_DATE('2023-04-29', 'YYYY-MM-DD'), TO_DATE('2023-04-29 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), '배가 아파요', 'hm3', '1');
+
+--신경과 임서연
+INSERT INTO reservation 
+(Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
+VALUES 
+('2', 3, 'N', TO_DATE('2023-05-30', 'YYYY-MM-DD'), TO_DATE('2023-05-30 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
+
+--가정의학과
+INSERT INTO reservation 
+(Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
+VALUES 
+('3', 4, 'Y', TO_DATE('2023-06-07', 'YYYY-MM-DD'), TO_DATE('2023-06-07 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), '가슴이 아파요', 'hm3', '1');
+
+--신경과
+INSERT INTO reservation 
+(Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
+VALUES 
+('4', 13, 'Y', TO_DATE('2023-07-24', 'YYYY-MM-DD'), TO_DATE('2023-07-24 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
+
+--가정의학과
+INSERT INTO reservation 
+(Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
+VALUES 
+('5', 25, 'N', TO_DATE('2023-07-24', 'YYYY-MM-DD'), TO_DATE('2023-07-24 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), '엉덩이가 아파요', 'hm3', '1');
+
+--신경과
+INSERT INTO reservation 
+(Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
+VALUES 
+('6', 38, 'Y', TO_DATE('2023-05-30', 'YYYY-MM-DD'), TO_DATE('2023-05-30 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
+
 commit;
