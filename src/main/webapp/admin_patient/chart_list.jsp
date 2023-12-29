@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../admin_layout/header.jsp" %>
 <%@ include file="../admin_layout/_lnb_patient.jsp" %>
+<%@page import="java.util.List"%>
+<%@page import="db.dto.ReservationDTO"%>
+<%@page import="db.dao.admin.AdminReservationDAO"%>
 
-<!-- 환자 관리 - 차트 작성하기 -->
+<!-- 환자 관리 - 진료차트 작성하기 -->
 <section id="contents">
 	<%@ include file="../admin_layout/hgroup.jsp" %>
 
@@ -11,12 +14,12 @@
         let lnbDep1 = 5;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
-        let title = '차트 작성하기';
+        let title = '진료차트 작성하기';
 	</script>
 
 	<article>
 		<fieldset class="search_box">
-			<label>진료일 : </label>
+			<label>예약일 : </label>
 				<input type="text" id="idtreatmentDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 			<label>성별 : </label>
 				<select style="width:200px;">
@@ -64,18 +67,21 @@
 			</p>
 		</fieldset>
 
-		<div class="sort_area">
-			<select id="idListSize">
-				<option value="30" selected="selected">30개씩 보기</option>
-				<option value="50">50개씩 보기</option>
-				<option value="100">100개씩 보기</option>
-                <option value="200">200개씩 보기</option>			
-			</select>		
-			<span class="btns">
-				<a href="" class="blue">선택 다운로드</a>
-				<a href="" class="green ml05">전체 다운로드</a>
-			</span>
-		</div>
+	<%
+        request.setCharacterEncoding("UTF-8");
+
+        // 로그인 확인
+        if (session != null && session.getAttribute("loginId") != null) {
+            String employee_number = session.getAttribute("loginId").toString(); // 현재 로그인한 사용자의 아이디
+            System.out.println("로그인 id : " + employee_number);
+            
+            AdminReservationDAO adminReservationDAO = new AdminReservationDAO();
+            List<ReservationDTO> reservationList = adminReservationDAO.findAdminMyReservationTreatmentById(employee_number);
+
+            // 예약 정보 출력
+            if (reservationList != null && !reservationList.isEmpty()) {
+         
+    %>
 
 		<p class="total_top">총 <b>00</b>개</p>
 		<table class="listTable" style="margin-top:20px;">
@@ -85,61 +91,65 @@
 			<thead>
 			<tr>
 				<th><input type="checkbox"></th>
-				<th>진료번호</th>
-				<th>진료일</th>
-				<th>진료시간</th>
+				<th>예약번호</th>
+				<th>환자번호</th>
+				<th>예약일</th>
+				<th>예약시간</th>
+				<th>접수상태</th>
 				<th>진료과</th>
 				<th>진료의</th>
-				<th>환자번호</th>
-				<th>이름</th>
-				<th>진료내용</th>
+				<th>환자이름</th>
+				<th>예약내용</th>
 				<th>차트</th>
 			</tr>
 			</thead>
 			<tbody>
-			<!-- 환자 검색 결과 -->
-			<tr>
-				<td class="no-data" colspan="8">검색결과 없음</td>
-			</tr>			
+			
+	<% 
+			 for (ReservationDTO reservation : reservationList) {
+                 // 예약 정보 표시
+	%>
+			<!-- 환자 검색 결과 -->			
 			<tr>
 				<td><input type="checkbox"></td>
-				<td>1</td>
-				<td>2023-12-25</td>			
-				<td>2시</td>	
-				<td>가정의학과</td>	
-				<td>김민지</td>
-				<td>1</td>
-				<td>홍길동</td>
-				<td>고혈압</td>
-				<td><a href="./_layer_chart_detail.jsp">차트 작성하기</a></td>
+				<td><%=reservation.getReservation_number()%></td>
+				<td><%=reservation.getPatient_number()%></td>			
+				<td><%=reservation.getReservation_date()%></td>	
+				<td><%=reservation.getReservation_time()%></td>	
+				<td><%=reservation.getReservation_status()%></td>
+				<td><%=reservation.getDepartment_name()%></td>
+				<td><%=reservation.getEmployee_name()%></td>
+				<td><%=reservation.getPatient_name()%></td>
+				<td><%=reservation.getReservation_content()%></td>
+				<td><a href="./_layer_chart_detail.jsp?reservation_number=<%=reservation.getReservation_number()%>">차트 작성하기</a></td>
 			</tr>
+	<%
+			 }	
+	%>		
+			
 			</tbody>
 		</table>	
-		<div class="btns_top mt20">
-			<a href="" class="red">선택 삭제</a>
-		</div>		
-        
-		<p class="pagination" id="idPaging">	
-            <a href=""><img src="../resources/img/btn/paging1.png" alt="처음" /></a>
-            <a href=""><img src="../resources/img/btn/paging2.png" alt="이전" /></a>
-			<span>
-				<a href="javascript:FuncSearch(1);" class="on">1</a>
-				<a href="javascript:FuncSearch(1);">2</a>
-				<a href="javascript:FuncSearch(1);">3</a>
-				<a href="javascript:FuncSearch(1);">4</a>
-				<a href="javascript:FuncSearch(1);">5</a>
-				<a href="javascript:FuncSearch(1);">6</a>
-				<a href="javascript:FuncSearch(1);">7</a>
-				<a href="javascript:FuncSearch(1);">8</a>
-				<a href="javascript:FuncSearch(1);">9</a>
-				<a href="javascript:FuncSearch(1);">10</a>
-			</span>
-			<a href=""><img src="../resources/img/btn/paging3.png" alt="다음" /></a>
-			<a href=""><img src="../resources/img/btn/paging4.png" alt="마지막" /></a>
-		</p>			
+		
 	</article>
-</section>	
-
+</section>
+	<%
+	} else {
+                // 예약 정보가 없는 경우
+     %>
+                <p>해당 환자의 예약 정보가 없습니다.</p>
+     <%
+            }
+        } else {
+            // 로그인되지 않은 경우 처리
+     %>
+            <script>
+                alert('로그인이 필요합니다.');
+                location.href = "adminLogin.jsp"; // 로그인 페이지로 리다이렉션
+            </script>
+     <%
+        }	
+	 %>
+	 
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
@@ -150,4 +160,5 @@ $(function() {
 	$("#idtreatmentDate").datepicker($.datepicker.regional.ko);
 });
 </script>
+
 <%@ include file="../admin_layout/footer.jsp" %>

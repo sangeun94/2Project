@@ -58,18 +58,6 @@
 			</p>
 		</fieldset>
 
-		<div class="sort_area">
-			<select id="idListSize">
-				<option value="30" selected="selected">30개씩 보기</option>
-				<option value="50">50개씩 보기</option>
-				<option value="100">100개씩 보기</option>
-                <option value="200">200개씩 보기</option>			
-			</select>		
-			<span class="btns">
-				<a href="" class="blue">선택 다운로드</a>
-				<a href="" class="green ml05">전체 다운로드</a>
-			</span>
-		</div>
 
 		<p class="total_top">총 <b>00</b>개</p>
 		<table class="listTable" style="margin-top:20px;">
@@ -87,10 +75,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<!-- 환자 검색 결과 -->
-			<tr>
-				<td class="no-data" colspan="8">검색결과 없음</td>
-			</tr>			
+			
 			<tr>
 				<td><input type="checkbox"></td>
 				<td>2023-01-01</td>
@@ -101,28 +86,7 @@
 			</tr>
 			</tbody>
 		</table>	
-		<div class="btns_top mt20">
-			<a href="" class="red">선택 삭제</a>
-		</div>		
-        
-		<p class="pagination" id="idPaging">	
-            <a href=""><img src="../resources/img/btn/paging1.png" alt="처음" /></a>
-            <a href=""><img src="../resources/img/btn/paging2.png" alt="이전" /></a>
-			<span>
-				<a href="javascript:FuncSearch(1);" class="on">1</a>
-				<a href="javascript:FuncSearch(1);">2</a>
-				<a href="javascript:FuncSearch(1);">3</a>
-				<a href="javascript:FuncSearch(1);">4</a>
-				<a href="javascript:FuncSearch(1);">5</a>
-				<a href="javascript:FuncSearch(1);">6</a>
-				<a href="javascript:FuncSearch(1);">7</a>
-				<a href="javascript:FuncSearch(1);">8</a>
-				<a href="javascript:FuncSearch(1);">9</a>
-				<a href="javascript:FuncSearch(1);">10</a>
-			</span>
-			<a href=""><img src="../resources/img/btn/paging3.png" alt="다음" /></a>
-			<a href=""><img src="../resources/img/btn/paging4.png" alt="마지막" /></a>
-		</p>			
+					
 	</article>
 </section>	
 

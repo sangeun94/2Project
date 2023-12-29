@@ -119,7 +119,7 @@
 				<td><%=reservation.getReservation_status()%></td>
 				<td><%=reservation.getDepartment_name()%></td>
 				<td><%=reservation.getEmployee_name()%></td>
-				<td><a href="./_layer_patient_detail.html"><%=reservation.getPatient_name()%></a></td>
+				<td><a href="./_layer_patient_detail3.jsp?patient_number=<%=reservation.getPatient_number()%>"><%=reservation.getPatient_name()%></a></td>
 				<td><%=reservation.getReservation_content()%></td>
 			</tr>
 		<%
