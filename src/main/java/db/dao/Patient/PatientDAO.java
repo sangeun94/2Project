@@ -8,7 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.dto.PatientDTO;
 import db.util.DBConnectionManager;
@@ -188,43 +192,24 @@ public class PatientDAO {
     
     /* ----------------------------------------------------*/
     
-//    public class LoginServlet extends HttpServlet {
-//        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//            // 사용자가 입력한 아이디와 비밀번호 가져오기
-//            String id = request.getParameter("id");
-//            String password = request.getParameter("password");
-//
-//            // 아이디와 비밀번호를 검증하는 코드 (예시)
-//            boolean loginSuccessful = yourAuthenticationLogic(id, password);
-//
-//            if (loginSuccessful) {
-//                // 로그인 성공 시 사용자 정보를 세션에 저장
-//                HttpSession session = request.getSession();
-//                PatientDTO loggedInUser = getPatientInfo(id);  // 예시: 아이디에 해당하는 사용자 정보를 가져오는 메서드
-//                session.setAttribute("loggedInUser", loggedInUser);
-//
-//                // 로그인 성공 후 리다이렉트 또는 다른 동작 수행
-//                response.sendRedirect("/home");  // 예시: 로그인 성공 후 이동할 페이지
-//            } else {
-//                // 로그인 실패 처리 (예시: 다시 로그인 페이지로 이동)
-//                response.sendRedirect("/login.jsp?error=1");
-//            }
-//        }
-//
-//        // 아이디에 해당하는 사용자 정보를 가져오는 메서드 (예시)
-//        private PatientDTO getPatientInfo(String id) {
-//            // 실제로는 데이터베이스에서 아이디에 해당하는 정보를 조회하여 반환하는 로직을 작성
-//            // 예시로 사용자의 정보를 담은 가상의 PatientDTO를 반환
-//            return new PatientDTO(/* 정보 설정 */);
-//        }
-//
-//        // 실제로는 아이디와 비밀번호를 검증하는 로직을 작성
-//        private boolean yourAuthenticationLogic(String id, String password) {
-//            // 예시: 간단한 로그인 검증 (실제로는 데이터베이스 등을 이용하여 안전하게 구현해야 함)
-//            return "example_id".equals(id) && "example_password".equals(password);
-//        }
-//    }
-    
+    public class LoginServlet extends HttpServlet {
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            // 사용자가 제출한 로그인 정보를 검증하고, 성공하면 세션에 사용자 정보를 저장
+            String id = request.getParameter("id");
+            String password = request.getParameter("password");
+
+            // 여기에서 데이터베이스에서 사용자 정보를 확인하는 로직을 구현해야 합니다.
+            // 이 예제에서는 간단히 "admin" 사용자로 로그인을 허용합니다.
+            if ("admin".equals(id) && "password".equals(password)) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id", id);
+                response.sendRedirect("myInfo1.jsp");
+            } else {
+                // 로그인 실패 처리
+                response.sendRedirect("login.jsp");
+            }
+        }
+    }
     /*	이름을 자동으로 가져오게하는 */
     
     public PatientDTO getPatientInfoById(String patientId) {
@@ -236,7 +221,7 @@ public class PatientDAO {
         try {
             conn = DBConnectionManager.connectDB();
 
-            String sql = "SELECT * FROM patient_table WHERE id = ?";
+            String sql = "SELECT * FROM patient WHERE id = ?";
             psmt = conn.prepareStatement(sql);
             psmt.setString(1, patientId);
 
@@ -259,5 +244,121 @@ public class PatientDAO {
         }
 
         return patientDTO;
+    }
+    
+    
+    //로그인한 사람의 내정보 페이지 MyInfo
+    public PatientDTO findPatientById(String id) {
+        conn = DBConnectionManager.connectDB();
+        String sql = "SELECT * FROM patient WHERE id = ?";
+        PatientDTO patientDTO = null;
+
+        try {
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, id);  // 파라미터 바인딩
+
+            rs = psmt.executeQuery();
+
+            if (rs.next()) {
+                patientDTO = new PatientDTO(
+                        rs.getInt("patient_number"),
+                        rs.getInt("patient_status_code"),
+                        rs.getString("id"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("name"),
+                        rs.getString("jumin"),
+                        rs.getString("phone_number"),
+                        rs.getString("address")
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionManager.closeDB(conn, psmt, rs);
+        }
+
+        return patientDTO;
+    }
+ // MyInfo 페이지에서 사용자 정보 업데이트
+    public boolean updatePatientInfo(PatientDTO updatedPatient) {
+        conn = DBConnectionManager.connectDB();
+        String sql = "UPDATE patient SET password=?, email=?, phone_number=?, address=? WHERE id=?";
+        
+        try {
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, updatedPatient.getPassword());
+            psmt.setString(2, updatedPatient.getEmail());
+            psmt.setString(3, updatedPatient.getPhone_number());
+            psmt.setString(4, updatedPatient.getAddress());
+            psmt.setString(5, updatedPatient.getId());
+
+            int rowsAffected = psmt.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionManager.closeDB(conn, psmt, null);
+        }
+
+        return false;
+    }
+    
+    public boolean updatePatientInfo(String id, String password, String email, String phone_number, String address) {
+        Connection conn = null;
+        PreparedStatement psmt = null;
+
+        try {
+            conn = DBConnectionManager.connectDB();
+            String sql = "UPDATE patient SET password=?, email=?, phone_number=?, address=? WHERE id=?";
+            psmt = conn.prepareStatement(sql);
+
+            psmt.setString(1, password);
+            psmt.setString(2, email);
+            psmt.setString(3, phone_number);
+            psmt.setString(4, address);
+            psmt.setString(5, id);
+
+            int rowsAffected = psmt.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionManager.closeDB(conn, psmt, null);
+        }
+
+        return false;
+    }
+    
+    /*----------------------게시판에 이름에 들어갈 값 저장하기-------------   */
+ 
+    public String getPatientNameById(String name) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+       
+
+        try {
+            conn = DBConnectionManager.connectDB(); // 데이터베이스 연결 메서드
+
+            String sql = "SELECT name FROM patient WHERE id = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, name);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                name = rs.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBConnectionManager.closeDB(conn, pstmt, rs); // 데이터베이스 연결 해제 메서드
+        }
+
+        return name;
     }
 }

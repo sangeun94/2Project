@@ -11,6 +11,7 @@
 	<a href="join.jsp">회원가입</a>
 	<a href="Login.jsp">로그인</a>
 	<a href="BoardList.jsp">게시판</a>
-	<a href="">내정보</a>
+	<a href="MyInfo1.jsp">내정보확인</a>
+	<a href=updatePatientInfo.jsp>내정보수정</a>
 </body>
 </html>
