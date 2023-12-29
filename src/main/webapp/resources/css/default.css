@@ -1129,7 +1129,6 @@ span.thumb_img>img {
 .viewTable {
     width: 100%;
     margin-left: -1px;
-    border-top: 2px solid #666
 }
 
 .viewTable th {
@@ -1215,7 +1214,7 @@ span.thumb_img>img {
     background: none;
     border: 1px solid Tomato;
     color: Tomato;
-    background: url(../img/icon/update2.png) no-repeat 6px 2px;
+    background: url(../img/admin_icon/update2.png) no-repeat 6px 2px;
     width: 106px;
     border-radius: 3px;
     padding-left: 26px;
@@ -1297,7 +1296,7 @@ table td.file_area ul {
 
 table td.file_area ul li {
     padding-left: 15px;
-    background: url(../img/icon/file.png) no-repeat 0 4px;
+    background: url(../img/admin_icon/file.png) no-repeat 0 4px;
 }
 
 table td.file_area ul li>a:hover {
@@ -1402,11 +1401,11 @@ table td i+i {
 }
 
 i.secret {
-    background-image: url(../img/icon/secret.png)
+    background-image: url(../img/admin_icon/secret.png)
 }
 
 i.new {
-    background-image: url(../img/icon/new.png)
+    background-image: url(../img/admin_icon/new.png)
 }
 
 .file_area .btn_f {
@@ -1655,7 +1654,7 @@ label+label {
     width: 16px;
     height: 16px;
     margin: 7px 0 0 -24px;
-    background: url(../img/icon/calendar.png) no-repeat;
+    background: url(../img/admin_icon/calendar.png) no-repeat;
     font-size: 0;
     cursor: text;
 }
@@ -1717,13 +1716,24 @@ label+label {
     min-width: 100px;
     height: 37px;
     line-height: 37px;
-    padding: 0 15px;
+    padding: 0 20px;
     background: #444;
     border-radius: 2px;
     text-align: center;
     color: #fff;
     font-size: 14px;
     font-weight: 600
+}
+
+.btn_c button.gray {
+	min-width: 80px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	border-radius: 2px;
+	padding: 0 20px;
+	background-color: #333333;
+	color: #fff;
 }
 
 a.btn {
@@ -1757,7 +1767,7 @@ a.btn.icon:before {
     display: inline-block;
     width: 14px;
     height: 10px;
-    background: url(../img/icon/icons.png) no-repeat 0 -27px;
+    background: url(../img/admin_icon/icons.png) no-repeat 0 -27px;
     vertical-align: -2px
 }
 
@@ -1876,7 +1886,7 @@ a.tomoto.border:hover {
 
 .table_wrap h4 {
     position: relative;
-    background: url(../img/icon/letter.png) no-repeat 0 4px;
+    background: url(../img/admin_icon/letter.png) no-repeat 0 4px;
     padding: 0 0 10px 23px;
     margin-top: 30px;
     font-weight: 600;
@@ -1895,7 +1905,7 @@ a.tomoto.border:hover {
 
 .send_area h4 {
     position: relative;
-    background: url(../img/icon/letter.png) no-repeat 0 4px;
+    background: url(../img/admin_icon/letter.png) no-repeat 0 4px;
     padding: 0 0 10px 23px;
     margin-top: 30px;
     font-weight: 600;
@@ -2100,6 +2110,10 @@ a.tomoto.border:hover {
 /*pop*/
 .pop_wrap {
     position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     width: 100%;
@@ -2110,28 +2124,28 @@ a.tomoto.border:hover {
 
 .pop_ct {
     position: fixed;
-    top: 20%;
-    left: 50%;
+    /*top: 20%;
+    left: 50%;*/
     width: 500px;
     background: #fff;
     /*border:2px solid #0f7398;*/
-    margin-left: -250px
+    /*margin-left: -250px*/
 }
 
 .pop_ct.alert {
     width: 250px;
     text-align: center;
-    margin-left: -125px;
+    /*margin-left: -125px;*/
 }
 
 .pop_ct.medium {
     width: 700px;
-    margin-left: -350px
+	/*margin-left: -350px*/
 }
 
 .pop_ct.large {
     width: 1000px;
-    margin-left: -500px
+    /*margin-left: -500px*/
 }
 
 .pop_ct>div,
@@ -2164,7 +2178,7 @@ a.tomoto.border:hover {
     line-height: 55px;
     padding-left: 15px;
     /*background:#216ab5;*/
-    background: linear-gradient(45deg, #0f7398, #216ab5);
+    background: #79AAF9;
     text-align: left;
     font-weight: 600;
     color: #fff;
@@ -2192,11 +2206,11 @@ a.tomoto.border:hover {
 .pop_ct .btn_c a,
 .pop_ct .btn_r a,
 .pop_ct .btn_l a {
-    min-width: 70px;
-    height: 25px;
-    line-height: 24px;
-    padding: 0 10px;
-    font-size: 13px
+    min-width: 80px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    font-size: 14px
 }
 
 .pop_ct div>h4.ac {
@@ -2516,7 +2530,7 @@ a.tomoto.border:hover {
     width: 10px;
     height: 8px;
     margin-left: -5px;
-    background: url(http://publish.mobilnet.co.kr/skhu/img/icon/standard.png) no-repeat;
+    background: url(http://publish.mobilnet.co.kr/skhu/img/admin_icon/standard.png) no-repeat;
     font-size: 0
 }
 
@@ -3200,7 +3214,7 @@ td.with_btn input.txt {
     display: inline-block;
     width: 14px;
     height: 10px;
-    background: url(../img/icon/icons_black.png) no-repeat 0 -27px;
+    background: url(../img/admin_icon/icons_black.png) no-repeat 0 -27px;
     vertical-align: -2px
 }
 
@@ -3253,7 +3267,7 @@ td.with_btn input.txt {
 }
 
 a.btn.lock {
-    background: url(../img/icon/lock.png) no-repeat center bottom;
+    background: url(../img/admin_icon/lock.png) no-repeat center bottom;
     background-size: 20px;
     width: 30px;
     height: 35px;
@@ -3262,7 +3276,7 @@ a.btn.lock {
 }
 
 a.btn.unlock {
-    background: url(../img/icon/unlock.png) no-repeat center bottom;
+    background: url(../img/admin_icon/unlock.png) no-repeat center bottom;
     background-size: 30px;
     width: 40px;
     height: 40px;

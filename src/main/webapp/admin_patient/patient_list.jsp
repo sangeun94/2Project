@@ -10,7 +10,6 @@
 	List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
 %>
 
-<!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
 
@@ -60,7 +59,7 @@
 			<label>생년월일 : </label>
 				<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 				<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
-				</select>	
+				<!-- </select>	 -->
 			<label></label>
 				<select style="width:120px;">				
 					<option value="">이름</option>
@@ -118,7 +117,7 @@
 			<tr>
 				<td><input type="checkbox"></td>
 				<td><%=patientInfo.getPatient_number()%></td>				
-				<td><a href="./_layer_patient_detail.jsp?id=<%=patientInfo.getName()%>"><%=patientInfo.getName()%></a></td>
+				<td><a href="./_layer_patient_detail.jsp?patient_number=<%=patientInfo.getPatient_number()%>"><%=patientInfo.getName()%></a></td>
 				<td><%=patientInfo.getGender()%></td>
 				<td><%=patientInfo.getJumin()%></td>
 				<td><%=patientInfo.getPhone_number()%></td>
