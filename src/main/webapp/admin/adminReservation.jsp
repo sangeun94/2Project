@@ -39,6 +39,7 @@
                     환자이름: <%=reservationInfo.getPatient_name()%>
                     예약내용: <%=reservationInfo.getReservation_content()%>
                     <button onclick="location.href='adminPatientInfo.jsp?patient_number=<%=reservationInfo.getPatient_number()%>'" type="button">환자정보보기</button>
+                	<button onclick="location.href='adminPatientInfo.jsp?patient_number=<%=reservationInfo.getPatient_number()%>'" type="button">예약내역 수정하기</button>
                 </p>
     <%
             }

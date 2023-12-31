@@ -1,3 +1,5 @@
+<%@page import="db.dto.ReservationDTO"%>
+<%@page import="db.dao.admin.AdminReservationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,15 +11,15 @@
 <body>
 	
 	<h1>예약내역 수정</h1>
-	<%-- <%
+	<%
 		// 로그인 확인
 	    if (session != null && session.getAttribute("loginId") != null) {
 		    // 세션에 저장된 로그인 아이디 사용
 	        String loggedInEmployeeNumber = session.getAttribute("loginId").toString();
 	        System.out.println("로그인 id : " + loggedInEmployeeNumber);
 	
-	        String treatmentNumberStr = request.getParameter("treatment_number");
-	        if (treatmentNumberStr == null || treatmentNumberStr.isEmpty()) {
+	        String reservation_number = request.getParameter("reservation_number");
+	        if (reservation_number == null || reservation_number.isEmpty()) {
     %>
 	            <script>
 	                alert("오류: 올바른 예약 번호가 제공되지 않았습니다.");
@@ -25,25 +27,25 @@
 	            </script>
     <%
 	        } else {
-	            int treatment_number = Integer.parseInt(treatmentNumberStr);
-	            AdminMedicalTreatmentDAO dao = new AdminMedicalTreatmentDAO();
-	            MedicalTreatmentDTO medicalTreatment = dao.findAdminMedicalTreatmentById(treatment_number);
+	            AdminReservationDAO dao = new AdminReservationDAO();
+	            ReservationDTO reservation = dao.findAdminMyReservationById2(reservation_number);
 	
-	            if (medicalTreatment != null) {
+	            if (reservation != null) {
     %>                   
-	                <p>진료번호: <%=medicalTreatment.getTreatment_number()%></p> 
-	                <p>환자번호: <%=medicalTreatment.getPatient_number()%></p>
-					<p>진료일: <%=medicalTreatment.getTreatment_date()%></p>
-					<p>진료시간: <%=medicalTreatment.getTreatment_time()%></p>
-					<p>환자이름: <%=medicalTreatment.getPatient_name()%></p>
+	                <p>예약번호: <%=reservation.getReservation_number()%></p> 
+	                <p>환자번호: <%=reservation.getPatient_number()%></p>
+					<p>환자이름: <%=reservation.getPatient_name()%></p>
 					
 	                <!-- 진료 정보 입력 폼 -->
-	                <form action="adminModifyTreatment_proc.jsp" method="post">
-	                    <input type="hidden" name="treatment_number" value="<%=treatment_number%>">
-	                    입원여부: Y <input type="radio" name="hospitalization_status" value="Y" <%= "Y".equals(medicalTreatment.getHospitalization_status()) ? "checked" : "" %>>
-	                            N <input type="radio" name="hospitalization_status" value="N" <%= "N".equals(medicalTreatment.getHospitalization_status()) ? "checked" : "" %>><br>
-	                    진료내용: <textarea name="treatment_content"><%=medicalTreatment.getTreatment_content()%></textarea><br>
-	                    <button type="submit">수정하기</button>
+	                <form action="adminModifyReservation_proc.jsp" method="post">
+	                    <input type="hidden" name="reservation_number" value="<%=reservation_number%>">
+	                    <label>예약일 : </label><input type="date" name="reservation_date" value="<%=reservation.getReservation_date()%>"><br>
+	                    <label>예약시간 : </label><input type="date" name="reservation_time" value="<%=reservation.getReservation_time()%>"><br>
+   	                    접수상태: Y <input type="radio" name="reservation_status" value="Y" <%= "Y".equals(reservation.getReservation_status()) ? "checked" : "" %>>
+                       			N <input type="radio" name="reservation_status" value="N" <%= "N".equals(reservation.getReservation_status()) ? "checked" : "" %>><br>
+               			<label>진료과 : </label><input type="text" name="department_name" value="<%=reservation.getDepartment_name()%>"><br>
+               			<label>진료의 : </label><input type="text" name="employee_name" value="<%=reservation.getEmployee_name()%>"><br>
+	                    <label>예약내용 : </label><input type="text" name="reservation_content" value="<%=reservation.getReservation_content()%>"><br>
 	                </form>  
     <%
             	} else {
@@ -61,7 +63,7 @@
             </script>
     <%
         }
-    %> --%>
+    %>
 
 
 </body>

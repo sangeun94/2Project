@@ -76,7 +76,7 @@
         AdminReservationDAO adminReservationDAO = new AdminReservationDAO();
         List<ReservationDTO> reservationList = adminReservationDAO.findAdminReservationList();
 %>
-		<p class="total_top">총 <b>00</b>개</p>
+		<p class="total_top">총 <b><%= reservationList != null ? reservationList.size() : 0 %></b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
                 <col width="5%" /><col width="5%" /><col width="5%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="20%" /><col width="*" />
@@ -93,6 +93,7 @@
 				<th>진료의</th>
 				<th>환자이름</th>
 				<th>예약내용</th>
+				<th>예약수정</th>
 			</tr>
 			</thead>
 			<tbody>		
@@ -106,11 +107,10 @@
                 <td><%=reservationInfo.getReservation_date()%></td>
                 <td><%=reservationInfo.getReservation_time()%></td>
                 <td><%=reservationInfo.getReservation_status()%></td>
-                <td><%=reservationInfo.getDepartment_name()%></td>
-                <td><%=reservationInfo.getEmployee_name()%></td>
-                <td><a href="./_layer_patient_detail2.jsp?patient_number=<%=reservationInfo.getPatient_number()%>"><%=reservationInfo.getPatient_name()%></a></td>
+				<td><%= reservationInfo.getDepartment_name() != null ? reservationInfo.getDepartment_name() : "정보 없음" %></td>
+				<td><%= reservationInfo.getEmployee_name() != null ? reservationInfo.getEmployee_name() : "정보 없음" %></td>                <td><a href="./_layer_patient_detail2.jsp?patient_number=<%=reservationInfo.getPatient_number()%>"><%=reservationInfo.getPatient_name()%></a></td>
                 <td><%=reservationInfo.getReservation_content()%></td>
-                
+                <td><a href="./_layer_chart_modify3.jsp?reservation_number=<%=reservationInfo.getReservation_number()%>">수정하기</a></td>
             </tr>
         <%
             }
