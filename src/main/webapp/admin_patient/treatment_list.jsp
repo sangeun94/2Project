@@ -82,7 +82,7 @@
 	%>
 		
 
-		<p class="total_top">총 <b>00</b>개</p>
+		<p class="total_top">총 <b><%= medicalTreatmentList != null ? medicalTreatmentList.size() : 0 %></b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
                 <col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="10%" /><col width="5%" />

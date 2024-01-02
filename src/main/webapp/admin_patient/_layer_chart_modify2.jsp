@@ -79,9 +79,11 @@
 					
 					<input type="hidden" name="hospitalization_number" value="<%=hospitalization.getHospitalization_number()%>">        
 			        <label>입원일 : </label>
-				    	<input type="text" name="hospitalization_date" value="<%=hospitalization.getHospitalization_date()%>" id="idHospitalizationDate" class="txt" style="width:120px" autocomplete="off"><a href="javascript:;" class="btn_datepicker">달력</a>
+				    	<input type="date" name="hospitalization_date" value="<%=hospitalization.getHospitalization_date()%>" id="idHospitalizationDate" class="txt" style="width:120px" autocomplete="off">
+				    	<!-- <a href="javascript:;" class="btn_datepicker">달력</a> -->
 				    <label>퇴원일 : </label>
-				    	<input type="text" name="discharge_date" value="<%=hospitalization.getDischarge_date()%>" id="idDischargeDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
+				    	<input type="date" name="discharge_date" value="<%=hospitalization.getDischarge_date()%>" id="idDischargeDate" class="txt" style="width:120px" autocomplete="off">
+				    	<!-- <a href="javascript:;" class="btn_datepicker">달력</a> -->
 				    <label>입원실번호 : </label>
 				    	<select name="inpatient_room_number" style="width:200px;">
 		                    <option value="701" <%= "701".equals(hospitalization.getInpatient_room_number()) ? "selected" : "" %>>701</option>
@@ -127,18 +129,13 @@
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-    $("#idHospitalizationDate, #idDischargeDate").datepicker($.datepicker.regional.ko);
-/* 
-    // 달력 아이콘 클릭 시 datepicker 표시
-    $(".btn_datepicker").on("click", function(event) {
-        event.preventDefault();
-        $(this).prev("input").datepicker("show");
-    }); */
+$(function() {
+	console.log($("#idHospitalizationDate").length); // 이 코드는 해당 ID를 가진 요소가 있는지 확인합니다.
+	console.log($("#idHospitalizationDate").length); // 이 코드는 해당 ID를 가진 요소가 있는지 확인합니다.
+	$("#idHospitalizationDate").datepicker($.datepicker.regional.ko);
+	$("#idDischargeDate").datepicker($.datepicker.regional.ko);
 });
-
 </script>	
 
   <script>

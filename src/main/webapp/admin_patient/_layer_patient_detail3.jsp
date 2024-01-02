@@ -137,4 +137,3 @@
    });
   } );
   </script>   
-  <%@ include file="../admin_layout/footer.jsp" %>

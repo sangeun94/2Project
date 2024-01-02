@@ -115,9 +115,11 @@
 					<!-- 진료번호는 시퀀스로 자동으로 1씩증가하는 형태로! -->
 				   	<input type="hidden" name="patient_number" value="<%=medicalTreatment.getPatient_number()%>" >
 				    <label>입원일 : </label>
-				    	<input type="text" name="hospitalization_date" id="idHospitalizationDate" class="txt" style="width:120px" autocomplete="off" ><a href="javascript:;" class="btn_datepicker">달력</a>
+				    	<input type="text" name="hospitalization_date" id="idHospitalizationDate" class="txt" style="width:120px" autocomplete="off" >
+				    	<a href="javascript:;" class="btn_datepicker">달력</a>
 				    <label>퇴원일 : </label>
-				    	<input type="text" name="discharge_date" id="idDischargeDate" class="txt" style="width:120px" autocomplete="off"><a href="javascript:;" class="btn_datepicker">달력</a>
+				    	<input type="text" name="discharge_date" id="idDischargeDate" class="txt" style="width:120px" autocomplete="off">
+				    	<a href="javascript:;" class="btn_datepicker">달력</a>
 				    <label>입원실번호 : </label>
 				    	<select name="inpatient_room_number" style="width:200px;">
 		                    <option value="701">701</option>
