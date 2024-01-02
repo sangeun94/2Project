@@ -9,6 +9,8 @@
 		AdminEmployeeInfoDAO employeeInfoDAO = new AdminEmployeeInfoDAO();
 		List<EmployeeDTO> EmployeeInfoList = employeeInfoDAO.findAllEmployeeInfoList();
 	%>
+<link rel="stylesheet" type="text/css" href="../resources/plug-in/jquery-ui/css/jquery.dataTable.css">
+
 
 <section id="contents">
 	<%@ include file="../admin_layout/hgroup.jsp" %>
@@ -20,12 +22,9 @@
         let lnbDep3 = 0;
         let title = '임직원 조회';
 	</script>
-	
-	
-	
 
 	<article>
-		<fieldset class="search_box">
+<!-- 		<fieldset class="search_box">
 			<label>등록일자 : </label>
 				<input type="text" id="idRegStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 				<input type="text" id="idRegEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>					
@@ -87,8 +86,15 @@
 			</span>
 		</div>
 
-		<p class="total_top">총 <b>00</b>개</p>
-		<table class="listTable" style="margin-top:20px;">
+		<p class="total_top">총 <b>00</b>개</p> -->
+		
+	 	<!-- DataTables 정보 표시 -->
+        <div class="dataTables_info" id="patientTable_info" role="status" aria-live="polite">
+           총 직원 <%= EmployeeInfoList != null ? EmployeeInfoList.size() : 0 %>명
+        </div>
+		 
+		
+		<table id="employeeTable" class="listTable" style="margin-top:20px;">
 			<colgroup>
                 <col width="5%" /><col width="12%" /><col width="10%" /><col width="10%" /><col width="15%" /><col width="*" /><col width="*" />
 			</colgroup>
@@ -142,11 +148,12 @@
 			%>
 			</tbody>
 		</table>	
+		
 		<div class="btns_top mt20">
 			<a href="" class="red">선택 삭제</a>
 		</div>		
         
-		<p class="pagination" id="idPaging">	
+		<!-- <p class="pagination" id="idPaging">	
             <a href=""><img src="../resources/img/btn/paging1.png" alt="처음" /></a>
             <a href=""><img src="../resources/img/btn/paging2.png" alt="이전" /></a>
 			<span>
@@ -163,18 +170,29 @@
 			</span>
 			<a href=""><img src="../resources/img/btn/paging3.png" alt="다음" /></a>
 			<a href=""><img src="../resources/img/btn/paging4.png" alt="마지막" /></a>
-		</p>			
+		</p>			 -->
 	</article>
 </section>
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
 $(function() {
 	$("#idStartDate").datepicker($.datepicker.regional.ko);
 	$("#idEndDate").datepicker($.datepicker.regional.ko);
 	$("#idRegStartDate").datepicker($.datepicker.regional.ko);
 	$("#idRegEndDate").datepicker($.datepicker.regional.ko);	
+});
+
+$(document).ready(function() {
+	// DataTables 초기화
+	let table = $('#employeeTable').DataTable({
+		"paging": true,      // 페이징 활성화
+		"pageLength": 30,    // 한 페이지에 표시될 목록 수
+		"lengthMenu": [30, 50, 100, 200],  // 목록 수 선택 옵션
+		"ordering": false   // 정렬 비활성화
+	});
 });
 </script>
 <%@ include file="../admin_layout/footer.jsp" %>
