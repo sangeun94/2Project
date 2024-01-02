@@ -15,12 +15,13 @@
 		String id = (String)session.getAttribute("id");
 		ReservationDAO reservationDAO = new ReservationDAO();
 
-		String patientNum = (String)session.getAttribute("patientNum");
-		
 		//환자정보용
 		PatientDTO info = reservationDAO.findPatientInfoById(id);
+		
+		String patientNum =  Integer.toString(info.getPatient_number());
 		List<ReservationDTO> reservationList = reservationDAO.reservationInfoList(patientNum);
 	
+		System.out.print(patientNum);
 	%>
 	<div id="container">
 		<%@ include file="reservationHeader.jsp" %>

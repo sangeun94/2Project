@@ -42,9 +42,6 @@
 	String id = (String)session.getAttribute("id");
 	id = "user5";
 	session.setAttribute("id", id);
-	
-	String patientNumber = (String)session.getAttribute("patientNum");
-	session.setAttribute("patientNum", patientNumber);
 
 	ReservationDAO reservationDAO = new ReservationDAO();
 	PatientDTO info = reservationDAO.findPatientInfoById(id);
@@ -60,8 +57,8 @@
 				<div class="infoBox">
 					<div><span>회원정보</span></div>
 					<div> <span>어서오세요!</span> <span> <%=info.getName() %> 님</span> </div>
-					<form action="reservationInfo.jsp" method="post">
-						<div><button name="patientNum" value="<%=info.getPatient_number() %>">예약내역조회</button> </div>
+					<form action="reservationInfo.jsp">
+						<div><button>예약내역조회</button> </div>
 					</form>
 				</div>
 				
