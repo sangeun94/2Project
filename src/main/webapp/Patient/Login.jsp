@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>환자 로그인페이지</title>
- <script>
+<script>
         function validateForm() {
             var id = document.getElementById("id").value;
             var password = document.getElementById("password").value;
@@ -22,7 +22,7 @@
 
             return true; // 폼 전송을 허용
         }
-    </script>
+</script>
 </head>
 <body>
 <h1>로그인 페이지</h1>

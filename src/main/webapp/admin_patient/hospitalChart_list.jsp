@@ -88,15 +88,16 @@
 		<table class="listTable" style="margin-top: 20px;">
 			<colgroup>
 				<col width="5%" />
-				<col width="10%" />
-				<col width="10%" />
-				<col width="10%" />
-				<col width="10%" />
-				<col width="10%" />
-				<col width="10%" />
-				<col width="10%" />
-				<col width="*" />
-				<col width="*" />
+				<col width="6%" />
+				<col width="8%" />
+				<col width="8%" />
+				<col width="6%" />
+				<col width="8%" />
+				<col width="8%" />
+				<col width="6%" />
+				<col width="6%" />
+				<col width="20%" />
+				<col width="7%" />
 			</colgroup>
 			<thead>
 				<tr>

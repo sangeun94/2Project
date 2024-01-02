@@ -79,7 +79,17 @@
 		<p class="total_top">총 <b><%= reservationList != null ? reservationList.size() : 0 %></b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="5%" /><col width="5%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="20%" /><col width="*" />
+                <col width="5%" />
+                <col width="6%" />
+                <col width="6%" />
+                <col width="9%" />
+                <col width="8%" />
+                <col width="6%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="20%" />
+                <col width="8%" />
 			</colgroup>
 			<thead>
 			<tr>
@@ -108,7 +118,8 @@
                 <td><%=reservationInfo.getReservation_time()%></td>
                 <td><%=reservationInfo.getReservation_status()%></td>
 				<td><%= reservationInfo.getDepartment_name() != null ? reservationInfo.getDepartment_name() : "정보 없음" %></td>
-				<td><%= reservationInfo.getEmployee_name() != null ? reservationInfo.getEmployee_name() : "정보 없음" %></td>                <td><a href="./_layer_patient_detail2.jsp?patient_number=<%=reservationInfo.getPatient_number()%>"><%=reservationInfo.getPatient_name()%></a></td>
+				<td><%= reservationInfo.getEmployee_name() != null ? reservationInfo.getEmployee_name() : "정보 없음" %></td>
+				<td><a href="./_layer_patient_detail2.jsp?patient_number=<%=reservationInfo.getPatient_number()%>"><%=reservationInfo.getPatient_name()%></a></td>
                 <td><%=reservationInfo.getReservation_content()%></td>
                 <td><a href="./_layer_chart_modify3.jsp?reservation_number=<%=reservationInfo.getReservation_number()%>">수정하기</a></td>
             </tr>
@@ -120,7 +131,11 @@
 <%
 } else {
 // 로그인되지 않은 경우 처리
-%><script>alert('로그인이 필요합니다.'); location.href = "adminLogin.jsp";</script><%
+%>
+	<script>alert('로그인이 필요합니다.'); 
+		location.href = "../admin/adminLogin.jsp";
+	</script>
+<%
 }
 %>	
 			

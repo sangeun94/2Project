@@ -76,7 +76,14 @@
 		<p class="total_top">총 <b><%= hospitalizationList != null ? hospitalizationList.size() : 0 %></b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="15%" /><col width="15%" /><col width="15%" /><col width="20%" /><col width="35%" /><col width="5%" /><col width="5%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="8%" />
 			</colgroup>
 			<thead>
 			<tr>
