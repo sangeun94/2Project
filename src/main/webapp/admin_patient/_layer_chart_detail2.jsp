@@ -56,7 +56,7 @@
 					<colgroup><col width="220px" /><col width="15%" /><col width="*" /><col width="15%" /><col width="*" /></colgroup>
 					<tbody>
 					<tr>
-						<td rowspan="5">
+						<td rowspan="3">
 							<p class="pic_area">
 								<span id="idPic">Profile Image</span>
 							</p>

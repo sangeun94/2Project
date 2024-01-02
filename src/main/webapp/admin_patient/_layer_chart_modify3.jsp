@@ -52,10 +52,16 @@
 				<!-- 기본 정보 -->
 			<div id="tab_sub1">
 				<table class="viewTable">
-					<colgroup><col width="220px" /><col width="15%" /><col width="*" /><col width="15%" /><col width="*" /></colgroup>
+					<colgroup>
+						<col width="220px" />
+						<col width="15%" />
+						<col width="*" />
+						<col width="15%" />
+						<col width="*" />
+					</colgroup>
 					<tbody>
 					<tr>
-						<td rowspan="5">
+						<td rowspan="2">
 							<p class="pic_area">
 								<span id="idPic">Profile Image</span>
 							</p>
@@ -91,7 +97,7 @@
 						    <option value="15:00" <%= "15:00".equals(reservation.getReservation_time()) ? "selected" : "" %>>15:00</option>
 						</select><br>
        					<label>진료과 : </label>
-						<select name="department_name" style="width:200px;">
+						<select name="department_name" style="margin-top: 5px; width:120px">
 						    <option value="가정의학과" <%= "가정의학과".equals(reservation.getDepartment_name()) ? "selected" : "" %>>가정의학과</option>
 						    <option value="국제진료과" <%= "국제진료과".equals(reservation.getDepartment_name()) ? "selected" : "" %>>국제진료과</option>
 						    <option value="마취통증의학과" <%= "마취통증의학과".equals(reservation.getDepartment_name()) ? "selected" : "" %>>마취통증의학과</option>
@@ -136,7 +142,7 @@
 						</select><br>
                			
                			<label>진료의 : </label>
-						<select name="employee_name" style="width:200px;">
+						<select name="employee_name" style="margin-top: 5px; width:120px">
 						    <optgroup label="가정의학과">
 						        <option value="박지윤" <%= "박지윤".equals(reservation.getEmployee_name()) ? "selected" : "" %>>박지윤</option>
 						        <option value="김민지" <%= "김민지".equals(reservation.getEmployee_name()) ? "selected" : "" %>>김민지</option>
@@ -260,7 +266,7 @@
 						        <option value="서준혁" <%= "서준혁".equals(reservation.getEmployee_name()) ? "selected" : "" %>>서준혁</option>
 						    </optgroup>
 						</select><br>	   					
-						<textarea name="reservation_content" placeholder="예약 내용을 입력하세요."><%=reservation.getReservation_content()%></textarea><br>
+						<textarea style="margin-top: 5px; height:100px;" name="reservation_content" placeholder="예약 내용을 입력하세요."><%=reservation.getReservation_content()%></textarea><br>
    	   			        <p class="btn_c">
 							<a href="" class="red"><button type="submit">수정하기</button></a>
 						</p>

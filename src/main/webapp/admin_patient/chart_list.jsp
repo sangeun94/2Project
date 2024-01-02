@@ -86,7 +86,17 @@
 		<p class="total_top">총 <b><%= reservationList != null ? reservationList.size() : 0 %></b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="10%" /><col width="*" /><col width="*" />
+                <col width="5%" />
+                <col width="6%" />
+                <col width="6%" />
+                <col width="9%" />
+                <col width="8%" />
+                <col width="6%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="20%" />
+                <col width="8%" />
 			</colgroup>
 			<thead>
 			<tr>
@@ -144,7 +154,7 @@
      %>
             <script>
                 alert('로그인이 필요합니다.');
-                location.href = "adminLogin.jsp"; // 로그인 페이지로 리다이렉션
+                location.href = "../admin/adminLogin.jsp"; // 로그인 페이지로 리다이렉션
             </script>
      <%
         }	

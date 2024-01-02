@@ -5,7 +5,7 @@
 <%@page import="java.util.List"%>
 <%@page import="db.dao.admin.AdminMedicalTreatmentDAO"%>
 
-<!-- 환자 관리 - 진료 내역 확인 -->
+<!-- 환자 관리 - 진료 내역 조회 -->
 <section id="contents">
 	<%@ include file="../admin_layout/hgroup.jsp" %>
 
@@ -14,7 +14,7 @@
         let lnbDep1 = 5;
         let lnbDep2 = 0;
         let lnbDep3 = 0;
-        let title = '진료 내역 확인';
+        let title = '진료 내역 조회';
 	</script>
 
 	<article>
@@ -85,7 +85,17 @@
 		<p class="total_top">총 <b><%= medicalTreatmentList != null ? medicalTreatmentList.size() : 0 %></b>개</p>
 		<table class="listTable" style="margin-top:20px;">
 			<colgroup>
-                <col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="5%" /><col width="10%" /><col width="5%" />
+                <col width="5%" />
+                <col width="6%" />
+                <col width="8%" />
+                <col width="6%" />
+                <col width="6%" />
+                <col width="8%" />
+                <col width="8%" />
+                <col width="6%" />
+                <col width="6%" />
+                <col width="20%" />
+                <col width="8%" />
 			</colgroup>
 			<thead>
 			<tr>
