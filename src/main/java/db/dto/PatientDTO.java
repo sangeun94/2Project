@@ -21,6 +21,20 @@ public class PatientDTO { //환자
 		this.password = password;
 	}
 	
+	public PatientDTO(int patient_number, int patient_status_code, String id, String email,
+			String name, String jumin, String phone_number, String address) {
+		super();
+		this.patient_number = patient_number;
+		this.patient_status_code = patient_status_code;
+		this.id = id;
+		this.email = email;
+		this.name = name;
+		this.jumin = jumin;
+		this.phone_number = phone_number;
+		this.address = address;
+	}
+	
+	
 	public PatientDTO(int patient_number, int patient_status_code, String id, String password, String email,
 			String name, String jumin, String phone_number, String address) {
 		super();

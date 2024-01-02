@@ -240,6 +240,9 @@ SELECT 'hm148', 3, 'Y', 'hm148', '정하은', 'F', '010-0000-0147', '서울특�
 SELECT 'hm149', 3, 'Y', 'hm149', '강주영', 'M', '010-0000-0148', '서울특별시', 'example149@outlook.com', '인턴', null FROM DUAL UNION ALL
 SELECT 'hm150', 3, 'Y', 'hm150', '조도영', 'M', '010-0000-0149', '서울특별시', 'user150@example.org', '인턴', null FROM DUAL;
 
+--회원가입 시퀀스
+CREATE SEQUENCE patient_number_seq START WITH 1 INCREMENT BY 1;
+
 --환자
 CREATE TABLE patient (
     patient_number NUMBER DEFAULT patient_number_seq.NEXTVAL PRIMARY KEY,
@@ -253,8 +256,6 @@ CREATE TABLE patient (
     address VARCHAR2(50)
 );
 
---회원가입 시퀀스
-CREATE SEQUENCE patient_number_seq START WITH 1 INCREMENT BY 1;
 
 INSERT INTO patient (patient_number, patient_status_code, id, password, email, name, jumin, phone_number, address)
 SELECT 1, 1, 'user1', 'pass1', 'user1@example.com', '홍길동', '950101-1234567', '010-1111-1111', '서울특별시' FROM DUAL UNION ALL

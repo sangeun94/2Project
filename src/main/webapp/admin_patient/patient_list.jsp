@@ -10,7 +10,7 @@
 	List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
 %>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="../resources/plug-in/jquery-ui/css/jquery.dataTable.css">
 
 
 <section id="contents">
@@ -25,7 +25,9 @@
 	</script>
 	
 	<article>
-		<fieldset class="search_box">
+	
+	
+		<%-- <fieldset class="search_box">
 			<label>등록일자 : </label>
 				<input type="text" id="idRegStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
 				<input type="text" id="idRegEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>					
@@ -88,7 +90,16 @@
 			</span>
 		</div>
 
-		<p class="total_top">총 <b>00</b>개</p>
+		<p class="total_top">총 <b><%= PatientInfoList != null ? PatientInfoList.size() : 0 %></b>개</p>
+		 --%>
+		
+		 <!-- DataTables 정보 표시 -->
+        <div class="dataTables_info" id="patientTable_info" role="status" aria-live="polite">
+           총 환자 <%= PatientInfoList != null ? PatientInfoList.size() : 0 %>명
+        </div>
+		 
+		 
+		 
 		<table id="patientTable" class="listTable" style="margin-top:20px;">
 			<colgroup>
                 <col width="5%" /><col width="8%" /><col width="10%" /><col width="8%" /><col width="15%" /><col width="15%" /><col width="*" /><col width="*" /><col width="*" />
@@ -136,7 +147,7 @@
 			<a href="" class="red">선택 삭제</a>
 		</div>		
         
-		<p class="pagination" id="idPaging">	
+		<!-- <p class="pagination" id="idPaging">	
             <a href=""><img src="../resources/img/btn/paging1.png" alt="처음" /></a>
             <a href=""><img src="../resources/img/btn/paging2.png" alt="이전" /></a>
 			<span>
@@ -153,7 +164,7 @@
 			</span>
 			<a href=""><img src="../resources/img/btn/paging3.png" alt="다음" /></a>
 			<a href=""><img src="../resources/img/btn/paging4.png" alt="마지막" /></a>
-		</p>			
+		</p>		 -->	
 	</article>
 </section>
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
@@ -172,7 +183,7 @@ $(function() {
 <script>
 	$(document).ready(function() {
 		// DataTables 초기화
-		var table = $('#patientTable').DataTable({
+		let table = $('#patientTable').DataTable({
 			"paging": true,      // 페이징 활성화
 			"pageLength": 30,    // 한 페이지에 표시될 목록 수
 			"lengthMenu": [30, 50, 100, 200],  // 목록 수 선택 옵션
