@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.dto.MedicalTreatmentDTO;
+import db.dto.ReservationDTO;
 import db.util.DBConnectionManager;
 
 public class AdminMedicalTreatmentDAO {
@@ -30,9 +31,12 @@ public class AdminMedicalTreatmentDAO {
 			//DBConnectionManager 만들어준 connection 을 활용
 			conn = DBConnectionManager.connectDB();
 
-			String sql =  " select treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date,  TO_CHAR(treatment_time, 'HH24:MI') treatment_time, employee_number, patient_number, hospitalization_status, treatment_content "
-					+ "from medical_treatment "
-					+ "order by treatment_number " ;
+			String sql =  " select t.treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date, TO_CHAR(treatment_time, 'HH24:MI') treatment_time, "
+					+ " t.hospitalization_status, d.department_name, e.name employee_name, t.patient_number, p.name patient_name, t.treatment_content "
+					+ " from medical_treatment t, Medical_Department d, Employee e, patient p "
+					+ " where e.Employee_Number = t.Employee_Number AND e.Department_Number = d.Department_Number "
+					+ " AND p.patient_number = t.Patient_Number "
+					+ " order by treatment_number " ;
 
 			List<MedicalTreatmentDTO> medicaltreatmentList = null;
 
@@ -43,10 +47,18 @@ public class AdminMedicalTreatmentDAO {
 				rs = psmt.executeQuery(); //준비된 sql 쿼리문 실행!
 				medicaltreatmentList = new ArrayList<MedicalTreatmentDTO>();
 
-				while(rs.next()) { 	
-					MedicalTreatmentDTO medicalTreatmentDTO = new MedicalTreatmentDTO(rs.getInt("treatment_number"), rs.getString("treatment_date")
-							,rs.getString("treatment_time"), rs.getString("employee_number"), rs.getInt("patient_number")
-							,rs.getString("hospitalization_status"), rs.getString("treatment_content") );
+				while(rs.next()) { 	 
+					MedicalTreatmentDTO medicalTreatmentDTO = new MedicalTreatmentDTO (
+			                rs.getInt("treatment_number"), 
+			                rs.getString("treatment_date"), 
+			                rs.getString("treatment_time"), 
+			                rs.getString("hospitalization_status"),
+			                rs.getString("department_name"),
+			                rs.getString("employee_name"),
+			                rs.getInt("patient_number"),
+			                rs.getString("patient_name"),	
+			                rs.getString("treatment_content")
+					);
 
 					medicaltreatmentList.add(medicalTreatmentDTO);
 				}
@@ -63,11 +75,11 @@ public class AdminMedicalTreatmentDAO {
 	    public MedicalTreatmentDTO findAdminMedicalTreatmentById(int treatment_number) {
 	    	conn = DBConnectionManager.connectDB();
 	    	
-            String sql = "SELECT Treatment_Number, TO_CHAR(Treatment_Date, 'YYYY-MM-DD') Treatment_Date, " +
-                         "TO_CHAR(Treatment_time, 'HH24:MI') Treatment_time, Employee_Number, " +
-                         "Patient_Number, Hospitalization_Status, Treatment_Content " +
-                         "FROM Medical_Treatment " +
-                         "WHERE Treatment_Number = ?";
+            String sql = " SELECT m.Treatment_Number, TO_CHAR(Treatment_Date, 'YYYY-MM-DD') Treatment_Date, " +
+                         " TO_CHAR(Treatment_time, 'HH24:MI') Treatment_time, m.Employee_Number, " +
+                         " m.Patient_Number, p.name Patient_name, m.Hospitalization_Status, m.Treatment_Content " +
+                         " FROM Medical_Treatment m, patient p" +
+                         " WHERE m.patient_number = p.patient_number AND Treatment_Number = ?";
 
             MedicalTreatmentDTO medicalTreatment = null;
             
@@ -85,6 +97,7 @@ public class AdminMedicalTreatmentDAO {
 	                    rs.getString("Treatment_time"),
 	                    rs.getString("Employee_Number"),
 	                    rs.getInt("Patient_Number"),
+	                    rs.getString("Patient_name"),
 	                    rs.getString("Hospitalization_Status"),
 	                    rs.getString("Treatment_Content")
 	                );
@@ -98,6 +111,88 @@ public class AdminMedicalTreatmentDAO {
 	        return medicalTreatment;
 	    }
 		
+	    public List<MedicalTreatmentDTO> findAdminMedicalTreatmentListById(String employee_number) {
+			
+			conn = DBConnectionManager.connectDB();
+		    
+		    // sql 변수를 올바르게 선언하고 초기화
+		    String sql = " select t.treatment_number, TO_CHAR(treatment_date, 'YYYY-MM-DD') treatment_date, TO_CHAR(treatment_time, 'HH24:MI') treatment_time,"
+		    		+ " t.hospitalization_status, d.department_name, e.name employee_name, t.patient_number, p.name patient_name, t.treatment_content "
+		    		+ " from medical_treatment t, Medical_Department d, Employee e, patient p "
+		    		+ " where e.Employee_Number = t.Employee_Number AND e.Department_Number = d.Department_Number "
+		    		+ " AND p.patient_number = t.Patient_Number "
+		    		+ " AND t.employee_number = ? AND t.hospitalization_status = 'Y' "
+		    		+ " order by treatment_number ";
+
+		    List<MedicalTreatmentDTO> medicaltreatmentList = null;
+
+		    try {
+		        psmt = conn.prepareStatement(sql);
+		        psmt.setString(1, employee_number);
+		        rs = psmt.executeQuery();
+
+		        medicaltreatmentList = new ArrayList<>();
+		        
+		        while (rs.next()) {
+		        	MedicalTreatmentDTO medicalTreatmentDTO = new MedicalTreatmentDTO(
+		                rs.getInt("treatment_number"), 
+		                rs.getString("treatment_date"), 
+		                rs.getString("treatment_time"), 
+		                rs.getString("hospitalization_status"),
+		                rs.getString("department_name"),
+		                rs.getString("employee_name"),
+		                rs.getInt("patient_number"),
+		                rs.getString("patient_name"),
+		                rs.getString("treatment_content")
+		            );
+
+		            medicaltreatmentList.add(medicalTreatmentDTO);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        DBConnectionManager.closeDB(conn, psmt, rs);
+		    }
+
+		    return medicaltreatmentList;
+		}
+	    
+	    public MedicalTreatmentDTO findAdminMedicalTreatmentListById2(String patient_number) {
+	        conn = DBConnectionManager.connectDB();
+	        String sql =  " SELECT m.treatment_number, TO_CHAR(m.treatment_date, 'YYYY-MM-DD') treatment_date, "
+	                    + " TO_CHAR(m.treatment_time, 'HH24:MI') treatment_time, "
+	                    + " m.patient_number, p.name patient_name, m.treatment_content "
+	                    + " FROM medical_treatment m, patient p "
+	                    + " WHERE m.patient_number = p.patient_number AND m.patient_number = ? "
+	                    + " ORDER BY m.treatment_number ";
+
+	        MedicalTreatmentDTO medicalTreatment = null;
+
+	        try {
+	            psmt = conn.prepareStatement(sql);
+	            psmt.setString(1, patient_number); // patient_number를 쿼리에 설정
+
+	            rs = psmt.executeQuery();
+
+	            if(rs.next()) { 
+	                medicalTreatment = new MedicalTreatmentDTO(
+	                    rs.getInt("treatment_number"), 
+	                    rs.getString("treatment_date"), 
+	                    rs.getString("treatment_time"), 
+	                    rs.getInt("patient_number"),
+	                    rs.getString("patient_name"), // 환자 이름
+	                    rs.getString("treatment_content")
+	                );
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            DBConnectionManager.closeDB(conn, psmt, rs);
+	        }
+
+	        return medicalTreatment;
+	    }
 		
 		//저장 INSERT -> save
 		 public int addMedicalTreatment(String treatment_number, String patient_number, String employee_number, String treatment_date, String treatment_time, String hospitalization_status, String treatment_content) {

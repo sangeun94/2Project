@@ -1,0 +1,161 @@
+* {
+    font-family: 'Noto Sans KR Regular','Noto Sans CJK KR','Noto Sans KR','맑은 고딕',sans-serif;
+    font-weight: 400;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e3e3e3
+}
+
+.fa-user {
+    font-size: 40px;
+    opacity: 0.5;
+    color: #2263bb;
+}
+
+#memberVo {
+    margin-top: 40px;
+}
+
+.btnType03 {
+    background-color: #2263bb;
+    color: #fff;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+}
+.btnType04 {
+    background-color: #2263bb;
+    color: #fff;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+}
+.btnType03:hover {
+    background-color: #2980b9;
+}
+.btnType04:hover {
+    background-color: #2980b9;
+}
+
+.colorPoint {
+    color: #8eb3e8!important
+}
+
+.colorPoint02 {
+    color: #666!important
+}
+
+.inputText {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+
+#content {
+    word-spacing: 0;
+    letter-spacing: -.5px
+}
+
+.loginContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-right: 0
+}
+
+.logBox {
+    float: left;
+    width: 350px;
+    height: 450px;
+    padding: 60px;
+    text-align: center;
+    background-color: #fff;
+}
+
+#loginBtn {
+    margin-top: 20px;
+}
+#joinBtn{
+	margin-top: 20px;
+}
+.colorPoint {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.colorPoint02 {
+    font-size: 16px;
+}
+
+.selectBox {
+    display: flex;
+    justify-content: center;
+    width: 470px;
+    height: 50px;
+    background-color: #fff;
+}
+
+.memberBox, .adminBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    background-color: #fff; 
+    flex-grow: 1; /* 두 박스가 같은 크기를 갖도록 설정 */
+    text-align: center;
+    color: white;
+}
+
+.adminBox {
+    background-color: #c9c9c9;
+    font-weight: bold;
+    transition: all 0.4s;
+}
+
+.adminBox:hover {
+    background-color: #d9d9d9;
+}
+
+.memberBox {
+    background-color: #2263bb;
+    font-weight: bold;
+    transition: all 0.4s;
+}
+
+.memberBox:hover {
+    background-color: #2980b9;
+}
+
+.logBox .txtBtn {
+    display: inline-block;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+}
+
+.txtBtn:visited {
+    color: #666;
+    text-decoration: none;
+}
