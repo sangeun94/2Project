@@ -48,6 +48,10 @@ List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
 				<col width="10%" />
 				<col width="10%" />
 			</colgroup>
+			
+			
+		<form id="deleteForm" action="deletePatient_proc.jsp" method="post">
+			<input type="hidden" id="selectedPatients" name="selectedPatients" value="" />
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="selectAllCheckboxHeader"></th>
@@ -66,7 +70,7 @@ List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
 				for (PatientDTO patientInfo : PatientInfoList) {
 				%>
 				<tr>
-					<td><input type="checkbox" class="rowCheckbox"></td>
+					<td><input type="checkbox" class="rowCheckbox" value="<%=patientInfo.getPatient_number()%>"></td>
 					<td><%=patientInfo.getPatient_number()%></td>
 					<td><a
 						href="./_layer_patient_detail.jsp?patient_number=<%=patientInfo.getPatient_number()%>"><%=patientInfo.getName()%></a></td>
@@ -82,16 +86,17 @@ List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
 				%>
 			</tbody>
 		</table>
-		
+		</form>
 		<!-- 하단 등록하기 버튼 -->
 		<div class="btns_top register-button mt20">
 		  <a href="../admin_patient/_layer_add_patient.jsp" class="blue">신규등록하기</a>
 		</div>
 		
 		<!-- 하단 삭제 버튼 -->
-		<div class="btns_top mt20">
-			<a href="" class="red">선택 삭제</a>
-		</div>
+			<div class="btns_top mt20">
+				<button id="deleteBtn" type="button" class="red">선택 삭제하기</button>
+			</div>
+		
 		
 	</article>
 </section>
@@ -106,4 +111,47 @@ List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
 <script type="text/javascript" charset="utf8"
 	src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="../resources/js/dataTable.js"></script>
+<script>
+	document.getElementById('deleteBtn').addEventListener('click', ()=> {
+	    // 선택된 체크박스 확인
+	    let selectedCheckboxes = document.querySelectorAll('.rowCheckbox:checked');
+	
+	    if (selectedCheckboxes.length === 0) {
+	        alert('삭제할 항목을 선택하세요.');
+	        return;
+	    }
+	
+	    // 선택된 환자 번호를 배열에 저장
+	    let selectedPatients = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+	
+	    // hidden 필드에 선택된 환자 번호를 설정
+	    document.getElementById('selectedPatients').value = JSON.stringify(selectedPatients);
+	
+	    // 확인 후 삭제 여부 묻기
+	    if (confirm('선택한 환자 정보를 삭제하시겠습니까?')) {
+	        // form submit을 통해 서버로 데이터 전송
+	        let deleteForm = document.getElementById('deleteForm');
+	        if (deleteForm) {
+	            deleteForm.submit();
+	        } else {
+	            alert('폼을 찾을 수 없습니다.');
+	        }
+	    }
+	});
+</script>
+<%-- <script>
+	document.getElementById('deleteBtn').addEventListener('click', ()=> {
+			//alert('삭제버튼눌림');
+			if(confirm('삭제 하시겠습니까?')){
+				
+				//get 방식으로 id 값 전달
+				// location.href = 'deletePatient_proc.jsp?id=<%=PatientInfo.getId()%>';
+				
+				//form submit 을 발생시켜서, post 방식으로 id 값 전달
+				let form = document.getElementById('personForm');
+				form.action = 'deletePerson_proc.jsp';
+				form.submit();
+			}
+	});
+</script> --%>
 <%@ include file="../admin_layout/footer.jsp"%>
