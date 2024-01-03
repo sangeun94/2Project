@@ -46,6 +46,8 @@ nav ul {
 
 nav li {
     display: inline-block;
+    position: relative;
+    left: 120px;
 }
 
 nav li a {
@@ -53,12 +55,21 @@ nav li a {
     padding: 10px;
     font-size: 20px;
     transition: 0.2s color;
-    margin-right: 30px; 
+    margin-right: 20px; 
 }
 
 nav li a:hover {
     color: #2763ba;
     font-weight: normal;
+}
+
+nav li:nth-last-child(2) a,
+nav li:last-child a {
+    font-size: 17px;
+    margin-right: 0px;
+    padding-right: 10px;
+    position: relative;
+    right: -40px;
 }
 
 .menu {
@@ -77,65 +88,9 @@ nav li a:hover {
     transform: translate(-50%, -50%);
 }
 
-.util__item-area {
-    position: absolute;
-    display: flex;
-    text-align: center;
-    right: 10%; 
-    top: 50%; 
-    transform: translateY(-50%);
-}
-
-.util__item-area_2 {
-    position: absolute;
-    display: flex;
-    text-align: center;
-    right: 3%; 
-    top: 50%; 
-    transform: translateY(-50%);
-}
-
 .menu-item {
     position: relative; 
 }
 
-.menu-item:hover {
-    border-bottom: 3px solid #2763ba;
-}
 
-.menu-item:hover .sub-menu {
-    display: block;
-    position: absolute;
-    width: 400px;
-    height: 300px;
-    top: 100%; 
-    left: 50%;
-    transform: translateX(-50%); 
-}
 
-.sub-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-li:hover .sub-menu {
-    display: block;
-    text-align: left; 
-}
-
-.sub-menu a {
-    padding: 10px 20px;
-    color: black;
-    text-decoration: none;
-    display: block;
-}
-
-.sub-menu a:hover {
-    background-color: white;
-} 
