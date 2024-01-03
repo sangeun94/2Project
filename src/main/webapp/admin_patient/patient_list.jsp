@@ -93,7 +93,7 @@ List<PatientDTO> PatientInfoList = patientInfoDAO.findPatientInfoList();
 		</div>
 		
 		<!-- 하단 삭제 버튼 -->
-			<div class="btns_top mt20">
+			<div class="btns_top mt20 red">
 				<button id="deleteBtn" type="button" class="red">선택 삭제하기</button>
 			</div>
 		

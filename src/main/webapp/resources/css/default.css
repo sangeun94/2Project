@@ -1590,6 +1590,18 @@ label+label {
     color: #fff;
 }
 
+div.btns_top.mt20.red {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    background: #f06369;
+    border-radius: 2px;
+    text-align: center;
+    color: #fff;
+}
+
 div.btns_top.register-button {
 	float: right;
 	margin: 0 0 30px 20px;
