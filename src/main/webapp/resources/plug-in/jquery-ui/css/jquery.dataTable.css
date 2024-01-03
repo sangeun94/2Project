@@ -103,7 +103,7 @@ table.dataTable {
   width: 100%;
   margin: 0 auto;
   clear: both;
-  border-collapse: separate;
+/*  border-collapse: separate;*/
   border-spacing: 0;
   /*
    * Header and footer styles
@@ -294,10 +294,12 @@ table.dataTable td {
  */
 .dataTables_wrapper {
   position: relative;
-  clear: both;
+/*  clear: both;*/
 }
 .dataTables_wrapper .dataTables_length {
-  float: left;
+  float: right;
+  margin: 0 0 30px 20px;
+  
 }
 .dataTables_wrapper .dataTables_length select {
 	box-sizing: border-box;
@@ -312,11 +314,13 @@ table.dataTable td {
 	border: 1px solid #c6cbd8;
 	outline: None;
 	vertical-align: middle;
+	display: inline-block;
 }
 
 .dataTables_wrapper .dataTables_filter {
   float: right;
   text-align: right;
+  display: inline-block;
 }
 .dataTables_wrapper .dataTables_filter input {
 	box-sizing: border-box;
@@ -332,6 +336,7 @@ table.dataTable td {
   float: left;
   padding-top: 0.755em;
 }
+
 .dataTables_wrapper .dataTables_paginate {
   float: right;
   text-align: right;
@@ -471,6 +476,18 @@ table.dataTable td {
   height: 0;
 }
 
+div#patientTable_info.dataTables_info.title{
+	display: inline-block;
+	float: left;
+	margin : 0;
+	height: 30px;
+	line-height: 30px;
+}
+
+table#patientTable.listTable.dataTable.no-footer {
+	margin: 0 0 24px 0;
+}
+
 @media screen and (max-width: 767px) {
   .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_paginate {
@@ -491,3 +508,4 @@ table.dataTable td {
     margin-top: 0.5em;
   }
 }
+

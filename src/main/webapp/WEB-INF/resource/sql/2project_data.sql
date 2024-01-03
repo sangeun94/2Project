@@ -1,4 +1,32 @@
---직원, 환자, 진료과만 테이블 생성 및 데이터 추가
+-- drop
+-- 차트
+DROP TABLE Chart;
+-- 진료실
+DROP TABLE Medical_Room;
+-- 입원실
+DROP TABLE Inpatient_Room;
+-- 입원
+DROP TABLE Hospitalization;
+-- 예약
+DROP TABLE Reservation;
+-- 직원
+DROP TABLE Employee;
+-- 진료
+DROP TABLE Medical_Treatment;
+-- 회원가입 시퀀스
+DROP SEQUENCE patient_number_seq;
+-- 진료 번호 시퀀스
+DROP SEQUENCE treatment_number_seq;
+-- 환자
+DROP TABLE Patient;
+-- 진료과
+DROP TABLE Medical_Department;
+
+
+
+
+
+--직원, 환자, 진료과 등 테이블 생성 및 데이터 추가
 
 --진료과
 CREATE TABLE Medical_Department (
@@ -353,11 +381,11 @@ SELECT * FROM patient;
 
 --입원
 CREATE TABLE Hospitalization (
+    Hospitalization_Number NUMBER PRIMARY KEY,
     Hospitalization_Date DATE NOT NULL,
-    Discharge_Date DATE,
-    Inpatient_Room_Number VARCHAR2(10), -- 701~801 층마다 5개 무조건 6인실
-    Patient_Number NUMBER, -- 1, 2, 3, 4 
-    PRIMARY KEY (Patient_Number)
+    Discharge_Date DATE,    
+    Inpatient_Room_Number VARCHAR2(10) NOT NULL, -- 701~801 층마다 5개 무조건 6인실
+    Patient_Number NUMBER -- 1, 2, 3, 4 
 );
 
 INSERT INTO hospitalization(Hospitalization_Date,Discharge_Date,Patient_Number)

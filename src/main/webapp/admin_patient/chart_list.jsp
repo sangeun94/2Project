@@ -135,14 +135,7 @@
 			</tr>
 	<%
 			 }	
-	%>		
-			
-			</tbody>
-		</table>	
-		
-	</article>
-</section>
-	<%
+
 	} else {
                 // 예약 정보가 없는 경우
      %>
@@ -159,6 +152,12 @@
      <%
         }	
 	 %>
+			</tbody>
+		</table>	
+		
+	</article>
+</section>
+	
 	 
 <link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
 <script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>

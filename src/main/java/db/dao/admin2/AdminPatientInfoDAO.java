@@ -27,7 +27,7 @@ public class AdminPatientInfoDAO {
 					+ " WHEN SUBSTR(jumin, 8, 1) IN ('2', '4') THEN '여성' "
 					+ " ELSE '알 수 없음' "
 					+ " END AS gender "
-					+ " FROM patient ";
+					+ " FROM patient ORDER BY patient_number ";
 		
 		List<PatientDTO> PatientInfoList = null; //return하기 위해 선언
 
@@ -68,7 +68,8 @@ public class AdminPatientInfoDAO {
 		conn = DBConnectionManager.connectDB();
 
 		String sql = " SELECT * FROM patient "
-					+ " WHERE name = ? "; 
+					+ " WHERE name = ? "
+					+ " ORDER BY patient_number "; 
 
 		List<PatientDTO> PatientInfoList = null; //return하기 위해 선언
 
@@ -107,7 +108,8 @@ public class AdminPatientInfoDAO {
 		conn = DBConnectionManager.connectDB();
 
 		String sql = " SELECT * FROM patient "
-					+ " WHERE id = ? "; 
+					+ " WHERE id = ? "
+					+ " ORDER BY patient_number "; 
 
 		List<PatientDTO> PatientInfoList = null; //return하기 위해 선언
 
@@ -152,7 +154,8 @@ public class AdminPatientInfoDAO {
 					+ " ELSE '알 수 없음' "
 					+ " END AS gender "
 					+ " FROM patient "
-					+ " WHERE patient_number = ? "; 
+					+ " WHERE patient_number = ? "
+					+ " ORDER BY patient_number ";
 
 		PatientDTO patientInfo = null; //return하기 위해 선언
 
@@ -193,7 +196,8 @@ public class AdminPatientInfoDAO {
 
 		String sql = " SELECT * FROM patient "
 				+ " WHERE id is not null "
-				+ " AND patient_status_code = 1 ";
+				+ " AND patient_status_code = 1 "
+				+ " ORDER BY patient_number ";
 		
 		List<PatientDTO> PatientInfoList = null; //return하기 위해 선언
 

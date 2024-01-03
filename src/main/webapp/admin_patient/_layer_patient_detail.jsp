@@ -56,7 +56,7 @@
 							<tr>
 								<td rowspan="5">
 									<p class="pic_area">
-										<span id="idPic">Profile Image</span>
+										<span id="idPic"></span>
 									</p>
 								</td>
 								<th>환자번호</th>
@@ -201,17 +201,41 @@
 				return;
 			}
 			
+			if (input_jumin.value.length !== 14) {
+		        alert('주민등록번호는 13자리로 입력해주세요.');
+		        input_jumin.focus();
+				return;
+	        }
+			
+			
+			if (input_jumin.value.length === 14) {
+                const eighthDigit = input_jumin.value.charAt(7); // 8번째 자리 추출
+                if (!['1', '2', '3', '4'].includes(eighthDigit)) {
+                    alert('올바른 주민등록번호를 입력해주세요.');
+                    input_jumin.focus();
+    				return;
+             }}
+			
+			
 			if(input_phone_number.value.trim() == ''){
 				alert('휴대전화번호는 필수 입력 항목입니다.');
 				input_phone_number.focus();
 				return;
 			}
+			
+			
+			if (input_phone_number.value.length !== 13) {
+		        alert('올바른 휴대전화번호를 입력해주세요.');
+		        input_jumin.focus();
+				return;
+	        }
 		
 			if(confirm('수정 하시겠습니까?')){
 				let form = document.getElementById('patientForm');
 				form.action = 'modifyPatient_proc.jsp';
 				form.submit();
 			}
+			
 	});
 </script>
 
