@@ -1,12 +1,11 @@
-<%@page import="db.dto.EmployeeDTO"%>
-<%@page import="db.dao.admin.AdminLoginDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page import="db.dto.EmployeeDTO"%>
+<%@ page import="db.dao.admin.AdminLoginDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>	
 	<%
@@ -27,16 +26,18 @@
 	%>		
 			<h2>해당 사용자 정보가 없습니다.</h2>
 		<script> //alert창 뜨고 로그인페이지로 보내버리는!
-			alert('잘못된 접근입니다.');
-			location.href = "adminLogin.jsp";
+			alert('아이디 또는 비밀번호를 확인하세요.');
+			location.href = "../admin/adminLogin.jsp";
 		</script>
 	<%	
-		} else {
+		} else { 
 			if(employee_number.equals(employeeInfo.getEmployee_number()) && password.equals(employeeInfo.getPassword())) {
+				//로그인 성공
+				session.setAttribute("loginId", employee_number);
 	%>			
 				<script>
-					alert('로그인 성공');
-					location.href = 'adminMyTreatment.jsp?employee_number=<%=employee_number%>'; //해당 경로로 페이지 이동
+					/* alert('로그인 성공'); */
+					location.href = '../admin_patient/patient_list.jsp?employee_number=<%=employee_number%>'; //해당 경로로 페이지 이동
 				</script>
 			<%	
 				} else {

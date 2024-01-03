@@ -4,7 +4,7 @@ public class EmployeeDTO { //직원
 
 	public String employee_number; //사번
 	public int employee_code;
-	public String employee_status;
+	public String employment_status;
 	public String password;
 	public String name;
 	public String gender;
@@ -13,6 +13,8 @@ public class EmployeeDTO { //직원
 	public String email;
 	public String position;
 	public int department_number;
+	public String employee_category;
+	public String department_name;
 	
 	//생성자
 	public EmployeeDTO() {}
@@ -20,12 +22,12 @@ public class EmployeeDTO { //직원
 		this.employee_number = employee_number;
 		this.password = password;
 	}
-	public EmployeeDTO(String employee_number, int employee_code, String employee_status, String password, String name,
+	public EmployeeDTO(String employee_number, int employee_code, String employment_status, String password, String name,
 			String gender, String phone_number, String address, String email, String position, int department_number) {
 		super();
 		this.employee_number = employee_number;
 		this.employee_code = employee_code;
-		this.employee_status = employee_status;
+		this.employment_status = employment_status;
 		this.password = password;
 		this.name = name;
 		this.gender = gender;
@@ -33,6 +35,26 @@ public class EmployeeDTO { //직원
 		this.address = address;
 		this.email = email;
 		this.position = position;
+		this.department_number = department_number;
+	}
+	
+	
+	//직원 목록 생성자
+	public EmployeeDTO(String employee_number, String employee_category, String position, String name,
+			String phone_number, String email) {
+		super();
+		this.employee_number = employee_number;
+		this.employee_category = employee_category;
+		this.position = position;
+		this.name = name;
+		this.phone_number = phone_number;
+		this.email = email;
+	}
+	
+	//의료진 목록출력용 생성자
+	public EmployeeDTO(String name, int department_number) {
+		super();
+		this.name = name;
 		this.department_number = department_number;
 	}
 	
@@ -46,14 +68,14 @@ public class EmployeeDTO { //직원
 	public int getEmployee_code() {
 		return employee_code;
 	}
-	public void setEmployee_code(int employee_code) {
+	public void setEmployee_code(int employment_code) {
 		this.employee_code = employee_code;
 	}
-	public String getEmployee_status() {
-		return employee_status;
+	public String getEmployment_status() {
+		return employment_status;
 	}
-	public void setEmployee_status(String employee_status) {
-		this.employee_status = employee_status;
+	public void setEmployment_status(String employment_status) {
+		this.employment_status = employment_status;
 	}
 	public String getPassword() {
 		return password;
@@ -102,6 +124,18 @@ public class EmployeeDTO { //직원
 	}
 	public void setDepartment_number(int department_number) {
 		this.department_number = department_number;
+	}
+	public String getEmployee_category() {
+		return employee_category;
+	}
+	public void setEmployee_category(String employee_category) {
+		this.employee_category = employee_category;
+	}
+	public String getDepartment_name() {
+		return department_name;
+	}
+	public void setDepartment_name(String department_Name) {
+		this.department_name = department_Name;
 	}
 	
 	
