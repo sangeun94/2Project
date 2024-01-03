@@ -319,7 +319,7 @@ public class PatientDAO {
             psmt.setString(2, email);
             psmt.setString(3, phone_number);
             psmt.setString(4, address);
-            psmt.setString(5, id);
+            //psmt.setString(5, id);
 
             int rowsAffected = psmt.executeUpdate();
 

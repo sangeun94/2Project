@@ -20,7 +20,7 @@
     String password = request.getParameter("password");
     String name = request.getParameter("name");
    
-    System.out.println("Login_proc 파라미터 : " + id + " " + password + name );
+    System.out.println("Login_proc 파라미터 : " + id + " " + password  );
     
     LoginDAO loginDAO = new LoginDAO();
     PatientDTO patientInfo = loginDAO.findLoginById(id);

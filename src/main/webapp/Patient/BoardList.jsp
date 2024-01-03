@@ -98,7 +98,7 @@
 		//해당 아이디 가지고 조회 예약정보 조회
 		System.out.println("마이페이지 id : " + id);
 	%>
-		로그인 사용자 아이디 <%=id%>
+		<!-- 로그인 사용자 아이디 <%=id%> -->
 		
 		<form action="logout.jsp" method="post">
 			<button type="submit">로그아웃</button>

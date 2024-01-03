@@ -64,24 +64,28 @@
 
         button {
             padding: 10px;
-            background-color: #4caf50;
+            background-color: #3498db;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            
            	margin: 0px auto;
            	
         }
 
         button[type="reset"] {
-            background-color: #f44336;
-            margin-right: 10px;
+            background-color: #3498db;
+            margin-right: 0px;
         }
 
         button[type="submit"]:hover,
         button[type="reset"]:hover {
-            background-color: #45a049;
+            background-color: #3498db;
         }
+        .btnright{
+        	margin-left: 300px;
+        };
 </style>
 </head>
 <body>
@@ -126,7 +130,7 @@
                 <a id="pull" href="#"></a>
             </nav>
 
-        </div>
+     </div>
 <div class="joininput">
 <h1>회원가입</h1>
 <div class="grayline"></div>
@@ -161,18 +165,20 @@
 				<td><input type="text" name="address" placeholder="ex)서울특별시" required></td>
 			</tr>
 			<tr>
-				<td>
-				<button type="submit" name="join">회원가입</button>
-				<button type="reset">리  셋</button>
-				<button type="submit" onclick="goToLoginPage()">뒤로가기</button>
+                <td></td>
+				<td class="btnright">
+                    <button type="submit" name="join">회원가입</button>
+                    <button type="reset">리  셋</button>
+                    <button type="submit" onclick="goToLoginPage()">뒤로가기</button>
 				</td>
+			
 			</tr>
 		</table>
 	</form>
 </div>
 	<script>
 	 function goToLoginPage() {
-	        window.location.href = "Login.jsp";
+	        window.location.href = "Login1.jsp";
 	    }
 	
 	</script>
