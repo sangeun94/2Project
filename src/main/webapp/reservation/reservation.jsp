@@ -14,26 +14,7 @@
 <title>온라인 예약</title>
 <link rel="stylesheet" href="./CSS/reservation.css">
 <style>
-	#reservationBody{
-		display: flex;
-		justify-content: center;
-	}
 
-	.info{
-		width: 450px;
-		height: 780px;
-		padding: 20px;
-	}
-	
-	.infoBox{
-		width: 100%;
-		height: 100%;
-		padding: 30px;
-		border: 2px solid #C0C0C0;
-		border-radius: 30px;
-	}
-	
-	}
 
 </style>
 </head>
@@ -55,10 +36,10 @@
 		<div id ="reservationBody">
 			<div class = "info">
 				<div class="infoBox">
-					<div><span>회원정보</span></div>
-					<div> <span>어서오세요!</span> <span> <%=info.getName() %> 님</span> </div>
+					<div class="infoHead"><span class="fontM bold">회원정보</span></div>
+					<div> <span class="fontM bold">어서오세요! <%=info.getName() %> 님</span> </div>
 					<form action="reservationInfo.jsp">
-						<div><button>예약내역조회</button> </div>
+						<div class="infoFoot"><button class="buttonM">예약내역조회</button> </div>
 					</form>
 				</div>
 				
@@ -68,22 +49,34 @@
 			<!-- 예약step2 -->
 			<div class ="info">
 				<div class ="infoBox">
+					<div class="infoHead"><span class="fontM bold">예약인 정보</span></div>
 					<form action="reservationStep1Department.jsp" method="post" id="reservationStep0">
-						<div>이름 : <input type="text" value="<%=info.getName() %>" disabled> </div>
-						<div>번호 : <input type="text" value="<%=info.getPhone_number() %>" disabled> </div>
-						<div> 
-							<input type="radio" id="agree" name="agree" value="yes"><label for="agree">동의</label> 
-							<input type="radio" id="disagree" name="agree" value="no"><label for="disagree">비동의</label> 
+						<div  class="infoInput"> 
+							<div> <span class="bold">성명</span> <br> <input type="text" value="<%=info.getName() %>" disabled class="input"> </div><br>
+							<div><span class="bold">연락처</span> <br> <input type="text" value="<%=info.getPhone_number() %>" disabled class="input"> </div><br><br>
+							<div><span class="bold">개인정보 수집·이용 동의</span></div><br>
+							<div><span class="fontS">개인정보는 병원정보 조회를 위해서만 사용합니다. <br> 개인정보 이용에 동의합니다.</span></div>
+							<div id="agreeBox">
+								<div class="agreeBox"><input type="radio" id="agree" name="agree" value="yes"><label for="agree"><span class="fontS pointer"> &nbsp;동의합니다.</span></label></div>
+								<div class="agreeBox"><input type="radio" id="disagree" name="agree" value="no"><label for="disagree"><span class="fontS pointer">&nbsp;동의하지 않습니다.</span></label></div>
+							</div>
 						</div>
-						<input id ="depart" type="button" value="진료과료 예약">
-						<input id = "emplo" type="button" value="의료진으로 예약">
+						
+						<div class="infoFoot">
+							<input id ="depart" type="button" value="진료과료 예약" class="buttonM"><br>
+							<input id = "emplo" type="button" value="의료진으로 예약" class="buttonM">
+						</div>
 					</form>
 				</div>
 			</div>
 			
 			<div class="info">
-				<div class="infoBox">
-					예약주의사항
+				<div class="infoBoxFoot">
+					<div class="infoHead"><span class="fontM bold">예약 안내</span></div><br>
+					<div><span class="bold">진료예약</span></div>
+					<div><span class="call">041-561-1122</span></div>
+					<div><span>평일 08:00 ~ 18:00</span></div>
+					<div><span>평일 08:00 ~ 13:00</span></div>
 				</div>
 			</div>
 		

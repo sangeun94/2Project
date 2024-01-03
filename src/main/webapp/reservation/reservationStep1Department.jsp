@@ -8,32 +8,38 @@
 <head>
 <meta charset="UTF-8">
 <title>온라인 예약</title>
-
+<link rel="stylesheet" href="./CSS/reservation.css">
 </head>
 <body>
-	<%@ include file="reservationHeader.jsp" %>
-	<h2>STEP1 - 진료과 선택</h2>
-	<button type="button" onclick="back()">이전</button>
-
+		
 	<%
 		ReservationDAO reservationDAO = new ReservationDAO();
 		List<MedicalDepartmentDTO> medicalDepartmentList = reservationDAO.findMedicalDepartmentList();
 	%>
+	<div id="container">
+	<%@ include file="reservationHeader.jsp" %>
 
-	<!-- 진료과 목록 출력 -->
-	<div id="departmentList">
-		<form method="post" action="reservationStep2Employee.jsp">
-			<% 
-				for(MedicalDepartmentDTO medicalDepartment : medicalDepartmentList){
-			%>
-			<button name="department" class="departmentButton"
-				value="<%=medicalDepartment.getDepartment_number()%>">
-				<%=medicalDepartment.getDepartment_name()%></button> 
-			<%
-				}
-			%>
+		<div id="departmentBox">
+			<h2>STEP1 - 진료과 선택</h2><br>
+			<button type="button" onclick="back()" class="prevButton">이전</button><br><br>
 
-		</form>
+		
+			<!-- 진료과 목록 출력 -->
+			<div>
+				<form method="post" action="reservationStep2Employee.jsp">
+					<% 
+						for(MedicalDepartmentDTO medicalDepartment : medicalDepartmentList){
+					%>
+					<button name="department" class="departmentButton"
+						value="<%=medicalDepartment.getDepartment_number()%>">
+						<%=medicalDepartment.getDepartment_name()%></button> 
+					<%
+						}
+					%>
+		
+				</form>
+			</div>
+		</div>
 	</div>
 	
 	<script>

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>온라인 예약</title>
-
+<link rel="stylesheet" href="./CSS/reservation.css">
 </head>
 <body>
 
@@ -20,30 +20,32 @@
 	%>
 	<div id="container">
 		<%@ include file="reservationHeader.jsp" %>
-		<h2>STEP1 - 의료진 선택</h2>
-		<button type="button" onclick="back()">이전</button>
+		<div id="employeeBox">
+			<h2>STEP1 - 의료진 선택</h2></h2><br>
+			<button type="button" onclick="back()" class="prevButton">이전</button>
+			
+			<div id="employee">
 		
-		<div id="employee">
-	
-			<!-- 의료진 목록 출력 -->
-				<form action="reservationStep3.jsp" method="post">
-					<div id="employeeList">
-					<%
-						for(EmployeeDTO employee : employeeList){
-					%>
-					<div id="employeeBox">
-						<img alt="<%=employee.getName()%>" src="./img/prof.png" width="150" height="150">
-						<button name="employee" value="<%=employee.getEmployee_number()%>" class="employeeButton">
-							<%=employee.getDepartment_name()%> <br> <%=employee.getName() %>
-						</button>
-					</div>
-					<%
-						}
-					%>
-					</div>
-				</form>
+				<!-- 의료진 목록 출력 -->
+					<form action="reservationStep3.jsp" method="post">
+						<div id="employeeList">
+							<%
+								for(EmployeeDTO employee : employeeList){
+							%>
+							<div id="employeeBox">
+								<button name="employee" value="<%=employee.getEmployee_number()%>" class="employeeButton">
+									<img alt="<%=employee.getName()%>" src="./img/prof.png" class="employeeImg"><br>
+									<br><br>
+									<%=employee.getDepartment_name()%> <br> <%=employee.getName() %>
+								</button>
+							</div>
+							<%
+								}
+							%>
+						</div>
+					</form>
+				</div>
 			</div>
-	
 		</div>
 	
 

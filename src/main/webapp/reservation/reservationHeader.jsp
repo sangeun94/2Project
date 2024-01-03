@@ -10,8 +10,11 @@
 </head>
 <body>
 	<div id="header">
-         <div class = "logo"><img id = "logo" src="./img/humc_logo.png"></div>
-        <div class="reservationText" ><span>&nbsp온라인예약</span></div>
+		<div class="box">
+	        <div class = "logo"><img id = "logo" src="./img/humc_logo.png"></div>
+	        <div class="reservationText" ><span>&nbsp;온라인예약</span></div>
+        </div>
+        <button type="button" class="logout">로그아웃</button>
     </div>
 </body>
 </html>
