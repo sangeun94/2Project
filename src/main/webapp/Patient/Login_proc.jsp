@@ -13,16 +13,18 @@
 </head>
 <body>
 	<%
+	
     request.setCharacterEncoding("UTF-8");
-
+	
     String id = request.getParameter("id");
     String password = request.getParameter("password");
-
-    System.out.println("Login_proc 파라미터 : " + id + " " + password);
+    String name = request.getParameter("name");
+   
+    System.out.println("Login_proc 파라미터 : " + id + " " + password  );
     
     LoginDAO loginDAO = new LoginDAO();
     PatientDTO patientInfo = loginDAO.findLoginById(id);
-
+    session.setAttribute("loginId", id);  //abc
     
     if (patientInfo == null) {
 %>
@@ -40,6 +42,10 @@
                 location.href = 'Mypage.jsp'; // 로그인 성공 시 이동할 페이지
             </script>
 <%
+//로그인 성공 시 사용자 아이디와 이름을 세션에 저장
+
+
+
         } else {
 %>
             <script>
@@ -48,8 +54,12 @@
             </script>
 <%
         }
-        session.setAttribute("loginId", id);  //abc
+        
+        session.setAttribute("loginName", patientInfo.getName());
+        String enteredUserId = "user123";
+        
     }
+    
 %>
 		
 	

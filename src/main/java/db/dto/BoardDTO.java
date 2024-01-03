@@ -12,15 +12,25 @@ public class BoardDTO {
 	private int viewcnt;
 	
 	
-	public BoardDTO(String title , String content, String name) {
+	public BoardDTO(int board_number , String title , String content, String name) {
+		this.board_number = board_number;
 		this.title = title;
 		this.content = content;
 		this.name = name;
 		
 		
 	}
+	public BoardDTO(String name) {
+		this.name = name;
+	}
+	public BoardDTO(int board_number) {
+		this.board_number = board_number;
+	}
 	public BoardDTO() {}
 	
+	public BoardDTO(LocalDate regdate) {
+	    this.regdate = regdate;
+	}
 	public BoardDTO(int board_number, String title, String content, String name, LocalDate regdate, int viewcnt) {
 		super();
 		this.board_number = board_number;

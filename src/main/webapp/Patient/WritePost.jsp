@@ -11,12 +11,13 @@
 <body>
 <%
     request.setCharacterEncoding("UTF-8");
-
+	
     String title = request.getParameter("title");
     String content = request.getParameter("content");
     String name = request.getParameter("name");
 
     BoardDTO boardDTO = new BoardDTO();
+  
     boardDTO.setTitle(title);
     boardDTO.setContent(content);
     boardDTO.setName(name);

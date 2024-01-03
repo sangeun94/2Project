@@ -29,16 +29,17 @@ public class BoardDAO {
    
 
 
+	   
+/*----------------------------------------------------------------------------------*/
+	    
 	    public boolean savePost(BoardDTO boardDTO) {
 	        try {
 	            Class.forName("oracle.jdbc.driver.OracleDriver");
 
 	            try (Connection conn = DriverManager.getConnection(db_url, db_id, db_pw)) {
-	                String sql = "INSERT INTO Board (title, content, name) VALUES (?, ?, ?)";
-	            	//String sql = "INSERT INTO Board (board_number, title, name) VALUES (board_number_seq.NEXTVAL, ?, ?)";
+	                String sql = "INSERT INTO Board (board_number, title, content, name) VALUES (board_number_seq.NEXTVAL, ?, ?, ?)";
 	                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-	                	//pstmt.setInt(1,boardDTO.getBoard_number());
-	                	pstmt.setString(1, boardDTO.getTitle());
+	                    pstmt.setString(1, boardDTO.getTitle());
 	                    pstmt.setString(2, boardDTO.getContent());
 	                    pstmt.setString(3, boardDTO.getName());
 
@@ -53,7 +54,9 @@ public class BoardDAO {
 	        }
 	    }
 
-	    public List<BoardDTO> getAllPosts() {
+	    
+	    /*----------------------------------------------------------------------------------*/
+	    /*public List<BoardDTO> getAllPosts() {
 	        List<BoardDTO> boardList = new ArrayList<>();
 
 	        try {
@@ -85,8 +88,44 @@ public class BoardDAO {
 
 	        return boardList;
 	    }
-	
+	    */
+	/*---------------------------------------------------------------*/
 
+	    public List<BoardDTO> getAllPosts() {
+	        List<BoardDTO> boardList = new ArrayList<>();
+
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+
+	        try {
+	            conn = DBConnectionManager.connectDB();
+	            String sql = "SELECT * FROM board";
+	            pstmt = conn.prepareStatement(sql);
+	            rs = pstmt.executeQuery();
+
+	            while (rs.next()) {
+	                BoardDTO boardDTO = new BoardDTO();
+	                // 각 컬럼에 해당하는 값을 가져와서 BoardDTO 객체에 설정
+	                boardDTO.setBoard_number(rs.getInt("board_number"));
+	                boardDTO.setTitle(rs.getString("title"));
+	                boardDTO.setContent(rs.getString("content"));
+	                boardDTO.setName(rs.getString("name"));
+	                // 추가적인 필드가 있다면 설정
+
+	                boardList.add(boardDTO);
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            DBConnectionManager.closeDB(conn, pstmt, rs);
+	        }
+
+	        return boardList;
+	    }
+	
+	    
     /*---------------게시판 작성할때 이름 자동으로 부여----------------*/
 	    public List<BoardDTO> getAllPosts(String loggedInUserName) {
 	        List<BoardDTO> boardList = new ArrayList<>();
