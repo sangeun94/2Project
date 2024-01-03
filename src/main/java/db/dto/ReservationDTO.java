@@ -70,6 +70,27 @@ public class ReservationDTO { //예약
 		this.patient_name = patient_name;
 	}
 
+	//예약조회용 생성자1
+	public ReservationDTO(String reservation_status,
+			String reservation_date, String reservation_time, String reservation_content, String employee_name,
+			String department_name, String reservation_number) {
+		super();
+		this.reservation_status = reservation_status;
+		this.reservation_date = reservation_date;
+		this.reservation_time = reservation_time;
+		this.reservation_content = reservation_content;
+		this.employee_name = employee_name;
+		this.department_name = department_name;
+		this.reservation_number = reservation_number;
+	}
+	
+	//예약조회용 생성자2
+	public ReservationDTO(String reservation_status,String reservation_number) {
+		super();
+		this.reservation_status = reservation_status;
+		this.reservation_number = reservation_number;
+	}
+
 	//메소드
 	public String getReservation_date() {
 		return reservation_date;
