@@ -488,6 +488,14 @@ table#patientTable.listTable.dataTable.no-footer {
 	margin: 0 0 24px 0;
 }
 
+div#patientTable_paginate.dataTables_paginate.paging_simple_numbers{
+	float: none;
+	text-align: center;
+	display: block;
+	position: relative;
+	left: -40px;
+}
+
 @media screen and (max-width: 767px) {
   .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_paginate {

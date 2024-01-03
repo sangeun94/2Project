@@ -15,7 +15,8 @@ public class DBConnectionManager {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			String db_url = "jdbc:oracle:thin:@localhost:1521:orcl";
+			String db_url = "jdbc:oracle:thin:@localhost:1521:FREE";//제은 mac
+//			String db_url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			String db_id = "scott";
 			String db_pw = "tiger";
 
