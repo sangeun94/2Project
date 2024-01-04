@@ -17,20 +17,20 @@
 
                 <ul class="clearfix">
 
-                    <a href="HompageMain.html">
+                    <a href="../homeMain/HompageMain.jsp">
                         <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
                     </a>
 
-                    <li class="menu-item"><a href="">병원소개</a>
+                    <li class="menu-item"><a href="../homeMain/Introduce.jsp">병원소개</a>
                     </li>
 
-                    <li class="menu-item"><a href="">진료예약</a>
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
                     </li>
 
-                    <li class="menu-item"><a href="">고객의소리</a>
+                    <li class="menu-item"><a href="../Patient/list.jsp">고객의소리</a>
                     </li>
 
-                    <li class="menu-item"><a href="../Patient/Login1.jsp">마이페이지</a>
+                    <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
                     </li>
                     
                     <li>
@@ -38,7 +38,7 @@
                     </li>
 
                     <li>
-                        <a href="">회원가입</a>
+                        <a href="../Patient/join.jsp">회원가입</a>
                     </li>
 
                 </ul>

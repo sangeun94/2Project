@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>병원소개</title>
-    <link rel="stylesheet" type="text/css" href="../homeMain/css/introducenav.css"/>
-    <link rel="stylesheet" type="text/css" href="../homeMain/css/Introduce.css"/>
-    <link rel="stylesheet" type="text/css" href="../homeMain/css/introducefooter.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/introducenav.css">
+    <link rel="stylesheet" type="text/css" href="./css/Introduce.css">
+    <link rel="stylesheet" type="text/css" href="./css/introducefooter.css">
 </head>
 
 <body>
@@ -19,28 +20,28 @@
 
                 <ul class="clearfix">
 
-                    <a href="HompageMain.html">
+                    <a href="HompageMain.jsp">
                         <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
                     </a>
 
-                    <li class="menu-item"><a>병원소개</a>
+                    <li class="menu-item"><a href="Introduce.jsp">병원소개</a>
                     </li>
 
-                    <li class="menu-item"><a>진료예약</a>
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
                     </li>
 
-                    <li class="menu-item"><a>고객의소리</a>
+                    <li class="menu-item"><a href="../Patient/list.jsp">고객의소리</a>
                     </li>
                     
-                    <li class="menu-item"><a>마이페이지</a>
+                    <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
                     </li>
                     
                     <li>
-                        <a>로그인</a>
+                        <a href="../Patient/Login1.jsp">로그인</a>
                     </li>
 
                     <li>
-                        <a>회원가입</a>
+                        <a href="../Patient/join.jsp">회원가입</a>
                     </li>
 
                 </ul>
@@ -49,18 +50,6 @@
 
         </div>
         <!-- 상단바 끝 -->
-
-        <div class="contTopBar">
-            <a href="../html/HompageMain.html"><img src="../homeMain/imgs/int_home.png"></a>
-            <p class="changsu_list">병원소개&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▽</p>
-            <p class="changsu_list">병원개요&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▽</p>
-
-            <div class="changsu_list_side">
-                <a href="">진료예약</a>
-                <a href="">예약조회</a>
-            </div>
-        </div>
-
 
         <!-- introDuce_Wrap_changsu 시작 -->
         <div class="introDuce_Wrap_changsu">
@@ -143,11 +132,11 @@
                 </ul>
 
                 <ul class="ftmu_top_1">
-                    <li class="ftmu_top_li_a">진료과 ▲</li>
-                    <li class="ftmu_top_li_a">주요센터 ▲</li>
-                    <li class="ftmu_top_li_a">주요부서 ▲</li>
-                    <li class="ftmu_top_li_a">주요서비스 ▲</li>
-                    <li class="ftmu_top_li_a">페밀리사이트 ▲</li>
+                    <li class="ftmu_top_li_a">진료과 </li>
+                    <li class="ftmu_top_li_a">주요센터 </li>
+                    <li class="ftmu_top_li_a">주요부서 </li>
+                    <li class="ftmu_top_li_a">주요서비스 </li>
+                    <li class="ftmu_top_li_a">패밀리사이트 </li>
                 </ul>
             </div>
 
