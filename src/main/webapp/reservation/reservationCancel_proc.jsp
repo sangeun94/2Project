@@ -16,16 +16,16 @@
 		System.out.println(reservationNum);
 
 		ReservationDAO reservationDAO = new ReservationDAO();
-		
-		
+
 		String result = null;
-		
-		try{
+
+		try {
 			ReservationDTO reservation = reservationDAO.findReservationByNum(reservationNum);
 			result = reservation.getReservation_status();
-		} catch(Exception e) {
+			reservationDAO.cancelReservation(reservationNum);
+		} catch (Exception e) {
+			
 		}
-		
 		
 	%>
 	
