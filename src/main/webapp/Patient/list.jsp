@@ -1,3 +1,9 @@
+<%@ page import="java.util.List" %>
+<%@ page import="db.dao.Patient.BoardDAO" %>
+<%@ page import="db.dto.BoardDTO" %>
+<%@ page import="db.dao.Patient.PatientDAO" %>
+<%@ page import="db.dao.Patient.LoginDAO" %>
+<%@ page import="db.dto.PatientDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,12 +11,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>고객의 소리</title>
     <link rel="stylesheet" href="./css/content.css">
+    <link rel="stylesheet" href="./css/css.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:hover {
+            color: red;
+        }
+    </style>
 </head>
+
 <body>
-        <!-- 상단바 -->
+       <!-- 상단바 -->
         <div class="menu">
 
             <nav class="clearfix">
@@ -47,32 +65,87 @@
 
         </div>
         <!-- 상단바 끝 -->
+<%
+    String loginId = (String) session.getAttribute("loginId");
+    BoardDAO boardDAO = new BoardDAO();
 
-    <main id="content" class="loginContent">
-        <div class="selectBox">
-            <div class="memberBox" onclick="location.href='Login1.jsp';">
-                회원 로그인
+    List<BoardDTO> boardList = boardDAO.getAllPosts();
+    String somePatientId = "examplePatientId";
+    PatientDAO patientDAO = new PatientDAO();
+    PatientDTO patientDTO = patientDAO.getPatientInfoById(somePatientId);
+
+    String loginName = (String) session.getAttribute("loginName");
+
+    if(session != null && session.getAttribute("loginId") != null){
+        String id = session.getAttribute("loginId").toString();
+%>        
+       <div>
+        <form action="logout.jsp" method="post">
+            <button type="submit">로그아웃</button>
+        </form>
+       </div> 
+
+<% 
+    } else {
+%>
+        <script>
+            alert('잘못된 접근입니다.(로그인 필요)');
+            location.href="Login1.jsp";
+        </script>
+<%
+    }
+
+    if (loginId != null) {
+        patientDTO = patientDAO.getPatientInfoById(loginId);
+    }
+
+    if (boardList == null || boardList.isEmpty()) {
+%>
+        <p>등록된 게시물이 없습니다.</p>
+<% 
+	} else {
+%>
+        <div class="board_wrap">
+            <!-- Board List and Table -->
+            <div class="board_title">
+                <strong>고객의 소리</strong>
+               	<p class="total_top">총 게시물 : <b><%= boardList != null ? boardList.size() : 0 %></b></p>                
             </div>
-            <div class="adminBox" onclick="location.href='../admin/adminLogin.jsp';">
-                관리자 로그인
+            <div class="board_list_wrap">
+                <div class="board_list">
+                    <!-- Board List Headers -->
+                    <div class="top">
+                        <div class="num">번호</div>
+                        <div class="title">제목</div>
+                        <div class="writer">글쓴이</div>
+                        <div class="date">작성일</div>
+                        <div class="count">조회</div>
+                    </div>
+                    <!-- Board List Items -->
+                    <% for (BoardDTO board : boardList) { %>
+                        <div onclick="goToContent(<%= board.getBoard_number() %>, this)">
+                            <div class="num"><%= board.getBoard_number() %></div>
+                            <div class="title"><a href="javascript:void(0)"><%= board.getTitle() %></a></div>
+                            <div class="writer"><%= board.getName() %></div>
+                            <div class="date">2024.01.05</div>
+                            <div class="count">3</div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <!-- Pagination and Buttons -->
+            <div class="board_page">
+                <!-- Pagination Links -->
+            </div>
+            <div class="bt_wrap">
+                <a class="on" onclick="goToBoard()">글쓰기</a>
             </div>
         </div>
-        <div class="logBoxWrap">
-            <div class="logBox">
-                <i class="fa-regular fa-user"></i>
-                <h1 class="regularTxt">로그인</h1>
-                <p class="colorPoint02">휴먼대학교병원 홈페이지 회원 서비스는<br>로그인 후 이용하실 수 있습니다.</p>
-                <form id="memberVo" action="Login_proc.jsp" method="post">
-                    <label><input id="id" name="id" required placeholder="아이디" class="inputText" type="text" value=""></label>                           
-                    <label><input id="pass"  name="password" required onkeydown="check();" placeholder="비밀번호" class="inputText" type="password" value=""></label>
-                    <button type="submit" id="loginBtn" class="btnType03 btnBig">로그인</button>
-                    <a href="javascript:goToJoinPage()" id="joinBtn">회원가입</a>
-                </form>               
-            </div>
-        </div>    
-    </main>
-    
-    <!-- Footer 시작 -->
+<%
+    }
+%>
+
+   <!-- Footer 시작 -->
     <div class="ft_homWrap">
         <footer id="footer">
             <div class="Wrapall_ft">
@@ -88,11 +161,11 @@
                 </ul>
 
                 <ul class="ftmu_top_1">
-                    <li class="ftmu_top_li_a">진료과 ▲</li>
-                    <li class="ftmu_top_li_a">주요센터 ▲</li>
-                    <li class="ftmu_top_li_a">주요부서 ▲</li>
-                    <li class="ftmu_top_li_a">주요서비스 ▲</li>
-                    <li class="ftmu_top_li_a">페밀리사이트 ▲</li>
+                    <li class="ftmu_top_li_a">진료과</li>
+                    <li class="ftmu_top_li_a">주요센터 </li>
+                    <li class="ftmu_top_li_a">주요부서 </li>
+                    <li class="ftmu_top_li_a">주요서비스</li>
+                    <li class="ftmu_top_li_a">패밀리사이트</li>
                 </ul>
             </div>
 
@@ -148,12 +221,16 @@
     </footer>
     </div>
     <!-- Footer 끝 -->
+
+<script>
+    function goToBoard() {
+        window.location.href = "write.jsp";
+    }
     
-    <script>
-        function goToJoinPage() {
-            window.location.href = "../html/HompageMain.html";
-        }
-        
-    </script>
+    function goToContent(boardNumber, element) {
+        element.classList.add('clicked');
+        window.location.href = "view.jsp?boardNumber=" + boardNumber;
+    }
+</script>
 </body>
 </html>

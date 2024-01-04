@@ -20,7 +20,8 @@ public class AdminEmployeeInfoDAO {
 
 		conn = DBConnectionManager.connectDB();
 
-		String sql = " SELECT * FROM employee WHERE employment_status = 'Y' ";
+		String sql = " SELECT * FROM employee WHERE employment_status = 'Y' "
+				+ " ORDER BY length(employee_number), employee_number ";
 		
 		List<EmployeeDTO> EmployeeInfoList = null; //return하기 위해 선언
 

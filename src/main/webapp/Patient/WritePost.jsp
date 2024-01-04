@@ -29,7 +29,7 @@
 %>
     <script>
         alert('게시물이 성공적으로 등록되었습니다.');
-        location.href = 'BoardList.jsp';
+        location.href = 'list.jsp';
     </script>
 <%
     } else {

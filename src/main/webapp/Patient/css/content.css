@@ -274,7 +274,7 @@ nav li:last-child a {
     background-color: #22263b;
     display: flex;
     text-align: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     z-index: 1;
 }
@@ -282,7 +282,7 @@ nav li:last-child a {
 .ftmu_top {
     color: #fff;
     list-style:none;
-    margin-left: -33px;
+    margin-left: 5px;
 }
 
 .ftmu_top li::before {
@@ -306,7 +306,7 @@ nav li:last-child a {
     font-size: 14px;
     display: flex;
     text-align: center;
-    margin-left: 10px;
+    margin-right: 20px;
 }
 
 .footerMenu_mid {

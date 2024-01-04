@@ -1,3 +1,8 @@
+
+<%@ page import="java.sql.*" %>
+<%@ page import="javax.sql.DataSource" %>
+<%@ page import="javax.naming.InitialContext" %>
+<%@ page import="javax.naming.NamingException" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,12 +10,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>고객의 소리 보기</title>
+    <link rel="stylesheet" href="css/css.css">
     <link rel="stylesheet" href="./css/content.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-        <!-- 상단바 -->
+	    <!-- 상단바 -->
         <div class="menu">
 
             <nav class="clearfix">
@@ -48,30 +54,90 @@
         </div>
         <!-- 상단바 끝 -->
 
-    <main id="content" class="loginContent">
-        <div class="selectBox">
-            <div class="memberBox" onclick="location.href='Login1.jsp';">
-                회원 로그인
+    <%
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+    
+        // 게시물 번호 가져오기
+        int boardNumber = Integer.parseInt(request.getParameter("boardNumber"));
+    
+        try {
+            // JDBC 드라이버 로딩
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+    
+            // JDBC 연결
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott", "tiger");
+    
+            String sql = "SELECT title, content FROM board WHERE board_number = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, boardNumber);
+    
+            rs = pstmt.executeQuery();
+    
+            if (rs.next()) {
+                String title = rs.getString("title");
+                String content = rs.getString("content");
+    
+                // 여기서 title과 content를 사용하여 화면에 출력하거나 다른 처리를 수행
+    %>
+    
+
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>고객의 소리</strong>
+        </div>
+        <div class="board_view_wrap">
+            <div class="board_view">
+                <div class="title">
+                    <%= title %>
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>번호</dt>
+                        <dd>1</dd>
+                    </dl>
+                    <dl>
+                        <dt>글쓴이</dt>
+                        <dd>김이름</dd>
+                    </dl>
+                    <dl>
+                        <dt>작성일</dt>
+                        <dd>2021.1.16</dd>
+                    </dl>
+                    <dl>
+                        <dt>조회</dt>
+                        <dd>33</dd>
+                    </dl>
+                </div>
+                <div class="cont">
+                    <%= content %>
+                </div>
             </div>
-            <div class="adminBox" onclick="location.href='../admin/adminLogin.jsp';">
-                관리자 로그인
+            <div class="bt_wrap">
+                <a href="list.jsp" class="on">목록</a>
             </div>
         </div>
-        <div class="logBoxWrap">
-            <div class="logBox">
-                <i class="fa-regular fa-user"></i>
-                <h1 class="regularTxt">로그인</h1>
-                <p class="colorPoint02">휴먼대학교병원 홈페이지 회원 서비스는<br>로그인 후 이용하실 수 있습니다.</p>
-                <form id="memberVo" action="Login_proc.jsp" method="post">
-                    <label><input id="id" name="id" required placeholder="아이디" class="inputText" type="text" value=""></label>                           
-                    <label><input id="pass"  name="password" required onkeydown="check();" placeholder="비밀번호" class="inputText" type="password" value=""></label>
-                    <button type="submit" id="loginBtn" class="btnType03 btnBig">로그인</button>
-                    <a href="javascript:goToJoinPage()" id="joinBtn">회원가입</a>
-                </form>               
-            </div>
-        </div>    
-    </main>
-    
+    </div>
+<%
+        } else {
+%>
+            <p>해당 게시물을 찾을 수 없습니다.</p>
+<%
+        }
+    } catch (ClassNotFoundException | SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // 연결 및 리소스 해제
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+%>   
     <!-- Footer 시작 -->
     <div class="ft_homWrap">
         <footer id="footer">
@@ -88,11 +154,11 @@
                 </ul>
 
                 <ul class="ftmu_top_1">
-                    <li class="ftmu_top_li_a">진료과 ▲</li>
-                    <li class="ftmu_top_li_a">주요센터 ▲</li>
-                    <li class="ftmu_top_li_a">주요부서 ▲</li>
-                    <li class="ftmu_top_li_a">주요서비스 ▲</li>
-                    <li class="ftmu_top_li_a">페밀리사이트 ▲</li>
+                    <li class="ftmu_top_li_a">진료과 </li>
+                    <li class="ftmu_top_li_a">주요센터 </li>
+                    <li class="ftmu_top_li_a">주요부서 </li>
+                    <li class="ftmu_top_li_a">주요서비스</li>
+                    <li class="ftmu_top_li_a">패밀리사이트</li>
                 </ul>
             </div>
 
@@ -148,12 +214,7 @@
     </footer>
     </div>
     <!-- Footer 끝 -->
-    
-    <script>
-        function goToJoinPage() {
-            window.location.href = "../html/HompageMain.html";
-        }
-        
-    </script>
+
+
 </body>
 </html>
