@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>온라인 예약</title>
-
+<link rel="stylesheet" href="./CSS/reservation.css">
 </head>
 
 <body>
@@ -38,28 +38,32 @@
 	LocalDate tomorrow = LocalDate.now(); 
 	tomorrow = tomorrow.plusDays(1);
 	%>
-	
+	<div id="container">
 	<%@ include file="reservationHeader.jsp" %>
-	<h2>STEP3 - 일정 선택</h2>
-	<button type="button" onclick="back()">이전</button> <br>
-	<div>선택 의료진 : <%=employeeInfo.getName() %></div>
-	<div>진료과 : <%=employeeInfo.getDepartment_name() %></div>
-	<form action="reservationStep4.jsp" method="post">
-		<input type="date" name="date" value=<%=tomorrow %> min=<%=tomorrow %> max=<%=tomorrow.plusDays(90) %>><br>
-		<div>
-			<select name="time" size="7" required>
-				<option>09:00</option>
-				<option>10:00</option>
-				<option>11:00</option>
-				<option>14:00</option>
-				<option>15:00</option>
-				<option>16:00</option>
-				<option>17:00</option>
-			</select> 
+		<div id="scheduleBox">
+			<h2>STEP2 - 일정 선택</h2><br>
+			<form action="reservationStep4.jsp" method="post">
+				<button type="button" onclick="back()" class="prevButton">이전</button><button class="nextButton">다음</button> <br><br>
+				<div class="bold fontM cal">선택 의료진 : <%=employeeInfo.getName() %></div>
+				<div class="bold fontM">진료과 : <%=employeeInfo.getDepartment_name() %></div><br>
+	
+					<div id="dateTimeSelect">
+					<input type="date" name="date" value=<%=tomorrow %> min=<%=tomorrow %> max=<%=tomorrow.plusDays(90) %>><br><br>
+					
+						<select name="time" size="7" required>
+							<option>09:00</option>
+							<option>10:00</option>
+							<option>11:00</option>
+							<option>14:00</option>
+							<option>15:00</option>
+						</select> 
+					</div><br>
+					<input id="content" type="text" name="content" placeholder="예약하실 내용을 입력해주세요." style="width: 300px; height: 300px;" required><br>
+					
+			</form>
 		</div>
-		<input type="text" name="content" placeholder="예약하실 내용을 입력해주세요." style="width: 300px; height: 300px;" required><br>
-		<button>다음</button>
-	</form>
+	
+	</div>
 	
 	<script>
 		function back(){

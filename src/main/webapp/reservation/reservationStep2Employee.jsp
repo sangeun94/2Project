@@ -27,18 +27,18 @@
 	<div id="container">
 		<%@ include file="reservationHeader.jsp" %>
 		<div id="employeeBox">
-			<h2>STEP2 - 의료진 선택</h2><br>
+			<h2>STEP1 - 의료진 선택</h2><br>
 			<button type="button" onclick="back()" class="prevButton">이전</button><br><br>
 			
-			<div>선택 진료과 : <%=medicalDepartmentInfo.getDepartment_name() %></div>
-			<div><%=medicalDepartmentInfo.getDepartment_name() %> 의료진</div>
+			<div class="bold fontM">&nbsp; 선택 진료과 - <%=medicalDepartmentInfo.getDepartment_name() %></div>
+			<div class="fontM">&nbsp; <%=medicalDepartmentInfo.getDepartment_name() %> 의료진</div>
 	
 				<form action="reservationStep3.jsp" method="post">
 					<div id ="employeeList">
 					<% 
 						for(EmployeeDTO employee : employeeList){
 					%>
-						<div id="employee">
+						<div class="employee">
 								<button name="employee" class="employeeButton"
 									value="<%=employee.getEmployee_number()%>">
 									<img alt="<%=employee.getName()%>" src="./img/prof.png" class="employeeImg"><br>
