@@ -228,7 +228,7 @@ public class ReservationDAO {
 			conn = DBConnectionManager.connectDB();
 			
 			String sql = " INSERT INTO Reservation "
-						+ " VALUES ((SELECT NVL(MAX(reservation_Number), 0) + 1 FROM reservation), ?, ?, TO_DATE(?,'YYYY-MM-DD'), TO_DATE(?,'YYYY-MM-DD HH24:MI:SS'), ?, ?, ?) " ;
+						+ " VALUES ((SELECT NVL(MAX(TO_NUMBER(reservation_number)), 0) + 1 FROM reservation), ?, ?, TO_DATE(?,'YYYY-MM-DD'), TO_DATE(?,'YYYY-MM-DD HH24:MI:SS'), ?, ?, ?) " ;
 			
 			int result = 0;
 			
@@ -267,7 +267,7 @@ public class ReservationDAO {
 							" WHERE r.patient_number = ? " +
 							" AND r.employee_number = e.employee_number " +
 							" AND e.department_number = m.department_number " +
-							" ORDER BY reservation_number " ;
+							" ORDER BY TO_NUMBER(reservation_number) desc " ;
 
 			
 			List<ReservationDTO> reservationList = null ;

@@ -22,13 +22,12 @@
 		String department_number = request.getParameter("department_number");
 		String reservation_status = "Y";
 		
-		System.out.println(patient_number);
-		System.out.println(date);
-		System.out.println(time);
-		System.out.println(content);
-		System.out.println(employeeNum);
-		System.out.println(department_number);
-		System.out.println(dateTime);
+		System.out.println("환자번호 : " + patient_number);
+		System.out.println("예약일자 : " + date);
+		System.out.println("예약시간 : " + time);
+		System.out.println("예약내용 : " + content);
+		System.out.println("선택의료진 넘버 : " + employeeNum);
+		System.out.println("선택과 넘버 : " + department_number);
 		
 		ReservationDAO reservationDAO = new ReservationDAO();
 		

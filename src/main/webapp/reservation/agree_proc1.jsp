@@ -13,7 +13,7 @@
 	%>
 	
 	<%
-		System.out.println(agree);
+		System.out.println("동의여부 : " + agree);
 	%>
 	
 	<%

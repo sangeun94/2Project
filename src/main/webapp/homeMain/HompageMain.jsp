@@ -389,11 +389,11 @@
                 </ul>
 
                 <ul class="ftmu_top_1">
-                    <li class="ftmu_top_li_a">진료과 ▲</li>
-                    <li class="ftmu_top_li_a">주요센터 ▲</li>
-                    <li class="ftmu_top_li_a">주요부서 ▲</li>
-                    <li class="ftmu_top_li_a">주요서비스 ▲</li>
-                    <li class="ftmu_top_li_a">페밀리사이트 ▲</li>
+                    <li class="ftmu_top_li_a">진료과 </li>
+                    <li class="ftmu_top_li_a">주요센터</li>
+                    <li class="ftmu_top_li_a">주요부서 </li>
+                    <li class="ftmu_top_li_a">주요서비스 </li>
+                    <li class="ftmu_top_li_a">패밀리사이트 </li>
                 </ul>
             </div>
 
