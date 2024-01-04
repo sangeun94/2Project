@@ -21,32 +21,29 @@
 	<div id="container">
 		<%@ include file="reservationHeader.jsp" %>
 		<div id="employeeBox">
-			<h2>STEP1 - 의료진 선택</h2></h2><br>
+			<h2>STEP1 - 의료진 선택</h2><br>
 			<button type="button" onclick="back()" class="prevButton">이전</button>
-			
-			<div id="employee">
 		
 				<!-- 의료진 목록 출력 -->
-					<form action="reservationStep3.jsp" method="post">
-						<div id="employeeList">
-							<%
-								for(EmployeeDTO employee : employeeList){
-							%>
-							<div id="employeeBox">
-								<button name="employee" value="<%=employee.getEmployee_number()%>" class="employeeButton">
-									<img alt="<%=employee.getName()%>" src="./img/prof.png" class="employeeImg"><br>
-									<br><br>
-									<%=employee.getDepartment_name()%> <br> <%=employee.getName() %>
-								</button>
-							</div>
-							<%
-								}
-							%>
+					<form action="reservationStep3.jsp" method="post" class="employee3">
+						<%
+							for(EmployeeDTO employee : employeeList){
+						%>
+						<div class="employee">
+							<button name="employee" value="<%=employee.getEmployee_number()%>" class="employeeButton">
+								<img alt="<%=employee.getName()%>" src="./img/prof.png" class="employeeImg"><br>
+								<br><br>
+								<div class="bold"><%=employee.getDepartment_name()%></div>
+								<div><%=employee.getName() %></div>
+							</button>
 						</div>
+					<%
+						}
+					%>
 					</form>
-				</div>
-			</div>
 		</div>
+		<%@ include file="footer.jsp" %>
+	</div>
 	
 
 	<script>

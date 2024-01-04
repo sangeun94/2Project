@@ -7,14 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-		session.invalidate(); //세션 청소 사용자 아이디 abc
-		// 로그아웃 후 메인 페이지로 리다이렉트
-		response.sendRedirect("../homeMain/HompageMain.jsp");
+	<%
+		session.invalidate();
 	%>
 	
 	<script>
-		location.href = "../Patient/Login1.jsp";
+		location.href = "reservationMain.jsp";
 	</script>
+
 </body>
 </html>

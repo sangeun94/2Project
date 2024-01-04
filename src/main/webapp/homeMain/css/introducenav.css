@@ -58,7 +58,7 @@ nav li a {
     padding: 10px;
     font-size: 20px;
     transition: 0.2s color;
-    margin-right: 20px;
+    margin-right: 20px; 
     text-decoration: none;
 }
 
@@ -76,6 +76,7 @@ nav li:last-child a {
     right: -50px;
 }
 
+/*
 .menu {
     width: 100%;
     background-color: #333;
@@ -83,6 +84,7 @@ nav li:last-child a {
     top: 0;
     z-index: 100;
 }
+*/
 
 .container-Logo > img {
     position: absolute;

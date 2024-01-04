@@ -381,11 +381,11 @@ SELECT * FROM patient;
 
 --입원
 CREATE TABLE Hospitalization (
-    Hospitalization_Number NUMBER PRIMARY KEY,
     Hospitalization_Date DATE NOT NULL,
-    Discharge_Date DATE,    
-    Inpatient_Room_Number VARCHAR2(10) NOT NULL, -- 701~801 층마다 5개 무조건 6인실
-    Patient_Number NUMBER -- 1, 2, 3, 4 
+    Discharge_Date DATE,
+    Inpatient_Room_Number VARCHAR2(10), -- 701~801 층마다 5개 무조건 6인실
+    Patient_Number NUMBER, -- 1, 2, 3, 4 
+    PRIMARY KEY (Patient_Number)
 );
 
 INSERT INTO hospitalization(Hospitalization_Date,Discharge_Date,Patient_Number)
@@ -461,25 +461,25 @@ INSERT INTO reservation
 VALUES 
 ('2', 3, 'N', TO_DATE('2023-05-30', 'YYYY-MM-DD'), TO_DATE('2023-05-30 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
 
---가정의학과
+--가정의학과 박지윤
 INSERT INTO reservation 
 (Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
 VALUES 
 ('3', 4, 'Y', TO_DATE('2023-06-07', 'YYYY-MM-DD'), TO_DATE('2023-06-07 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), '가슴이 아파요', 'hm3', '1');
 
---신경과
+--신경과 임서연
 INSERT INTO reservation 
 (Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
 VALUES 
 ('4', 13, 'Y', TO_DATE('2023-07-24', 'YYYY-MM-DD'), TO_DATE('2023-07-24 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
 
---가정의학과
+--가정의학과 박지윤
 INSERT INTO reservation 
 (Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
 VALUES 
 ('5', 25, 'N', TO_DATE('2023-07-24', 'YYYY-MM-DD'), TO_DATE('2023-07-24 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), '엉덩이가 아파요', 'hm3', '1');
 
---신경과
+--신경과 임서연
 INSERT INTO reservation 
 (Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
 VALUES 

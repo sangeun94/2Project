@@ -8,14 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>온라인 예약</title>
+<link rel="stylesheet" href="./CSS/reservation.css">
 </head>
 <body>
 	<% 
 		request.setCharacterEncoding("UTF-8"); //문자 인코딩 설정
 		
 		//이름
-		String id = (String)session.getAttribute("id");
-		id = "user5";
+		String id = (String)session.getAttribute("loginId");
 		
 		//예약번호
 		
@@ -40,26 +40,34 @@
 		
 		EmployeeDTO employeeInfo = reservationDAO.findEmployeeById(employeeNum);
 		
-		System.out.println(employeeNum);
-		System.out.println(date);
-		System.out.println(time);
-		System.out.println(content);
+		System.out.println();
+		System.out.println("선택의료진 넘버 : " + employeeNum);
+		System.out.println("선택 일자 : " + date);
+		System.out.println("선택 시간 : " + time);
+		System.out.println("예약내용 : " + content);
 	%>
-	<%@ include file="reservationHeader.jsp" %>
-	<h2>예약사항확인</h2>
-	<button type="button" onclick="back()">이전</button> <br>
-	<form action="reservation_proc.jsp" method="post">
-		<div> 예약자 : <input type="text" value="<%=info.getName() %>" readonly> </div>
-		<input type="hidden" name="patient_number" value="<%=info.getPatient_number() %>"> <!-- 환자번호 -->
-		<div> 전화번호 : <input type="text" value="<%=info.getPhone_number() %>" readonly> </div>
-		<div> 진료과목 : <input type="text" value="<%=employeeInfo.getDepartment_name() %>" readonly> </div>
-		<input type="hidden" name="department_number" value="<%=employeeInfo.getDepartment_number() %>"> <!-- 과번호 -->
-		<div> 의료진 : <input type="text" value="<%=employeeInfo.getName() %>" readonly> </div>
-		<div> 예약일자 : <input type="text" name="date" value="<%=date %>" readonly> </div>
-		<div> 예약시간 : <input type="text" name="time" value="<%=time %>" readonly> </div>
-		<div> 예약내용 : <input type="text" name="content" value="<%=content %>" readonly> </div>
-		<button>예약하기</button>
-	</form>
+	<div id="container">
+		<%@ include file="reservationHeader.jsp" %>
+		<div id="reservationCheckBox">
+			<h2>예약사항확인 - 아래 내용으로 예약됩니다.</h2><br>
+			<form action="reservation_proc.jsp" method="post">
+			<button type="button" onclick="back()" class="prevButton">이전</button><button class="reservationButton">예약하기</button><br><br>
+				<div class="reservationInfo">
+					<div> <div class="text bold">예약자</div> <input type="text" value="<%=info.getName() %>" class="input2" readonly> </div>
+					<input type="hidden" name="patient_number" value="<%=info.getPatient_number() %>"> <!-- 환자번호 -->
+					<div> <div class="text bold">전화번호</div> <input type="text" value="<%=info.getPhone_number() %>"  class="input2" readonly> </div>
+					<div> <div class="text bold">진료과목</div> <input type="text" value="<%=employeeInfo.getDepartment_name() %>" class="input2" readonly> </div>
+					<input type="hidden" name="department_number" value="<%=employeeInfo.getDepartment_number() %>"> <!-- 과번호 -->
+					<div> <div class="text bold">의료진</div> <input type="text" value="<%=employeeInfo.getName() %>" class="input2" readonly> </div>
+					<div> <div class="text bold">예약일자</div> <input type="text" name="date" value="<%=date %>" class="input2" readonly> </div>
+					<div> <div class="text bold">예약시간</div> <input type="text" name="time" value="<%=time %>" class="input2" readonly> </div>
+					<div> <div class="text bold">예약내용</div> <input type="text" name="content" value="<%=content %>" class="input3" readonly> </div>
+				</div>
+			</form>
+		</div>
+		
+		<%@ include file="footer.jsp" %>
+	</div>
 	
 	
 	

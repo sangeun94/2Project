@@ -64,6 +64,14 @@ public class PatientDTO { //환자
 		this.gender = gender;
 	}
 	
+	//예약 환자 정보 불러오기 위한 생성자
+	public PatientDTO(String name, String phone_number, int patient_number) {
+		super();
+		this.name = name;
+		this.phone_number = phone_number;
+		this.patient_number = patient_number;
+	}
+	
 	//메소드
 	public int getPatient_number() {
 		return patient_number;

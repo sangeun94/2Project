@@ -1,11 +1,12 @@
 .ft_homWrap {
     position: absolute;
-    top: 2500px;
+    top: 900px;
     width: 100%;
+    float: left;
 }
 
 #footer {
-    margin-top: 100px;
+    margin-top: 110px;
     background-color: #31354e;
     height: auto;
     width: 100%;
@@ -15,7 +16,6 @@
     float: left;
     position: relative;
     margin-left: 20px;
-    cursor: pointer;
 }
 
 .Wrapall_ft {

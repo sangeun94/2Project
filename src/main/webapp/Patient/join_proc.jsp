@@ -55,6 +55,7 @@ function validateForm() {
 <body>
 <%
     request.setCharacterEncoding("UTF-8"); // 문자 인코딩 설정
+    
     String id = request.getParameter("id");
     String password = request.getParameter("password");
     String email = request.getParameter("email");
@@ -62,31 +63,7 @@ function validateForm() {
     String jumin = request.getParameter("jumin");
     String phone_number = request.getParameter("phone_number");
     String address = request.getParameter("address");
-    
-    // 서버 측 유효성 검사
-    if (!jumin.matches("\\d+")  ) {
-%>
-    <script>
-        alert('저장 실패. 주민번호에는 숫자만 입력 가능합니다.');
-        history.back(); // 뒤로가기
-    </script>
-<%
-    } else if (!phone_number.matches("\\d+")) {
-%>
-    <script>
-        alert('저장 실패. 전화번호에는 숫자만 입력 가능합니다.');
-        history.back(); // 뒤로가기
-    </script>
-<%
-    } else if (!email.matches(emailRegex)) {
-%>
-    <script>
-        alert('이메일 형식이 올바르지 않습니다.');
-        history.back(); // 뒤로가기
-    </script>
 
-<%
-    } else {
         PatientDTO patientInfo = new PatientDTO();
         patientInfo.setId(id);
         patientInfo.setPassword(password);
@@ -107,7 +84,7 @@ function validateForm() {
 %>
             <script>
                 alert('회원가입이 되었습니다. 로그인을 해주세요.');
-                location.href = 'Login.jsp'; // 해당 경로로 페이지 이동
+                location.href = 'Login1.jsp'; // 해당 경로로 페이지 이동
             </script>
 <%
         } else {
@@ -118,7 +95,7 @@ function validateForm() {
             </script>
 <%
         }
-    }
+    
 %>
 </body>
 </html>

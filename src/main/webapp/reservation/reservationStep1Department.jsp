@@ -40,6 +40,7 @@
 				</form>
 			</div>
 		</div>
+		<%@ include file="footer.jsp" %>
 	</div>
 	
 	<script>

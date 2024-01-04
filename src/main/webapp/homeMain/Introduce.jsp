@@ -1,15 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
-    <link rel="stylesheet" href="./css/content.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>병원소개</title>
+    <link rel="stylesheet" type="text/css" href="./css/introducenav.css">
+    <link rel="stylesheet" type="text/css" href="./css/Introduce.css">
+    <link rel="stylesheet" type="text/css" href="./css/introducefooter.css">
 </head>
+
 <body>
+
+
         <!-- 상단바 -->
         <div class="menu">
 
@@ -17,28 +20,28 @@
 
                 <ul class="clearfix">
 
-                    <a href="../homeMain/HompageMain.jsp">
+                    <a href="HompageMain.jsp">
                         <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
                     </a>
 
-                    <li class="menu-item"><a href="../homeMain/Introduce.jsp">병원소개</a>
+                    <li class="menu-item"><a href="Introduce.jsp">병원소개</a>
                     </li>
 
-                    <li class="menu-item"><a href="../reservation/reservation.jsp">진료예약</a>
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
                     </li>
 
-                    <li class="menu-item"><a href="list.jsp">고객의소리</a>
+                    <li class="menu-item"><a href="../Patient/list.jsp">고객의소리</a>
                     </li>
-
-                    <li class="menu-item"><a href="MyInfo1.jsp">마이페이지</a>
+                    
+                    <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
                     </li>
                     
                     <li>
-                        <a href="Login1.jsp">로그인</a>
+                        <a href="../Patient/Login1.jsp">로그인</a>
                     </li>
 
                     <li>
-                        <a href="join.jsp">회원가입</a>
+                        <a href="../Patient/join.jsp">회원가입</a>
                     </li>
 
                 </ul>
@@ -48,30 +51,71 @@
         </div>
         <!-- 상단바 끝 -->
 
-    <main id="content" class="loginContent">
-        <div class="selectBox">
-            <div class="memberBox" onclick="location.href='Login1.jsp';">
-                회원 로그인
+        <!-- introDuce_Wrap_changsu 시작 -->
+        <div class="introDuce_Wrap_changsu">
+            <h1 class="introduce_t_changsu">병원소개</h1>
+            <h1>휴먼대학교병원의 어제 오늘 그리고 미래</h1>
+            <img src="../homeMain/imgs/introduce_1.jpg" style="width: 800px; height: 400px;">
+
+
+            <h3>
+            지난 한세기 휴먼대학교병원은 국민의 건강과 생명을 지키고,
+            <br>
+            우리나라 의학발전을 선도해 왔습니다.
+            </h3>
+
+            <p>
+            1885년, 한국 최초의 서양식 국립병원인 휴먼원에서 출발하여 국립휴먼대학교 의과대학을 거쳐
+            <br>
+            1978년, 특수법인 휴먼대학교병원으로 개편해 오늘에 이르고 있습니다.
+            </p>
+
+            <p>
+            현재 휴먼대학교병원은 본원을 비롯한 어린이병원, 암병원, 그리고 의생명연구원으로 구성되어 있습니다. 1,751개 병상을
+            <br>
+            운영하고 있으며 1일 9,000명의 외래환자를 1,800명의 의사 등 8천명의 직원이 돌보고 있습니다.
+            </p>
+
+            <p>
+            휴먼대학교병원은 인류의 건강을 수호하는 세계 속의 병원으로 힘차게 전진해 나가고 있으며,
+            <br>
+            특히 'BreakThrough21 대한민국 의료를 세계로'라는 비전을 선포하고 환자중심의 병원으로 거듭나고자 한뜻으로 매진하고
+            <br>
+            있습니다.
+            </p>
+
+        <div class="imgWraper_introduce_changsu_all">
+            <div class="imgWraper_introduce_changsu">
+            <h2>
+            설립목적
+            </h2>
+            <img src="../homeMain/imgs/introduce_2.png" style="width: 420px; height: 160px;">
+            <strong>
+            휴먼대학교병원은 교육법에 의한 의학, 간호학 및 약학 등에 관한 교육, 연구와 진료를 통하여 
+            <br>
+            의학발전을 도모하고 국민보건향상에 기여함을 목적으로 한다.
+            </strong>
             </div>
-            <div class="adminBox" onclick="location.href='../admin/adminLogin.jsp';">
-                관리자 로그인
+
+            <div class="imgWraper_introduce_changsu">
+            <h2>
+            비전
+            </h2>
+            <img src="../homeMain/imgs/introduce_3.jpg">
+            </div>
+
+            <div class="imgWraper_introduce_changsu">
+            <h2>
+            핵심가치
+            </h2>
+            <img src="../homeMain/imgs/introduce_4.jpg">
             </div>
         </div>
-        <div class="logBoxWrap">
-            <div class="logBox">
-                <i class="fa-regular fa-user"></i>
-                <h1 class="regularTxt">로그인</h1>
-                <p class="colorPoint02">휴먼대학교병원 홈페이지 회원 서비스는<br>로그인 후 이용하실 수 있습니다.</p>
-                <form id="memberVo" action="Login_proc.jsp" method="post">
-                    <label><input id="id" name="id" required placeholder="아이디" class="inputText" type="text" value=""></label>                           
-                    <label><input id="pass"  name="password" required onkeydown="check();" placeholder="비밀번호" class="inputText" type="password" value=""></label>
-                    <button type="submit" id="loginBtn" class="btnType03 btnBig">로그인</button>
-                    <a href="javascript:goToJoinPage()" id="joinBtn">회원가입</a>
-                </form>               
-            </div>
-        </div>    
-    </main>
-    
+
+        </div>
+        <!-- introDuce_Wrap_changsu 끝 -->
+
+
     <!-- Footer 시작 -->
     <div class="ft_homWrap">
         <footer id="footer">
@@ -148,12 +192,7 @@
     </footer>
     </div>
     <!-- Footer 끝 -->
-    
-    <script>
-        function goToJoinPage() {
-            window.location.href = "../Patient/Mypage.jsp";
-        }
-        
-    </script>
+
+
 </body>
 </html>

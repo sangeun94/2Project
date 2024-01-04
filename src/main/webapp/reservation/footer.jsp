@@ -1,70 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>병원소개</title>
-    <link rel="stylesheet" type="text/css" href="../css/nav.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/Introduce.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/footer2.css"/>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./CSS/reservation.css">
 </head>
-
 <body>
-
-
-        <!-- 상단바 -->
-        <div class="menu">
-
-            <nav class="clearfix">
-
-                <ul class="clearfix">
-
-                    <a href="HompageMain.html">
-                        <div class="container-Logo"><img src="../imgs/로고1.png"></div>
-                    </a>
-
-                    <li class="menu-item"><a>진료과</a>
-                        <div class="sub-menu">
-                        </div>
-                    </li>
-
-                    <li class="menu-item"><a>의료진</a>
-                        <div class="sub-menu">
-                        </div>
-                    </li>
-
-                    <li class="menu-item"><a>진료예약</a>
-                        <div class="sub-menu">
-                        </div>
-                    </li>
-
-                    <li class="menu-item"><a>마이페이지</a>
-                        <div class="sub-menu">
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="util__item-area">로그인</div>
-                    </li>
-
-                    <li>
-                        <div class="util__item-area_2">회원가입</div>
-                    </li>
-
-                </ul>
-                <a id="pull" href="#"></a>
-            </nav>
-
-        </div>
-        <!-- 상단바 끝 -->
-
-
-        <!-- Middle_inner 시작 -->
-        <h2>휴먼대병원의 어제 오늘 그리고 미래</h2>
-        <!-- Middle_inner 끝 -->
-
-
-    <!-- Footer 시작 -->
+		<!-- Footer 시작 -->
     <div class="ft_homWrap">
         <footer id="footer">
             <div class="Wrapall_ft">
@@ -108,7 +52,7 @@
                 </p>
 
             <div class="ftbot_img">
-                <img src="../imgs/ft-1.png">
+                <img src="../homeMain/imgs/ft-1.png">
                 <p>
                     전자의무기록시스템
                     <br>
@@ -117,7 +61,7 @@
             </div>
 
             <div class="ftbot_img">
-                <img src="../imgs/ft-2.png">
+                <img src="../homeMain/imgs/ft-2.png">
                 <p>
                     보건복지부 제1호
                     <br>
@@ -126,7 +70,7 @@
             </div>
 
             <div class="ftbot_img">
-                <img src="../imgs/ft-3.png">
+                <img src="../homeMain/imgs/ft-3.png">
                 <p>
                     정보보호관리체계
                     <br>

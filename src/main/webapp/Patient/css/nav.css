@@ -13,8 +13,6 @@ nav ul {
 nav a {
     line-height: 80px;
     height: 80px;
-    text-decoration: none;
-    color: black;
 }
 
 nav li a {
@@ -49,8 +47,7 @@ nav ul {
 nav li {
     display: inline-block;
     position: relative;
-    left: 100px;
-    cursor: pointer;
+    left: 120px;
 }
 
 nav li a {
@@ -58,8 +55,7 @@ nav li a {
     padding: 10px;
     font-size: 20px;
     transition: 0.2s color;
-    margin-right: 20px;
-    text-decoration: none;
+    margin-right: 20px; 
 }
 
 nav li a:hover {
@@ -73,7 +69,7 @@ nav li:last-child a {
     margin-right: 0px;
     padding-right: 10px;
     position: relative;
-    right: -50px;
+    right: -40px;
 }
 
 .menu {
@@ -95,3 +91,9 @@ nav li:last-child a {
 .menu-item {
     position: relative; 
 }
+a{
+	text-decoration: none;
+}
+
+
+
