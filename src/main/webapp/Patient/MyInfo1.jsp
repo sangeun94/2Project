@@ -9,10 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+	<link rel="stylesheet" type="text/css" href="../Patient/css/homepage.css" />
+    <link rel="stylesheet" type="text/css" href="../Patient/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="../Patient/css/footer2.css" />
+    <link rel="stylesheet" type="text/css" href="../Patient/css/Introduce.css" />
 <title>Insert title here</title>
 </head>
 <style>
+
 body {
             font-family: 'Arial', sans-serif;
             background-color: #f5f5f5;
@@ -88,60 +92,66 @@ body {
 </style>
 <body>
 <!-- 상단바 -->
-    <div class="menu">
+        <div class="menu">
 
-        <nav class="clearfix">
+            <nav class="clearfix">
 
-            <ul class="clearfix">
+                <ul class="clearfix">
 
-                <a href="HompageMain.html">
-                    <div class="container-Logo"><img src="../imgs/로고1.png"></div>
-                </a>
+                    <a href="../homeMain/HompageMain.jsp">
+                        <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
+                    </a>
 
-                <li class="menu-item"><a>예약</a>
-                    <div class="sub-menu">
-                    </div>
-                </li>
+                    <li class="menu-item"><a href="../homeMain/Introduce.jsp">병원소개</a>
+                    </li>
 
-                <li class="menu-item"><a>예약</a>
-                    <div class="sub-menu">
-                    </div>
-                </li>
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
+                    </li>
 
-                <li class="menu-item"><a>예약</a>
-                    <div class="sub-menu">
-                    </div>
-                </li>
+                    <li class="menu-item"><a href="../Patient/list.jsp">고객의소리</a>
+                    </li>
+                    
+                    <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
+                    </li>
+                    
+                    
+                    <% 
+					    String loginId = (String) session.getAttribute("loginId");
+					    if (loginId != null) {  // 로그인 상태
+					        System.out.println("사용자가 로그인했습니다: " + loginId);
+					%>
+					        <li><%= loginId %>님</li>
+					        <li><a href="../Patient/logout.jsp">로그아웃</a></li>
+					<%
+					    } else {  // 로그아웃 상태
+					        System.out.println("사용자가 로그인하지 않았습니다");
+					%>
+					        <li><a href="../Patient/Login1.jsp">로그인</a></li>
+					        <li><a href="../Patient/join.jsp">회원가입</a></li>
+					<%
+					    }
+					%>
+            	 	
+                    
+                    <!--  
+                    <li>
+                        <a href="../Patient/Login1.jsp">로그인</a>
+                    </li>
 
-                <li class="menu-item"><a>예약</a>
-                    <div class="sub-menu">
-                    </div>
-                </li>
+                    <li>
+                        <a href="">회원가입</a>
+                    </li>
+-->
+                </ul>
+                <a id="pull" href="#"></a>
+            </nav>
 
-                <li class="menu-item"><a>예약</a>
-                    <div class="sub-menu">
-                    </div>
-                </li>
-
-                <li>
-                    <div class="util__item-area">마이페이지</div>
-                </li>
-
-                <li>
-                    <div class="util__item-area_2">회원가입</div>
-                </li>
-
-            </ul>
-            <a id="pull" href="#"></a>
-        </nav>
-
-    </div>
-<!-- 상단바 끝 -->
-
+        </div>
+        <!-- 상단바 끝 -->
     
     <% 
     	boolean updateSuccess = Boolean.parseBoolean(request.getParameter("updateSuccess"));
-        String loginId = (String) session.getAttribute("loginId");
+        //String loginId = (String) session.getAttribute("loginId");
    
     if (loginId != null) {
         PatientDAO patientDAO = new PatientDAO();
@@ -178,11 +188,11 @@ body {
        
         <div class="form-group">
 	    <label for="email">이메일:</label>
-	     <p id="email"><%= patientDTO.getEmail() %></p>
+	     <p id="email" onchange="validEmail(this)"><%= patientDTO.getEmail() %></p>
 		</div>
     
         <div class="form-group">
-            <label for="phone">전화번호:</label>
+            <label for="phone">휴대전화</label>
             <p id="phone"><%= patientDTO.getPhone_number() %></p>
         </div>
     
@@ -196,13 +206,96 @@ body {
     </form>
     <%
         } else {
+        	
     %>
-            <p>로그인이 되어있지않습니다. 로그인을 해주세요 <a href="Login.jsp">login</a>.</p>
+    	<script>
+            alert('잘못된 접근입니다.(로그인 필요)');
+            location.href="Login1.jsp";
+        </script>
           
     <%
         }
     %>
     
    
+ <!-- Footer 시작 -->
+    <div class="ft_homWrap">
+        <footer id="footer">
+            <div class="Wrapall_ft">
+            <div class="footerMenu_top">
+
+                <ul class="ftmu_top" >
+                    <li>어린이병원</li>
+                    <li>암병원</li>
+                    <li>천안휴먼대병원</li>
+                    <li>천안매병원</li>
+                    <li>강남센터</li>
+                    <li>휴먼대학교의과대학</li>
+                </ul>
+
+                <ul class="ftmu_top_1">
+                    <li class="ftmu_top_li_a">진료과 ▲</li>
+                    <li class="ftmu_top_li_a">주요센터 ▲</li>
+                    <li class="ftmu_top_li_a">주요부서 ▲</li>
+                    <li class="ftmu_top_li_a">주요서비스 ▲</li>
+                    <li class="ftmu_top_li_a">페밀리사이트 ▲</li>
+                </ul>
+            </div>
+
+            <div class="footerMenu_mid">
+                <li class="ftmu_top_li_b aacolor">비급여진료비용</li>
+                <li class="ftmu_top_li_b">환자권리장전</li>
+                <li class="ftmu_top_li_b">이용약관</li>
+                <li class="ftmu_top_li_b aacolor">개인정보 처리방침</li>
+                <li class="ftmu_top_li_b">정보공개</li>
+                <li class="ftmu_top_li_b">정보무단수집거부공개</li>
+                <li class="ftmu_top_li_b">뷰어 다운로드</li>
+                <li class="ftmu_top_li_b">진료협력센터</li>
+                <li class="ftmu_top_li_b">장례식장</li>
+            </div>
+
+            <div class="footerMenu_bot">
+                <p>
+                    주소:충남 천안시 동남구 대흥로 215, 7층 T.041-561-1122 대표전화:1588-5700 홈페이지 의견접수
+                    <br>
+                    COPYRIGHT 2024 HUMAN NATIONAL UNIVERSITY HOSPITAL. ALL RIGHTS RESERVED
+                </p>
+
+            <div class="ftbot_img">
+                <img src="../homeMain/imgs/ft-1.png">
+                <p>
+                    전자의무기록시스템
+                    <br>
+                    (EMR)인증
+                </p>
+            </div>
+
+            <div class="ftbot_img">
+                <img src="../homeMain/imgs/ft-2.png">
+                <p>
+                    보건복지부 제1호
+                    <br>
+                    인증 의료기관
+                </p>
+            </div>
+
+            <div class="ftbot_img">
+                <img src="../homeMain/imgs/ft-3.png">
+                <p>
+                    정보보호관리체계
+                    <br>
+                    (ISMS)인증
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+    </footer>
+    </div>
+    <!-- Footer 끝 -->
+    <script>
+    
+    </script>
 </body>
 </html>

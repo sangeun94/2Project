@@ -35,22 +35,42 @@
 
                 <ul class="clearfix">
 
-                    <a href="HompageMain.html">
+                    <a href="../homeMain/HompageMain.jsp">
                         <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
                     </a>
 
-                    <li class="menu-item"><a href="">병원소개</a>
+                    <li class="menu-item"><a href="../homeMain/Introduce.jsp">병원소개</a>
                     </li>
 
-                    <li class="menu-item"><a href="">진료예약</a>
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
                     </li>
 
-                    <li class="menu-item"><a href="">고객의소리</a>
-                    </li>
-
-                    <li class="menu-item"><a href="../Patient/Login1.jsp">마이페이지</a>
+                    <li class="menu-item"><a href="../Patient/list.jsp">고객의소리</a>
                     </li>
                     
+                    <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
+                    </li>
+                    
+                    
+                    <% 
+					    String loginId = (String) session.getAttribute("loginId");
+					    if (loginId != null) {  // 로그인 상태
+					        System.out.println("사용자가 로그인했습니다: " + loginId);
+					%>
+					        <li><%= loginId %>님</li>
+					        <li><a href="../Patient/logout.jsp">로그아웃</a></li>
+					<%
+					    } else {  // 로그아웃 상태
+					        System.out.println("사용자가 로그인하지 않았습니다");
+					%>
+					        <li><a href="../Patient/Login1.jsp">로그인</a></li>
+					        <li><a href="../Patient/join.jsp">회원가입</a></li>
+					<%
+					    }
+					%>
+            	 	
+                    
+                    <!--  
                     <li>
                         <a href="../Patient/Login1.jsp">로그인</a>
                     </li>
@@ -58,7 +78,7 @@
                     <li>
                         <a href="">회원가입</a>
                     </li>
-
+-->
                 </ul>
                 <a id="pull" href="#"></a>
             </nav>
@@ -66,14 +86,14 @@
         </div>
         <!-- 상단바 끝 -->
 <%
-    String loginId = (String) session.getAttribute("loginId");
+   // String loginId = (String) session.getAttribute("loginId");
     BoardDAO boardDAO = new BoardDAO();
-
-    List<BoardDTO> boardList = boardDAO.getAllPosts();
+   
+   
     String somePatientId = "examplePatientId";
     PatientDAO patientDAO = new PatientDAO();
     PatientDTO patientDTO = patientDAO.getPatientInfoById(somePatientId);
-
+	
     String loginName = (String) session.getAttribute("loginName");
 
     if(session != null && session.getAttribute("loginId") != null){
@@ -98,12 +118,18 @@
     if (loginId != null) {
         patientDTO = patientDAO.getPatientInfoById(loginId);
     }
-
+    List<BoardDTO> boardList = boardDAO.getAllPosts();
     if (boardList == null || boardList.isEmpty()) {
+    	
+    	
 %>
         <p>등록된 게시물이 없습니다.</p>
 <% 
 	} else {
+		for (BoardDTO board : boardList) {
+            String boardName = board.getName();
+            pageContext.setAttribute("boardName_" + board.getBoard_number(), boardName);
+        }
 %>
         <div class="board_wrap">
             <!-- Board List and Table -->
@@ -122,7 +148,9 @@
                         <div class="count">조회</div>
                     </div>
                     <!-- Board List Items -->
-                    <% for (BoardDTO board : boardList) { %>
+                    <% for (BoardDTO board : boardList) { 
+                    	String boardName = (String) pageContext.getAttribute("boardName_" + board.getBoard_number());
+                    %>
                         <div onclick="goToContent(<%= board.getBoard_number() %>, this)">
                             <div class="num"><%= board.getBoard_number() %></div>
                             <div class="title"><a href="javascript:void(0)"><%= board.getTitle() %></a></div>

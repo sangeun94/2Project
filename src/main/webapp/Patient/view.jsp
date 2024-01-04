@@ -1,4 +1,8 @@
 
+<%@page import="db.dto.BoardDTO"%>
+<%@page import="db.dao.Patient.PatientDAO"%>
+<%@page import="db.dto.PatientDTO" %>
+<%@page import="db.dao.Patient.BoardDAO" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.sql.DataSource" %>
 <%@ page import="javax.naming.InitialContext" %>
@@ -23,22 +27,42 @@
 
                 <ul class="clearfix">
 
-                    <a href="HompageMain.html">
+                    <a href="HompageMain.jsp">
                         <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
                     </a>
 
-                    <li class="menu-item"><a href="">병원소개</a>
+                    <li class="menu-item"><a href="Introduce.jsp">병원소개</a>
                     </li>
 
-                    <li class="menu-item"><a href="">진료예약</a>
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
                     </li>
 
-                    <li class="menu-item"><a href="">고객의소리</a>
-                    </li>
-
-                    <li class="menu-item"><a href="../Patient/Login1.jsp">마이페이지</a>
+                    <li class="menu-item"><a href="../Patient/list.jsp">고객의소리</a>
                     </li>
                     
+                    <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
+                    </li>
+                    
+                    
+                    <% 
+					    String loginId = (String) session.getAttribute("loginId");
+					    if (loginId != null) {  // 로그인 상태
+					        System.out.println("사용자가 로그인했습니다: " + loginId);
+					%>
+					        <li><%= loginId %>님</li>
+					        <li><a href="../Patient/logout.jsp">로그아웃</a></li>
+					<%
+					    } else {  // 로그아웃 상태
+					        System.out.println("사용자가 로그인하지 않았습니다");
+					%>
+					        <li><a href="../Patient/Login1.jsp">로그인</a></li>
+					        <li><a href="../Patient/join.jsp">회원가입</a></li>
+					<%
+					    }
+					%>
+            	 	
+                    
+                    <!--  
                     <li>
                         <a href="../Patient/Login1.jsp">로그인</a>
                     </li>
@@ -46,7 +70,7 @@
                     <li>
                         <a href="">회원가입</a>
                     </li>
-
+-->
                 </ul>
                 <a id="pull" href="#"></a>
             </nav>
@@ -58,27 +82,46 @@
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-    
-        // 게시물 번호 가져오기
+     
+        
+        
+         // 게시물 번호 가져오기
         int boardNumber = Integer.parseInt(request.getParameter("boardNumber"));
-    
+        // 게시물 정보를 가져오기
+        BoardDAO boardDAO = new BoardDAO();
+        BoardDTO board = boardDAO.getBoardByNumber(boardNumber);
+
+        // 세션에서 작성자 이름 가져오기
+        String boardName = board.getName();
+     	
+
         try {
             // JDBC 드라이버 로딩
             Class.forName("oracle.jdbc.driver.OracleDriver");
     
             // JDBC 연결
             conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "scott", "tiger");
-    
-            String sql = "SELECT title, content FROM board WHERE board_number = ?";
+            //String sql = "SELECT b.title, b.content, b.author_id, p.name FROM board b JOIN patient p ON b.author_id = p.id WHERE b.board_number = ?";
+            String sql = "SELECT title, content ,name FROM board WHERE board_number = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, boardNumber);
-    
+        
             rs = pstmt.executeQuery();
-    
-            if (rs.next()) {
+            
+            if (rs.next()   ) {
                 String title = rs.getString("title");
                 String content = rs.getString("content");
-    
+                String name = rs.getString("name");
+             
+               
+                boolean updateSuccess = Boolean.parseBoolean(request.getParameter("updateSuccess"));
+                //String loginId = (String) session.getAttribute("loginId");
+           
+            if (loginId != null) {
+                PatientDAO patientDAO = new PatientDAO();
+                //PatientDTO patientDTO = patientDAO.findPatientById(loginId);
+                String patientName = patientDAO.getPatientNameById(loginId);
+                
                 // 여기서 title과 content를 사용하여 화면에 출력하거나 다른 처리를 수행
     %>
     
@@ -90,16 +133,17 @@
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                    <%= title %>
+                    <%= title %> 
                 </div>
                 <div class="info">
                     <dl>
                         <dt>번호</dt>
-                        <dd>1</dd>
+                        <dd><%= boardNumber %></dd> <!--  수정 할 부분 -->
                     </dl>
-                    <dl>
+                    <dl> 
                         <dt>글쓴이</dt>
-                        <dd>김이름</dd>
+        		
+                    	<dd><%=boardName%></dd> <!--  수정 할부분 -->
                     </dl>
                     <dl>
                         <dt>작성일</dt>
@@ -120,11 +164,22 @@
         </div>
     </div>
 <%
+	if (updateSuccess) {
+%>  
+	     <p>업데이트가 성공적으로 수행되었습니다.</p>
+<%           
+        } else {       
+%>
+         <p>해당 게시물을 찾을 수 없습니다.</p>
+<%
+        	}
         } else {
 %>
-            <p>해당 게시물을 찾을 수 없습니다.</p>
-<%
+<p>로그인이 필요합니다<p>
+<% 
+        	}
         }
+ 
     } catch (ClassNotFoundException | SQLException e) {
         e.printStackTrace();
     } finally {

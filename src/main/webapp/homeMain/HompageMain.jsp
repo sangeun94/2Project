@@ -37,14 +37,38 @@
                     <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
                     </li>
                     
-                    <li>
+                    <!-- 로그인 여부에 따라 다르게 표시될 로그인/회원가입 버튼 -->
+
+	                <% 
+					    String loginId = (String) session.getAttribute("loginId");
+					    if (loginId != null) {  // 로그인 상태
+					        System.out.println("사용자가 로그인했습니다: " + loginId);
+					%>
+					        <li><%= loginId %>님</li>
+					        <li><a href="../Patient/logout.jsp">로그아웃</a></li>
+					<%
+					    } else {  // 로그아웃 상태
+					        System.out.println("사용자가 로그인하지 않았습니다");
+					%>
+					        <li><a href="../Patient/Login1.jsp">로그인</a></li>
+					        <li><a href="../Patient/join.jsp">회원가입</a></li>
+					<%
+					    }
+					%>
+            	 	
+                    
+                    
+                    
+                    
+                    
+                   <!--   <li>
                         <a href="../Patient/Login1.jsp">로그인</a>
                     </li>
 
                     <li>
                         <a href="../Patient/join.jsp">회원가입</a>
                     </li>
-
+					-->
                 </ul>
                 <a id="pull" href="#"></a>
             </nav>

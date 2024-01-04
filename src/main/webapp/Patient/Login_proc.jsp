@@ -30,7 +30,7 @@
 %>
   <script>
         alert('해당 사용자 정보가 없습니다.');
-        location.href = "Login.jsp";
+        location.href = "../Patient/Login1.jsp";
     </script>
   
 <%
@@ -39,7 +39,7 @@
 %>
             <script>
                 alert('로그인 성공');
-                location.href = 'Mypage.jsp'; // 로그인 성공 시 이동할 페이지
+                location.href = "../homeMain/HompageMain.jsp"; // 로그인 성공 시 이동할 페이지
             </script>
 <%
 //로그인 성공 시 사용자 아이디와 이름을 세션에 저장
@@ -56,7 +56,7 @@
         }
         
         session.setAttribute("loginName", patientInfo.getName());
-        String enteredUserId = "user123";
+        //String enteredUserId = "user123";
         
     }
     

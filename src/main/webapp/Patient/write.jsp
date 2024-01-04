@@ -21,47 +21,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 </head>
 <body>
-    	    <!-- 상단바 -->
-            <div class="menu">
+    	   <!-- 상단바 -->
+        <div class="menu">
 
-                <nav class="clearfix">
-    
-                    <ul class="clearfix">
-    
-                        <a href="HompageMain.html">
-                            <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
-                        </a>
-    
-                        <li class="menu-item"><a href="">병원소개</a>
-                        </li>
-    
-                        <li class="menu-item"><a href="">진료예약</a>
-                        </li>
-    
-                        <li class="menu-item"><a href="">고객의소리</a>
-                        </li>
-    
-                        <li class="menu-item"><a href="../Patient/Login1.jsp">마이페이지</a>
-                        </li>
-                        
-                        <li>
-                            <a href="../Patient/Login1.jsp">로그인</a>
-                        </li>
-    
-                        <li>
-                            <a href="">회원가입</a>
-                        </li>
-    
-                    </ul>
-                    <a id="pull" href="#"></a>
-                </nav>
-    
-            </div>
-            <!-- 상단바 끝 -->
+            <nav class="clearfix">
+
+                <ul class="clearfix">
+
+                    <a href="HompageMain.jsp">
+                        <div class="container-Logo"><img src="../homeMain/imgs/로고1.png"></div>
+                    </a>
+
+                    <li class="menu-item"><a href="Introduce.jsp">병원소개</a>
+                    </li>
+
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
+                    </li>
+
+                    <li class="menu-item"><a href="../Patient/list.jsp">고객의소리</a>
+                    </li>
+                    
+                    <li class="menu-item"><a href="../Patient/MyInfo1.jsp">마이페이지</a>
+                    </li>
+                    
+                    
+                    <% 
+					    String loginId = (String) session.getAttribute("loginId");
+					    if (loginId != null) {  // 로그인 상태
+					        System.out.println("사용자가 로그인했습니다: " + loginId);
+					%>
+					        <li><%= loginId %>님</li>
+					        <li><a href="../Patient/logout.jsp">로그아웃</a></li>
+					<%
+					    } else {  // 로그아웃 상태
+					        System.out.println("사용자가 로그인하지 않았습니다");
+					%>
+					        <li><a href="../Patient/Login1.jsp">로그인</a></li>
+					        <li><a href="../Patient/join.jsp">회원가입</a></li>
+					<%
+					    }
+					%>
+            	 	
+                    
+                    <!--  
+                    <li>
+                        <a href="../Patient/Login1.jsp">로그인</a>
+                    </li>
+
+                    <li>
+                        <a href="">회원가입</a>
+                    </li>
+-->
+                </ul>
+                <a id="pull" href="#"></a>
+            </nav>
+
+        </div>
+        <!-- 상단바 끝 -->
 <%
 
 // 1. 로그인한 사용자의 아이디를 세션에서 가져온다.
-String loginId = (String) session.getAttribute("loginId");
+//String loginId = (String) session.getAttribute("loginId");
 
 if (loginId != null) {
     // 2. 해당 아이디로 회원 가입 정보를 조회하여 사용자의 이름을 얻는다.

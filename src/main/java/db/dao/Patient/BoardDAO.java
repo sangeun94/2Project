@@ -207,5 +207,40 @@ public class BoardDAO {
 
 	        return generatedKey;
 	    }
+	    
+	    
+	    
+	    
+	    
+	    public BoardDTO getBoardByNumber(int boardNumber) {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        BoardDTO boardDTO = null;
+
+	        try {
+	            conn = DBConnectionManager.connectDB();
+	            String sql = "SELECT * FROM board WHERE board_number = ?";
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setInt(1, boardNumber);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	                boardDTO = new BoardDTO();
+	                boardDTO.setBoard_number(rs.getInt("board_number"));
+	                boardDTO.setTitle(rs.getString("title"));
+	                boardDTO.setContent(rs.getString("content"));
+	                boardDTO.setName(rs.getString("name"));
+	                // 추가적인 필드가 있다면 설정
+	            }
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            DBConnectionManager.closeDB(conn, pstmt, rs);
+	        }
+
+	        return boardDTO;
+	    }
 	}
 	   

@@ -151,7 +151,7 @@
     
     <script>
         function goToJoinPage() {
-            window.location.href = "../html/HompageMain.html";
+            window.location.href = "../Patient/Mypage.jsp";
         }
         
     </script>
