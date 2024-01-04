@@ -38,7 +38,7 @@
     
     <script>
         function goToJoinPage() {
-            window.location.href = "join.jsp";
+            window.location.href = "../html/HompageMain.html";
         }
         
     </script>
