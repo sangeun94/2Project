@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../admin_patient/patient_list.jsp"%>
+<%@ include file="../admin_employee/employee_list.jsp"%>
 <%@ page import="db.dto.PatientDTO"%>
 <%@ page import="db.dao.admin2.AdminPatientInfoDAO"%>
 <%@ page import="java.util.List"%>
@@ -11,7 +11,8 @@
 		<h3></h3>
 		<div class="tabArea">
 			<ul class="tab">
-				<li style="width: 100%"><a href="#tab_sub1" class="on">신규 등록</a></li>
+				<li style="width: 100%"><a href="#tab_sub1" class="on">신규
+						직원 등록</a></li>
 			</ul>
 
 			<!-- 신규 등록 탭 -->
@@ -25,30 +26,39 @@
 						<col width="*" />
 					</colgroup>
 					<tbody>
-						<form id="addPatientForm" action="addPatient_proc.jsp" method="post">
+						<!-- 직원코드, 재직여부, 이름, 성별, 휴대전화번호, 주소, 이메일, 직급, 과번호 -->
+						<form id="addEmployeeForm" action="addEmployee_proc.jsp"
+							method="post">
 							<tr>
 								<td rowspan="5">
 									<p class="pic_area">
 										<span id="idPic"></span>
 									</p>
 								</td>
-								<th>환자번호</th>
-								<td><%= PatientInfoList != null ? PatientInfoList.size()+1 : 1 %></td>
+								<th>직원코드</th>
+								<td>
+									<input type="radio" id="doctor" name="employee_number" value="1">의사
+									<input type="radio" id="doctor" name="employee_number" value="2">간호사
+									<input type="radio" id="doctor" name="employee_number" value="3">행정
+								<%-- <%= EmployeeInfoList != null ? EmployeeInfoList.size()+1 : 1 %> --%>
+								</td>
 								<th><label for="input_name">이름</label></th>
-								<td><input type="text" id="input_name" name="name" autocomplete="off" class="txt"></td>
+								<td><input type="text" id="input_name" name="name"
+									autocomplete="off" class="txt"></td>
 							</tr>
 							<tr>
 								<th>성별</th>
 								<td></td>
 								<th><label for="input_jumin">주민등록번호</label></th>
 								<td><input type="text" id="input_jumin" name="jumin"
-									autocomplete="off" class="txt" maxlength="14" oninput="autoHyphenJumin(this)"></td>
+									autocomplete="off" class="txt" maxlength="14"
+									oninput="autoHyphenJumin(this)"></td>
 							</tr>
 							<tr>
 								<th><label for="input_phone_number">휴대전화번호</label></th>
 								<td><input type="tel" id="input_phone_number"
-									name="phone_number" autocomplete="off" class="txt" maxlength="13"
-									oninput="autoHyphen(this)"></td>
+									name="phone_number" autocomplete="off" class="txt"
+									maxlength="13" oninput="autoHyphen(this)"></td>
 								<th><label for="input_email">이메일주소</label></th>
 								<td></td>
 							</tr>
@@ -78,7 +88,7 @@
 					</tbody>
 				</table>
 				<p class="btn_c">
-					<button type=submit" class="gray">등록하기</button>
+					<button type=submit " class="gray">등록하기</button>
 				</p>
 				</form>
 			</div>
@@ -90,7 +100,7 @@
 
 
 
-<script>
+	<script>
 	
 	/* 이름 유효성 검사  */
 	let input_name = document.getElementById('input_name');

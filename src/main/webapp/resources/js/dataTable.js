@@ -37,6 +37,7 @@
 	    let tbodyCheckboxes = $('.rowCheckbox');
 	
 	    selectAllCheckboxHeader.on('change', function() {
+			let tbodyCheckboxes = $('.rowCheckbox');
 	        tbodyCheckboxes.prop('checked', selectAllCheckboxHeader.prop('checked'));
 	    });
 	
@@ -44,6 +45,11 @@
 	    tbodyCheckboxes.on('change', function() {
 	        selectAllCheckboxHeader.prop('checked', tbodyCheckboxes.length === tbodyCheckboxes.filter(':checked').length);
 	    });
+	    
+	    $('.paginate_button').on('click', function(){
+			let tbodyCheckboxes = $('.rowCheckbox');
+	        tbodyCheckboxes.prop('checked', false);
+		});
 
 	});
 	

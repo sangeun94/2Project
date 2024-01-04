@@ -1,198 +1,160 @@
 <%@ page import="db.dto.EmployeeDTO"%>
 <%@ page import="java.util.List"%>
 <%@page import="db.dao.admin2.AdminEmployeeInfoDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../admin_layout/header.jsp" %>
-<%@ include file="../admin_layout/_lnb_employee.jsp" %>
-	<%
-		request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
-		AdminEmployeeInfoDAO employeeInfoDAO = new AdminEmployeeInfoDAO();
-		List<EmployeeDTO> EmployeeInfoList = employeeInfoDAO.findAllEmployeeInfoList();
-	%>
-<link rel="stylesheet" type="text/css" href="../resources/plug-in/jquery-ui/css/jquery.dataTable.css">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../admin_layout/header.jsp"%>
+<%@ include file="../admin_layout/_lnb_employee.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="../resources/plug-in/jquery-ui/css/jquery.dataTable.css">
+<%
+request.setCharacterEncoding("UTF-8"); //문자인코딩 설정
+AdminEmployeeInfoDAO employeeInfoDAO = new AdminEmployeeInfoDAO();
+List<EmployeeDTO> EmployeeInfoList = employeeInfoDAO.findAllEmployeeInfoList();
+%>
 
 <section id="contents">
-	<%@ include file="../admin_layout/hgroup.jsp" %>
+	<%@ include file="../admin_layout/hgroup.jsp"%>
 
 	<script>
-        let gnbDep1 = 2;
-        let lnbDep1 = 1;
-        let lnbDep2 = 0;
-        let lnbDep3 = 0;
-        let title = '임직원 조회';
+		let gnbDep1 = 2;
+		let lnbDep1 = 1;
+		let lnbDep2 = 0;
+		let lnbDep3 = 0;
+		let title = '임직원 조회';
 	</script>
 
 	<article>
-<!-- 		<fieldset class="search_box">
-			<label>등록일자 : </label>
-				<input type="text" id="idRegStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
-				<input type="text" id="idRegEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>					
-			<label>성별 : </label>
-				<select style="width:200px;">
-					<option value="">전체</option>
-					<option value="">여성</option>
-					<option value="">남성</option>
-				</select>		
-			<label>주소 : </label>
-				<select style="width:200px;">
-					<option value="">전체</option>
-                    <option value="">서울특별시</option>
-                    <option value="">부산광역시</option>
-                    <option value="">대구광역시</option>
-                    <option value="">인천광역시</option>
-                    <option value="">광주광역시</option>
-                    <option value="">대전광역시</option>
-                    <option value="">울산광역시</option>
-                    <option value="">세종특별자치시</option>
-                    <option value="">경기도</option>
-                    <option value="">강원특별자치도</option>
-                    <option value="">충청북도</option>
-                    <option value="">충청남도</option>
-                    <option value="">전라북도</option>
-                    <option value="">전라남도</option>
-                    <option value="">경상북도</option>
-                    <option value="">경상남도</option>
-				</select>	
-			<p>	
-			<label>생년월일 : </label>
-				<input type="text" id="idStartDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>
-				<input type="text" id="idEndDate" class="txt" style="width:120px" ><a href="javascript:;" class="btn_datepicker">달력</a>	
-			<label></label>
-				<select style="width:120px;">				
-					<option value="">이름</option>
-					<option value="">회원아이디</option>
-                    <option value="">환자번호</option>
-					<option value="">이메일</option>
-					<option value="">주민등록번호</option>
-					<option value="">휴대전화번호</option>
-					<option value="">주소</option>
-				</select>				
-				<input type="text" class="txt" style="width:200px" >	
-			<a href="javascript:FuncSearch(1);" class="btn_search">검색</a>
-			</p>
-		</fieldset>
 
-		<div class="sort_area">
-			<select id="idListSize">
-				<option value="30" selected="selected">30개씩 보기</option>
-				<option value="50">50개씩 보기</option>
-				<option value="100">100개씩 보기</option>
-                <option value="200">200개씩 보기</option>			
-			</select>		
-			<span class="btns">
-				<a href="" class="blue">선택 다운로드</a>
-				<a href="" class="green ml05">전체 다운로드</a>
-			</span>
+		<!-- DataTables 정보 표시 -->
+		<div class="dataTables_info" id="employeeTable_info" role="status"
+			aria-live="polite">
+			<p class="total_top">
+				총 <b><%=EmployeeInfoList != null ? EmployeeInfoList.size() : 0%></b>명
+			</p>
 		</div>
 
-		<p class="total_top">총 <b>00</b>개</p> -->
-		
-	 	<!-- DataTables 정보 표시 -->
-        <div class="dataTables_info" id="patientTable_info" role="status" aria-live="polite">
-           총 직원 <%= EmployeeInfoList != null ? EmployeeInfoList.size() : 0 %>명
-        </div>
-		 
-		
-		<table id="employeeTable" class="listTable" style="margin-top:20px;">
+		<!-- 상단 등록하기 버튼 -->
+		<div class="btns_top register-button"
+			style="position: relative; z-index: 1;">
+			<a href="../admin_employee/_layer_add_employee.jsp" class="blue">직원
+				등록하기</a>
+		</div>
+
+		<table id="employeeTable" class="listTable" style="margin-top: 20px;">
 			<colgroup>
-                <col width="5%" /><col width="12%" /><col width="10%" /><col width="10%" /><col width="15%" /><col width="*" /><col width="*" />
+				<col width="5%" />
+				<col width="15%" />
+				<col width="10%" />
+				<col width="10%" />
+				<col width="15%" />
+				<col width="*" />
+				<col width="*" />
 			</colgroup>
+
+			<form id="deleteForm" action="deleteEmployee_proc.jsp" method="post">
+				<input type="hidden" id="selectedEmployee" name="selectedEmployees"
+					value="" />
 			<thead>
-			<tr>
-				<th><input type="checkbox"></th>
-				<th>직원번호(ID)</th>
-				<th>이름</th>
-				<th>분류</th>
-				<th>직급</th>
-				<th>휴대전화번호</th>
-                <th>이메일</th>
-			</tr>
+				<tr>
+					<th><input type="checkbox" id="selectAllCheckboxHeader"></th>
+					<th>직원번호(ID)</th>
+					<th>이름</th>
+					<th>분류</th>
+					<th>직급</th>
+					<th>휴대전화번호</th>
+					<th>이메일</th>
+				</tr>
 			</thead>
 			<tbody>
-			<!-- 검색 결과 -->
-			<!-- <tr>
-				<td class="no-data" colspan="8">검색결과 없음</td>
-			</tr>		 -->	
-			<%
+				<%
 				for (EmployeeDTO employeeInfo : EmployeeInfoList) {
-			        String employeeCategory = "";
-			        int employeeCode = employeeInfo.getEmployee_code();
-	
-			        switch (employeeCode) {
-			            case 1:
-			                employeeCategory = "의사";
-			                break;
-			            case 2:
-			                employeeCategory = "간호사";
-			                break;
-			            case 3:
-			                employeeCategory = "행정";
-			                break;
-			            default:
-			                employeeCategory = "알 수 없음";
-			                break;
-		        }
-			%>
-			<tr>
-				<td><input type="checkbox"></td>
-				<td><%=employeeInfo.getEmployee_number()%></td>	
-				<td><%-- <a href="./_layer_Employee_detail.jsp?id=<%=EmployeeInfo.getName()%>"></a> --%><%=employeeInfo.getName()%></td>
-				<td><%=employeeCategory%></td>			
-				<td><%=employeeInfo.getPosition()%></td>
-				<td><%=employeeInfo.getPhone_number()%></td>
-                <td><%=employeeInfo.getEmail()%></td>
-			</tr>
-			<%
+					String employeeCategory = "";
+					int employeeCode = employeeInfo.getEmployee_code();
+
+					switch (employeeCode) {
+						case 1 :
+					employeeCategory = "의사";
+					break;
+						case 2 :
+					employeeCategory = "간호사";
+					break;
+						case 3 :
+					employeeCategory = "행정";
+					break;
+						default :
+					employeeCategory = "알 수 없음";
+					break;
+					}
+				%>
+				<tr>
+					<td><input type="checkbox" class="rowCheckbox"
+						value="<%=employeeInfo.getEmployee_number()%>"></td>
+					<td><%=employeeInfo.getEmployee_number()%></td>
+					<td>
+						<%-- <a href="./_layer_Employee_detail.jsp?id=<%=EmployeeInfo.getName()%>"></a> --%><%=employeeInfo.getName()%></td>
+					<td><%=employeeCategory%></td>
+					<td><%=employeeInfo.getPosition()%></td>
+					<td><%=employeeInfo.getPhone_number()%></td>
+					<td><%=employeeInfo.getEmail()%></td>
+				</tr>
+				<%
 				}
-			%>
+				%>
 			</tbody>
-		</table>	
-		
-		<div class="btns_top mt20">
-			<a href="" class="red">선택 삭제</a>
-		</div>		
-        
-		<!-- <p class="pagination" id="idPaging">	
-            <a href=""><img src="../resources/img/btn/paging1.png" alt="처음" /></a>
-            <a href=""><img src="../resources/img/btn/paging2.png" alt="이전" /></a>
-			<span>
-				<a href="javascript:FuncSearch(1);" class="on">1</a>
-				<a href="javascript:FuncSearch(1);">2</a>
-				<a href="javascript:FuncSearch(1);">3</a>
-				<a href="javascript:FuncSearch(1);">4</a>
-				<a href="javascript:FuncSearch(1);">5</a>
-				<a href="javascript:FuncSearch(1);">6</a>
-				<a href="javascript:FuncSearch(1);">7</a>
-				<a href="javascript:FuncSearch(1);">8</a>
-				<a href="javascript:FuncSearch(1);">9</a>
-				<a href="javascript:FuncSearch(1);">10</a>
-			</span>
-			<a href=""><img src="../resources/img/btn/paging3.png" alt="다음" /></a>
-			<a href=""><img src="../resources/img/btn/paging4.png" alt="마지막" /></a>
-		</p>			 -->
+		</table>
+		</form>
+
+		<!-- 하단 등록하기 버튼 -->
+		<div class="btns_top register-button mt20">
+			<a href="../admin_employee/_layer_add_employee.jsp" class="blue">직원
+				등록하기</a>
+		</div>
+
+		<!-- 하단 삭제 버튼 -->
+		<div class="btns_top mt20 red">
+			<button id="deleteBtn" type="button" class="red">선택 삭제하기</button>
+		</div>
 	</article>
 </section>
-<link rel="stylesheet" href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css" type="text/css" />
-<script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
-<script type="text/javascript" src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js" charset="utf-8"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-<script type="text/javascript">
-$(function() {
-	$("#idStartDate").datepicker($.datepicker.regional.ko);
-	$("#idEndDate").datepicker($.datepicker.regional.ko);
-	$("#idRegStartDate").datepicker($.datepicker.regional.ko);
-	$("#idRegEndDate").datepicker($.datepicker.regional.ko);	
-});
 
-$(document).ready(function() {
-	// DataTables 초기화
-	let table = $('#employeeTable').DataTable({
-		"paging": true,      // 페이징 활성화
-		"pageLength": 30,    // 한 페이지에 표시될 목록 수
-		"lengthMenu": [30, 50, 100, 200],  // 목록 수 선택 옵션
-		"ordering": false   // 정렬 비활성화
+<link rel="stylesheet"
+	href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css"
+	type="text/css" />
+<script type="text/javascript"
+	src="../resources/plug-in/jquery-ui/js/jquery-ui-1.8.12.custom.min.js"></script>
+<script type="text/javascript"
+	src="../resources/plug-in/jquery-ui/js/jquery.ui.datepicker-ko.js"
+	charset="utf-8"></script>
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../resources/js/dataTable.js"></script>
+<script>
+	document.getElementById('deleteBtn').addEventListener('click', ()=> {
+	    // 선택된 체크박스 확인
+	    let selectedCheckboxes = document.querySelectorAll('.rowCheckbox:checked');
+	
+	    if (selectedCheckboxes.length === 0) {
+	        alert('삭제할 항목을 선택하세요.');
+	        return;
+	    }
+	
+	    // 선택된 번호를 배열에 저장
+	    let selectedEmployees = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+	
+	    // hidden 필드에 선택된 환자 번호를 설정
+	    document.getElementById('selectedEmployees').value = JSON.stringify(selectedEmployees);
+	
+	    // 확인 후 삭제 여부 묻기
+	    if (confirm('선택한 환자 정보를 삭제하시겠습니까?')) {
+	        // form submit을 통해 서버로 데이터 전송
+	        let deleteForm = document.getElementById('deleteForm');
+	        if (deleteForm) {
+	            deleteForm.submit();
+	        } else {
+	            alert('폼을 찾을 수 없습니다.');
+	        }
+	    }
 	});
-});
 </script>
-<%@ include file="../admin_layout/footer.jsp" %>
+<%@ include file="../admin_layout/footer.jsp"%>
