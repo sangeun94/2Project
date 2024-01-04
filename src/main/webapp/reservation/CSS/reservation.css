@@ -503,7 +503,7 @@ th {
 
 /* 테이블 올렸을 때 */
 tbody tr:hover {
-  background-color: #d3d3d3;
+  background-color: rgb(209, 216, 250);
   opacity: 0.9;
   cursor: pointer;
 }

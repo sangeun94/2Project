@@ -22,50 +22,56 @@
 		String patientNum =  Integer.toString(info.getPatient_number());
 		List<ReservationDTO> reservationList = reservationDAO.reservationInfoList(patientNum);
 	
-		System.out.print(patientNum);
+		System.out.println();
+		System.out.print("로그인된 환자 번호  : " + patientNum);
 	%>
 	<div id="container">
 		<%@ include file="reservationHeader.jsp" %>
 		<div id="reservationInfoBox">
-			<h2>예약조회</h2><br>
+			<h2>예약 내역 조회</h2><br>
 			<div><button type="button" onclick="goReservation()" class="goReservationButton">예약페이지로</button></div><br>
 			<div> <span class="bold"> <%=info.getName() %>님 예약 내역입니다.</span></div>
 			<form action="reservationCancel_proc.jsp" method="post">
 				<table>
-					<tr>
-						<th>선택</th>
-						<th>예약일자</th>
-						<th>예약시간</th>
-						<th>예약학과</th>
-						<th>예약의료진</th>
-						<th>예약내용</th>
-						<th>예약상태</th>
-					</tr>
-					<%
-					for(ReservationDTO reservation : reservationList ){
-					%>
-					<tr>
-						<td> <input type="checkbox" name ="check" value="<%=reservation.getReservation_number() %>" onclick='checkOnlyOne(this)'> </td>
-						<td><%=reservation.getReservation_date() %></td>
-						<td><%=reservation.getReservation_time() %></td>
-						<td><%=reservation.getDepartment_name() %></td>
-						<td><%=reservation.getEmployee_name() %></td>
-						<td><%=reservation.getReservation_content() %></td>
+					<thead>
+						<tr>
+							<th>선택</th>
+							<th>예약일자</th>
+							<th>예약시간</th>
+							<th>예약학과</th>
+							<th>예약의료진</th>
+							<th>예약내용</th>
+							<th>예약상태</th>
+						</tr>
+					</thead>
+					
+					<tbody>
 						<%
-							if(reservation.getReservation_status().equals("Y")){
+						for(ReservationDTO reservation : reservationList ){
 						%>
-							<td>예약</td>
+						<tr>
+							<td> <input type="checkbox" name ="check" value="<%=reservation.getReservation_number() %>" onclick='checkOnlyOne(this)'> </td>
+							<td><%=reservation.getReservation_date() %></td>
+							<td><%=reservation.getReservation_time() %></td>
+							<td><%=reservation.getDepartment_name() %></td>
+							<td><%=reservation.getEmployee_name() %></td>
+							<td><%=reservation.getReservation_content() %></td>
+							<%
+								if(reservation.getReservation_status().equals("Y")){
+							%>
+								<td>예약</td>
+							<%
+								} else {
+							%>
+								<td>취소</td>
+							<%	
+								}
+							%>
+						</tr>
 						<%
-							} else {
-						%>
-							<td>취소</td>
-						<%	
 							}
 						%>
-					</tr>
-					<%
-						}
-					%>
+					</tbody>
 				</table>
 				<input type="hidden" name="patientNum" value="<%=info.getPatient_number() %>">
 				<button class="reservationCancelButton">선택 예약 취소</button>

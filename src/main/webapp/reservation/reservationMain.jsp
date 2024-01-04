@@ -60,11 +60,24 @@
 			
 			<div class="info">
 				<div class="infoBoxFoot">
-					<div class="infoHead"><span class="fontM bold">예약 안내</span></div><br>
-					<div><span class="bold">진료예약</span></div>
-					<div><span class="call">041-561-1122</span></div>
-					<div><span>평일 08:00 ~ 18:00</span></div>
-					<div><span>평일 08:00 ~ 13:00</span></div>
+					<div class="infoHead"><span class="fontM bold">예약 안내</span></div><br><br><br>
+					<div class="reservationInfoBox">
+						<div class="infoText">
+							<div><span class="bold">진료예약</span></div>
+							<div><span class="call">041-561-1122</span></div>
+							<div><span>평일 08:00 ~ 18:00</span></div>
+							<div><span>평일 08:00 ~ 13:00</span></div>
+						</div>
+						
+						<div class="infoText">
+							<div><span class="bold">오시는 길</span></div>
+							<div><span>충남 천안시 동남구 대흥로 215</span></div>
+						</div>
+						
+						<div><span class="bold">* 온라인 예약은 회원만 가능합니다.</span></div><br>
+						
+					</div>
+					
 				</div>
 			</div>
 		

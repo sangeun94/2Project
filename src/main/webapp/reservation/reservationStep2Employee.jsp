@@ -23,7 +23,10 @@
 		MedicalDepartmentDTO medicalDepartmentInfo = reservationDAO.findMedicalDepartmentByNum(departmentNum);
 	%>
 	
-	<% System.out.println(departmentNum); //데이터 넘어왔는지 확인용 추후 삭제 %>
+	<% 
+	System.out.println();
+	System.out.println("선택 과 넘버 : " + departmentNum);
+	%>
 	<div id="container">
 		<%@ include file="reservationHeader.jsp" %>
 		<div id="employeeBox">

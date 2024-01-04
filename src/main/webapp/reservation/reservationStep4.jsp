@@ -40,10 +40,11 @@
 		
 		EmployeeDTO employeeInfo = reservationDAO.findEmployeeById(employeeNum);
 		
-		System.out.println(employeeNum);
-		System.out.println(date);
-		System.out.println(time);
-		System.out.println(content);
+		System.out.println();
+		System.out.println("선택의료진 넘버 : " + employeeNum);
+		System.out.println("선택 일자 : " + date);
+		System.out.println("선택 시간 : " + time);
+		System.out.println("예약내용 : " + content);
 	%>
 	<div id="container">
 		<%@ include file="reservationHeader.jsp" %>

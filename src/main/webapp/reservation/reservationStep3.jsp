@@ -29,9 +29,9 @@
 	%>
 
 	<% 
-		//데이터 넘어왔는지 확인용 추후 삭제
-		System.out.println(departmentNum); 
-		System.out.println(employeeNum); 
+		System.out.println();
+		System.out.println("선택과 넘버 : " + departmentNum); 
+		System.out.println("선택의료진 넘버 " + employeeNum); 
 	%>
 	
 	<% 

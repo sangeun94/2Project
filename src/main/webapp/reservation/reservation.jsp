@@ -21,13 +21,12 @@
 <body>
 	<% 
 	String id = (String)session.getAttribute("loginId");
-	
-	//String id = (String)session.getAttribute("id");
-	//id = "user5";
-	//session.setAttribute("id", id);
 
 	ReservationDAO reservationDAO = new ReservationDAO();
 	PatientDTO info = reservationDAO.findPatientInfoById(id);
+	
+	System.out.println();
+	System.out.println("로그인 아이디 : " + id);
 	%>
 
 
@@ -77,7 +76,7 @@
 			
 			<div class="info">
 				<div class="infoBoxFoot">
-					<div class="infoHead"><span class="fontM bold">예약 안내</span></div><br>
+					<div class="infoHead"><span class="fontM bold">예약 안내</span></div><br><br><br>
 					<div class="reservationInfoBox">
 						<div class="infoText">
 							<div><span class="bold">진료예약</span></div>
@@ -91,7 +90,7 @@
 							<div><span>충남 천안시 동남구 대흥로 215</span></div>
 						</div>
 						
-						<div><span>* 온라인 예약은 회원만 가능합니다.</span></div><br>
+						<div><span class="bold">* 온라인 예약은 회원만 가능합니다.</span></div><br>
 						
 					</div>
 					
