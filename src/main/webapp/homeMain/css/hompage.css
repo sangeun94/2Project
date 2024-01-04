@@ -224,6 +224,7 @@ p {
     top: 330px;
     right: 80px;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .m02_T_h {
@@ -247,6 +248,7 @@ p {
     top: 30px;
     left: 30px;
     margin: -4px 0 17px;
+    color: black;
 }
 
 .s_1 {
@@ -328,7 +330,9 @@ p {
     position: absolute;
     top: 610px;
     left: 80px;
-    background-color: #fff;
+    background-image: url(../imgs/introduce_1.jpg); 
+    background-size: cover; 
+    background-position: center;
 }
 
 .bgColor04 {
@@ -437,19 +441,19 @@ p {
 }
 
 .mainInner_b [class*=mainCol].bgType01 {
-    background: url(/src/main/webapp/homeMain/imgs/bg_mainHealth01.jpg) no-repeat 50% 0;
+    background: url(../imgs/bg_mainHealth01.jpg) no-repeat 50% 0;
 }
 
 .mainInner_b [class*=mainCol].bgType02 {
-    background: url(/src/main/webapp/homeMain/imgs/bg_mainHealth02.jpg) no-repeat 50% 0;
+    background: url(../imgs/bg_mainHealth02.jpg) no-repeat 50% 0;
 }
 
 .mainInner_b [class*=mainCol].bgType03 {
-    background: url(/src/main/webapp/homeMain/imgs/bg_mainHealth03.jpg) no-repeat 50% 0;
+    background: url(../imgs/bg_mainHealth03.jpg) no-repeat 50% 0;
 }
 
 .mainInner_b [class*=mainCol].bgType04 {
-    background: url(/src/main/webapp/homeMain/imgs/bg_mainHealth04.jpg) no-repeat 50% 0;
+    background: url(../imgs/bg_mainHealth04.jpg) no-repeat 50% 0;
 }
 
 .mainInner_Row_b [class*mainCol]
