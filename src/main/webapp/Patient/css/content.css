@@ -282,7 +282,7 @@ nav li:last-child a {
 .ftmu_top {
     color: #fff;
     list-style:none;
-    margin-left: 5px;
+    margin-left: -33px;
 }
 
 .ftmu_top li::before {
@@ -362,3 +362,4 @@ nav li:last-child a {
     margin: 0; 
 }
 /*footer 끝*/
+

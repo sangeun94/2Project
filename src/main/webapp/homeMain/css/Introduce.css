@@ -2,3 +2,108 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
+.contTopBar {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: #2763ba;
+    display: flex;
+    align-items: center;
+}
+
+.contTopBar img {
+    display: inline-block;
+    width: 24px;
+    height: 100%;
+    margin-left: 100px;
+    padding: 15px;
+    border: 1px solid white;
+    border-top: none;
+    border-bottom: none;
+}
+
+.changsu_list {
+    color: #fff;
+    padding: 15px;
+    border-right: 1px solid white;
+    cursor: pointer;
+    margin: 0; 
+}
+
+.changsu_list_side {
+    background-color: #1394cf;
+    z-index: 1;
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 100px;
+}
+
+.changsu_list_side a {
+    text-decoration: none;
+    color: #fff;
+    margin: 15px;
+    position: relative;
+}
+
+.changsu_list_side a:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 1px; 
+    background-color: white;
+    right: -15px;
+    top: 0;
+}
+
+.introDuce_Wrap_changsu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+.imgWraper_introduce_changsu_all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.imgWraper_introduce_changsu {
+    text-align: center;
+    margin-bottom: 150px;
+}
+
+.imgWraper_introduce_changsu h2 {
+    margin-bottom: 30px;
+}
+
+.imgWraper_introduce_changsu img {
+    display: block;
+    margin: 20px auto;
+}
+
+.imgWraper_introduce_changsu strong {
+    text-align: center;
+}
+
+.introduce_t_changsu {
+    font-size: 45px;
+    text-align: center; /* 가운데 정렬 추가 */
+}
+
+.introDuce_Wrap_changsu h3,
+.introDuce_Wrap_changsu p {
+    text-align: center;
+}
+
