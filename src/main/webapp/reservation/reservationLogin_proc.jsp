@@ -29,7 +29,7 @@
     if (patientInfo == null) {
 %>
 	<script>
-        alert('아이디 또는 비밀번호가 틀렸습니다.');
+        alert('해당 사용자 정보가 없습니다.');
         history.back();
     </script>
 
@@ -46,7 +46,7 @@
 	%>
 
 	<script>
-	     alert('로그인 실패하였습니다.');
+	     alert('비밀번호가 틀렸습니다.');
 	     history.back(); // 뒤로가기
 	</script>
 	

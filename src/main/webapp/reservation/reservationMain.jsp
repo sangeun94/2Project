@@ -82,7 +82,7 @@
 			</div>
 		
 		</div> <!-- reservationBody -->
-
+		<%@ include file="footer.jsp" %>
 	</div> <!-- 컨테이너 -->
 	
 
