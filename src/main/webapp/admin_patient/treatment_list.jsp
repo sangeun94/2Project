@@ -147,7 +147,7 @@
 	%>
 	        <script>
 	            alert('로그인이 필요합니다.');
-	            location.href = "adminLogin.jsp"; // 로그인 페이지로 이동
+	            location.href = " ../admin/adminLogin.jsp"; // 로그인 페이지로 이동
 	        </script>
 	<%
     	}

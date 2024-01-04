@@ -100,7 +100,8 @@ public class BoardDAO {
 
 	        try {
 	            conn = DBConnectionManager.connectDB();
-	            String sql = "SELECT * FROM board";
+	            String sql = "SELECT * FROM board "
+	            		+ " order by board_number ";
 	            pstmt = conn.prepareStatement(sql);
 	            rs = pstmt.executeQuery();
 

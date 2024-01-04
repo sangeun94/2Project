@@ -132,7 +132,7 @@
 					<td><%=treatment.getPatient_number()%></td>
 					<td><%=treatment.getPatient_name()%></td>
 					<td><%=treatment.getTreatment_content()%></td>
-					<td><a href="./_layer_chart_detail2.jsp?patient_number=<%=treatment.getPatient_number()%>">차트 작성하기</a></td>
+					<td><a href="./_layer_chart_detail2.jsp?patient_number=<%=treatment.getPatient_number()%>">작성하기</a></td>
 				</tr>
 	<%
 			 }	
@@ -155,7 +155,7 @@
 %>
 			<script>
                 alert('로그인이 필요합니다.');
-                location.href = "adminLogin.jsp"; // 로그인 페이지로 리다이렉션
+                location.href = " ../admin/adminLogin.jsp"; // 로그인 페이지로 리다이렉션
             </script>
 <%
         }
