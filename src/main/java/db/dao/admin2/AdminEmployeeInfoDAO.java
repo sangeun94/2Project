@@ -143,7 +143,7 @@ public class AdminEmployeeInfoDAO {
 		return EmployeeInfoList;
 	}
 	
-	public List<EmployeeDTO> findEmployeeInfoByEmployeeNumber (int Employee_number) {	
+	public List<EmployeeDTO> findEmployeeInfoByEmployeeNumber (String Employee_number) {	
 
 		conn = DBConnectionManager.connectDB();
 
@@ -156,7 +156,7 @@ public class AdminEmployeeInfoDAO {
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, Employee_number);
+			psmt.setString(1, Employee_number);
 
 			rs = psmt.executeQuery();
 

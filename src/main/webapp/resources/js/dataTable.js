@@ -5,7 +5,7 @@
 
 	$(document).ready(function() {
 		// DataTables
-		let table = $('#patientTable').DataTable({
+		let table = $('#patientTable, #employeeTable').DataTable({
 			"paging" : true, // 페이징 활성화
 			"pageLength" : 30, // 한 페이지에 표시될 목록 수
 			"lengthMenu" : [[30, 50, 100, 200],[ "30개씩보기", "50개씩보기", "100개씩보기", "200개씩보기" ]], // 목록 수 선택 옵션

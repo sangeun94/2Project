@@ -476,7 +476,7 @@ table.dataTable td {
   height: 0;
 }
 
-div#patientTable_info.dataTables_info.title{
+div#patientTable_info.dataTables_info.title, div#employTable_info.dataTables_info.title{
 	display: inline-block;
 	float: left;
 	margin : 0;
@@ -484,11 +484,11 @@ div#patientTable_info.dataTables_info.title{
 	line-height: 30px;
 }
 
-table#patientTable.listTable.dataTable.no-footer {
+table#patientTable.listTable.dataTable.no-footer, table#employeeTable.listTable.dataTable.no-footer {
 	margin: 0 0 24px 0;
 }
 
-div#patientTable_paginate.dataTables_paginate.paging_simple_numbers{
+div#patientTable_paginate.dataTables_paginate.paging_simple_numbers, div#employeeTable_paginate.dataTables_paginate.paging_simple_numbers{
 	float: none;
 	text-align: center;
 	display: block;
