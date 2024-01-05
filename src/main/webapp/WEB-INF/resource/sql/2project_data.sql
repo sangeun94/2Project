@@ -1,40 +1,146 @@
--- drop
--- 차트
-DROP TABLE Chart;
--- 진료실
-DROP TABLE Medical_Room;
--- 입원실
-DROP TABLE Inpatient_Room;
--- 입원
-DROP TABLE Hospitalization;
--- 예약
-DROP TABLE Reservation;
--- 직원
-DROP TABLE Employee;
--- 진료
-DROP TABLE Medical_Treatment;
--- 회원가입 시퀀스
-DROP SEQUENCE patient_number_seq;
--- 진료 번호 시퀀스
-DROP SEQUENCE treatment_number_seq;
--- 환자
-DROP TABLE Patient;
--- 진료과
-DROP TABLE Medical_Department;
+--drop 
+drop table Medical_Department;
+drop table Medical_Treatment;
+drop table Chart;
+drop table Employee;
+drop table patient;
+drop table Hospitalization;
+drop table Inpatient_Room;
+drop table Medical_Room;
+drop table reservation;   
+drop table board;
 
+drop sequence treatment_number_seq;
+drop sequence hospitalization_number_seq;
+drop sequence board_number_seq;
+drop sequence patient_number_seq;
 
-
-
-
---직원, 환자, 진료과 등 테이블 생성 및 데이터 추가
-
+--create
 --진료과
-CREATE TABLE Medical_Department (
+CREATE TABLE Medical_Department ( 
 	Department_Number NUMBER PRIMARY KEY, -- 1 2 3 4
 	Department_Name VARCHAR2(50) NOT NULL,
 	Tel VARCHAR2(20)
 );
 
+--진료
+CREATE TABLE Medical_Treatment (
+	Treatment_Number NUMBER PRIMARY KEY, -- 1 2 3 4 ~
+	Treatment_Date DATE,
+	Treatment_time DATE,
+	Employee_Number VARCHAR2(20), -- hm1 ~
+	Patient_Number NUMBER, -- 1 2 3 4 ~
+	Hospitalization_Status VARCHAR2(20), --Y,N
+	Treatment_Content VARCHAR2(255) -- 고혈압 갑상선저하증 …
+);
+
+--차트
+CREATE TABLE Chart (
+	Chart_Number NUMBER,
+	Patient_Number NUMBER NOT NULL, -- 1 2 3 4
+	Treatment_Content VARCHAR2(255),
+	Hospitalization_Status VARCHAR2(20), --Y,N
+	PRIMARY KEY (Chart_Number)
+);
+
+--직원
+CREATE TABLE Employee (
+	Employee_Number VARCHAR2(20) NOT NULL,
+	Employee_Code NUMBER NOT NULL, -- Doctor: 1, Nurse: 2, Administrative Staff: 3
+	Employment_Status VARCHAR2(10) NOT NULL, -- Y, N
+	Password VARCHAR2(40),
+	Name VARCHAR2(50) NOT NULL,
+	Gender VARCHAR2(10),
+	Phone_Number VARCHAR2(20),
+	Address VARCHAR2(255),
+	Email VARCHAR2(50),
+	Position VARCHAR2(50),
+	Department_Number NUMBER,
+	PRIMARY KEY (Employee_Number)
+);
+
+--회원가입 시퀀스 생성
+CREATE SEQUENCE patient_number_seq 
+START WITH 1 
+INCREMENT BY 1;
+
+--환자
+CREATE TABLE patient (
+    patient_number NUMBER DEFAULT patient_number_seq.NEXTVAL PRIMARY KEY,
+    patient_status_code NUMBER,
+    id VARCHAR2(30),
+    password VARCHAR2(40),
+    email VARCHAR2(50),
+    name VARCHAR2(50) NOT NULL,
+    jumin VARCHAR2(20),
+    phone_number VARCHAR2(20),
+    address VARCHAR2(50)
+);
+
+--입원
+CREATE TABLE Hospitalization (
+    Hospitalization_Number NUMBER PRIMARY KEY,
+    Hospitalization_Date DATE NOT NULL,
+    Discharge_Date DATE,    
+    Inpatient_Room_Number VARCHAR2(10) NOT NULL, -- 701~801 층마다 5개 무조건 6인실
+    Patient_Number NUMBER -- 1, 2, 3, 4 
+);
+
+--입원실
+CREATE TABLE Inpatient_Room ( 
+    Inpatient_Room_Number VARCHAR2(10), -- 701~801 층마다 5개 무조건 6인실
+    Patient_Number NUMBER, -- 제한없음
+    PRIMARY KEY (Inpatient_Room_Number, Patient_Number)
+);
+
+--진료실
+CREATE TABLE Medical_Room ( 
+    Medical_Room_Number VARCHAR2(10), -- 1~4층까지 진료실 101~401
+    Employee_Number VARCHAR2(10), -- hm1 ~
+    PRIMARY KEY (Medical_Room_Number, Employee_Number)
+);
+
+--예약
+CREATE TABLE Reservation (
+	Reservation_Number VARCHAR2(20), -- 1 2 3 4
+	patient_Number NUMBER NOT NULL, -- 1 2 3 4
+	Reservation_Status VARCHAR2(20), --Y,N 
+	Reservation_Date DATE,
+	Reservation_time DATE,
+	Reservation_Content VARCHAR2(255), -- 어디어디가 아프다
+	Employee_Number VARCHAR2(20),
+	Department_Number VARCHAR2(20) NOT NULL,
+	PRIMARY KEY (Reservation_Number)
+);
+
+--게시글 시퀀스 생성
+CREATE SEQUENCE board_number_seq
+START WITH 1
+INCREMENT BY 1
+NOMAXVALUE;
+
+--게시글
+CREATE TABLE board (
+board_number NUMBER DEFAULT board_number_seq.NEXTVAL PRIMARY KEY,
+title VARCHAR2(200),
+content VARCHAR2(4000),
+name VARCHAR2(30),
+regdate DATE DEFAULT SYSDATE
+);
+
+--진료 번호 시퀀스 생성    
+CREATE SEQUENCE treatment_number_seq
+START WITH 1
+INCREMENT BY 1;
+
+--입원 번호 시퀀스 생성    
+CREATE SEQUENCE hospitalization_number_seq
+START WITH 1
+INCREMENT BY 1;
+
+
+--insert
+--진료과
 INSERT INTO Medical_Department (Department_Number, Department_Name, Tel)
 SELECT 1, '가정의학과', '041-9999-0001' FROM DUAL UNION ALL
 SELECT 2, '국제진료과', '041-9999-0002' FROM DUAL UNION ALL
@@ -74,48 +180,7 @@ SELECT 35, '유방외과', '041-9999-0035' FROM DUAL UNION ALL
 SELECT 36, '이식외과', '041-9999-0036' FROM DUAL UNION ALL
 SELECT 37, '일반외과', '041-9999-0037' FROM DUAL;
 
---진료
-CREATE TABLE Medical_Treatment (
-	Treatment_Number NUMBER PRIMARY KEY, -- 1 2 3 4 ~
-	Treatment_Date DATE,
-	Treatment_time DATE,
-	Employee_Number VARCHAR2(20), -- hm1 ~
-	Patient_Number NUMBER, -- 1 2 3 4 ~
-	Hospitalization_Status VARCHAR2(20), --Y,N
-	Treatment_Content VARCHAR2(255) -- 고혈압 갑상선저하증 …
-);
-
---진료 번호 시퀀스 생성    
-CREATE SEQUENCE treatment_number_seq
-START WITH 1
-INCREMENT BY 1;
-
---차트
-CREATE TABLE Chart (
-	Chart_Number NUMBER,
-	Patient_Number NUMBER NOT NULL, -- 1 2 3 4
-	Treatment_Content VARCHAR2(255),
-	Hospitalization_Status VARCHAR2(20), --Y,N
-	PRIMARY KEY (Chart_Number)
-);
-
-
---직원
-CREATE TABLE Employee (
-	Employee_Number VARCHAR2(20),
-	Employee_Code NUMBER NOT NULL, -- Doctor: 1, Nurse: 2, Administrative Staff: 3
-	Employment_Status VARCHAR2(10) NOT NULL, -- Y, N
-	Password VARCHAR2(40),
-	Name VARCHAR2(50) NOT NULL,
-	Gender VARCHAR2(10),
-	Phone_Number VARCHAR2(20),
-	Address VARCHAR2(255),
-	Email VARCHAR2(50),
-	Position VARCHAR2(50),
-	Department_Number NUMBER,
-	PRIMARY KEY (Employee_Number)
-);
-
+--직원 insert
 INSERT INTO Employee (Employee_Number, Employee_Code, Employment_Status, Password, Name, Gender, Phone_Number, Address, Email, Position, Department_Number)
 SELECT 'hm1', 1, 'Y', 'hm1', '김지원', 'F', '010-1234-5678', '서울특별시', 'user1@example.com', '병원장', 1000 FROM DUAL UNION ALL
 SELECT 'hm2', 1, 'Y', 'hm2', '이승민', 'M', '010-2345-6789', '부산광역시', 'customer2@gmail.com', '부원장', 1000 FROM DUAL UNION ALL
@@ -268,25 +333,8 @@ SELECT 'hm148', 3, 'Y', 'hm148', '정하은', 'F', '010-0000-0147', '서울특�
 SELECT 'hm149', 3, 'Y', 'hm149', '강주영', 'M', '010-0000-0148', '서울특별시', 'example149@outlook.com', '인턴', null FROM DUAL UNION ALL
 SELECT 'hm150', 3, 'Y', 'hm150', '조도영', 'M', '010-0000-0149', '서울특별시', 'user150@example.org', '인턴', null FROM DUAL;
 
---회원가입 시퀀스
-CREATE SEQUENCE patient_number_seq START WITH 1 INCREMENT BY 1;
-
 --환자
-CREATE TABLE patient (
-    patient_number NUMBER DEFAULT patient_number_seq.NEXTVAL PRIMARY KEY,
-    patient_status_code NUMBER,
-    id VARCHAR2(30),
-    password VARCHAR2(40),
-    email VARCHAR2(50),
-    name VARCHAR2(50) NOT NULL,
-    jumin VARCHAR2(20),
-    phone_number VARCHAR2(20),
-    address VARCHAR2(50)
-);
-
-
 INSERT INTO patient (patient_number, patient_status_code, id, password, email, name, jumin, phone_number, address)
-SELECT 1, 1, 'user1', 'pass1', 'user1@example.com', '홍길동', '950101-1234567', '010-1111-1111', '서울특별시' FROM DUAL UNION ALL
 SELECT 2, 2, 'user2', 'pass2', 'user2@example.com', '김철수', '980202-2345678', '010-1111-1112', '부산광역시' FROM DUAL UNION ALL
 SELECT 3, 1, 'user3', 'pass3', 'user3@example.com', '이영희', '920303-1456789', '010-3456-1113', '대전광역시' FROM DUAL UNION ALL
 SELECT 4, 3,  NULL, NULL, NULL, '박민수', '871212-1367890', '010-4567-1114', '인천광역시' FROM DUAL UNION ALL
@@ -377,78 +425,15 @@ SELECT 88, 3,  NULL, NULL, NULL, '박십팔', '911010-1012345', '010-1111-1188',
 SELECT 89, 1, 'user89', 'pass89', 'user89@example.com', '최십구', '940111-1123456', '010-2222-1189', '서울특별시' FROM DUAL UNION ALL
 SELECT 90, 2, 'user90', 'pass90', 'user90@example.com', '김이백', '920212-1234567', '010-3333-1190', '서울특별시' FROM DUAL ;
 
-SELECT * FROM patient;
 
---입원
-CREATE TABLE Hospitalization (
-    Hospitalization_Date DATE NOT NULL,
-    Discharge_Date DATE,
-    Inpatient_Room_Number VARCHAR2(10), -- 701~801 층마다 5개 무조건 6인실
-    Patient_Number NUMBER, -- 1, 2, 3, 4 
-    PRIMARY KEY (Patient_Number)
-);
-
-INSERT INTO hospitalization(Hospitalization_Date,Discharge_Date,Patient_Number)
-SELECT '17-10-22','17-10-26',12 FROM DUAL UNION ALL
-SELECT '17-11-10','17-11-15',15 FROM DUAL UNION ALL
-SELECT '18-02-03','18-03-02',17 FROM DUAL UNION ALL
-SELECT '18-07-23','18-08-02',19 FROM DUAL UNION ALL
-SELECT '19-08-13','19-08-15',20 FROM DUAL UNION ALL
-SELECT '19-04-23','19-04-24',22 FROM DUAL UNION ALL
-SELECT '20-01-16','20-01-26',25 FROM DUAL UNION ALL
-SELECT '20-04-13','20-04-23',26 FROM DUAL UNION ALL
-SELECT '20-03-02','20-03-03',27 FROM DUAL UNION ALL
-SELECT '20-10-22','20-10-26',28 FROM DUAL UNION ALL
-SELECT '20-02-11','20-02-13',37 FROM DUAL UNION ALL
-SELECT '21-10-22','21-10-26',39 FROM DUAL UNION ALL
-SELECT '21-10-21','21-10-26',40 FROM DUAL UNION ALL
-SELECT '21-05-04','21-05-08',42 FROM DUAL UNION ALL
-SELECT '22-02-16','22-02-18',43 FROM DUAL UNION ALL
-SELECT '22-10-12','22-10-13',46 FROM DUAL UNION ALL
-SELECT '22-07-15','22-07-18',47 FROM DUAL UNION ALL
-SELECT '22-08-09','22-08-12',52 FROM DUAL UNION ALL
-SELECT '22-02-16','22-03-02',60 FROM DUAL UNION ALL
-SELECT '22-04-22','22-04-23',62 FROM DUAL UNION ALL
-SELECT '23-11-02',NULL,65 FROM DUAL UNION ALL
-SELECT '23-06-16','23-07-26',73 FROM DUAL UNION ALL
-SELECT '23-09-15',NULL,76 FROM DUAL UNION ALL
-SELECT '23-12-11',NULL,77 FROM DUAL UNION ALL
-SELECT '23-08-27','23-08-28',83 FROM DUAL UNION ALL
-SELECT '23-03-14','23-03-23',84 FROM DUAL UNION ALL
-SELECT '23-04-22','23-04-26',87 FROM DUAL UNION ALL
-SELECT '23-03-22','23-03-26',89 FROM DUAL UNION ALL
-SELECT '23-01-04','23-01-11',90 FROM DUAL UNION ALL
-SELECT '23-01-06','23-01-08',10 FROM DUAL ;
-
---입원실
-CREATE TABLE Inpatient_Room (
-    Inpatient_Room_Number VARCHAR2(10), -- 701~801 층마다 5개 무조건 6인실
-    Patient_Number NUMBER, -- 제한없음
-    PRIMARY KEY (Inpatient_Room_Number, Patient_Number)
-);
-
---진료실
-CREATE TABLE Medical_Room (
-    Medical_Room_Number VARCHAR2(10), -- 1~4층까지 진료실 101~401
-    Employee_Number VARCHAR2(10), -- hm1 ~
-    PRIMARY KEY (Medical_Room_Number, Employee_Number)
-);
-
---예약
-CREATE TABLE Reservation (
-	Reservation_Number VARCHAR2(20), -- 1 2 3 4
-	patient_Number NUMBER NOT NULL, -- 1 2 3 4
-	Reservation_Status VARCHAR2(20), --Y,N 
-	Reservation_Date DATE,
-	Reservation_time DATE,
-	Reservation_Content VARCHAR2(255), -- 어디어디가 아프다
-	Employee_Number VARCHAR2(20),
-	Department_Number VARCHAR2(20) NOT NULL,
-	PRIMARY KEY (Reservation_Number)
-);
+--게시글 insert
+INSERT INTO board
+(board_number, title, content, name, regdate)
+VALUES 
+(1, '임서연 교수님을 칭찬합니다.', '신랑이 응급실 통해 갑자기 이 병원에 오게 되었어요. 열경련도 있었고 섬망증상처럼 힘겨운 상태로 입원하게 되어 저 역시 처음 겪는 일에 많이 놀라고 힘들었습니다. 응급에서도 중환자 쪽으로 분류되어 힘들어하는 신랑 옆에 밤새 있었는데 병명 찾기 위해 계속 같이 고생해주신 분이 임서연 선생님이세요. 의료용어나 상황을 잘 모르는 저에게 친절하게 하나하나 설명해주시고 신랑을 신경써서 케어해주시는게 제게도 그대로 느껴졌습니다. 계속 울면서 신랑을 지켜봐야했던 제게 응급실에서 선생님의 설명들이 큰 힘이 되었습니다.', '이승우', sysdate);
 
 
---***예약 정보 샘플 INSERT
+--예약내역 insert
 --가정의학과 박지윤
 INSERT INTO reservation 
 (Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
@@ -459,7 +444,7 @@ VALUES
 INSERT INTO reservation 
 (Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
 VALUES 
-('2', 3, 'N', TO_DATE('2023-05-30', 'YYYY-MM-DD'), TO_DATE('2023-05-30 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
+('2', 3, 'N', TO_DATE('2023-05-30', 'YYYY-MM-DD'), TO_DATE('2023-05-30 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
 
 --가정의학과 박지윤
 INSERT INTO reservation 
@@ -483,6 +468,6 @@ VALUES
 INSERT INTO reservation 
 (Reservation_Number, Patient_Number, Reservation_Status, Reservation_Date, Reservation_Time, Reservation_Content, Employee_Number, Department_Number)
 VALUES 
-('6', 38, 'Y', TO_DATE('2023-05-30', 'YYYY-MM-DD'), TO_DATE('2023-05-30 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
+('6', 38, 'Y', TO_DATE('2023-05-30', 'YYYY-MM-DD'), TO_DATE('2023-05-30 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), '머리가 아파요', 'hm10', '8');
 
 commit;

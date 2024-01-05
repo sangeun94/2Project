@@ -149,19 +149,24 @@ body {
         </div>
         <!-- 상단바 끝 -->
     
+    <!-- 로그인 상태에서는 PatientDAO를 사용하여 현재 로그인한 환자의 정보(PatientDTO)를 불러옵니다. -->
     <% 
-    	boolean updateSuccess = Boolean.parseBoolean(request.getParameter("updateSuccess"));
+    	//boolean updateSuccess = Boolean.parseBoolean(request.getParameter("updateSuccess"));
         //String loginId = (String) session.getAttribute("loginId");
    
     if (loginId != null) {
+    	//PatientDAO 객체 생성:
         PatientDAO patientDAO = new PatientDAO();
+    	//환자 정보 조회:
+    	//patientDAO.findPatientById(loginId)는 데이터베이스에서 해당 loginId에 해당하는 환자 정보를 가져오는 메서드를 호출합니다.
         PatientDTO patientDTO = patientDAO.findPatientById(loginId);
 
-           
+        //이 코드는 로그인한 사용자의 아이디(loginId)를 이용하여 데이터베이스에서 해당 사용자의 정보를 조회하고,
+        //그 결과를 PatientDTO 객체에 저장합니다
             
     %>
     
-    
+    <!--  form 시작  -->
     <form  method="post" class="mainform" action="updatePatientInfo.jsp">
             <div class="titlename"><%= patientDTO.getName() %>님 안녕하세요</div>
         <br>
@@ -176,6 +181,8 @@ body {
             <label for="password">비밀번호:</label>
             <p id="password">
     			<%= "*".repeat(patientDTO.getPassword().length()) %>
+    			<!-- patientDTO 객체에서 비밀번호를 가져오는 메서드를 호출하고  -->
+    			<!--  비밀번호의 길이만큼 반복하여 * 를 생성한다. -->
 			</p>
         </div>
     

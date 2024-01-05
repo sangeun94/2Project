@@ -63,7 +63,7 @@
 					<tr>
 						<td rowspan="2">
 							<p class="pic_area">
-								<span id="idPic">Profile Image</span>
+								<span id="idPic"></span>
 							</p>
 						</td>
 						<th>예약번호</th>

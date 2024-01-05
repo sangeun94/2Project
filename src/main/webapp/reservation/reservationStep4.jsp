@@ -17,10 +17,6 @@
 		//이름
 		String id = (String)session.getAttribute("loginId");
 		
-		//예약번호
-		
-		//환자번호
-		
 		//예약일자
 		String date = request.getParameter("date");
 		

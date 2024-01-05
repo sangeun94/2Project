@@ -131,7 +131,7 @@
 				<td><%=reservation.getEmployee_name()%></td>
 				<td><%=reservation.getPatient_name()%></td>
 				<td><%=reservation.getReservation_content()%></td>
-				<td><a href="./_layer_chart_detail.jsp?reservation_number=<%=reservation.getReservation_number()%>">차트 작성하기</a></td>
+				<td><a href="./_layer_chart_detail.jsp?reservation_number=<%=reservation.getReservation_number()%>">작성하기</a></td>
 			</tr>
 	<%
 			 }	

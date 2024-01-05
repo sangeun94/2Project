@@ -50,7 +50,7 @@
 					<tr>
 						<td rowspan="5">
 							<p class="pic_area">
-								<span id="idPic">Profile Image</span>
+								<span id="idPic"></span>
 							</p>
 						</td>
 						<th>예약일</th>

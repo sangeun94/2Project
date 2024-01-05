@@ -58,17 +58,32 @@ public class PatientDAO {
         return patientList;
     }
 
+    //주어진 환자번호에 해당하는 환자의 정보를 데이터베이스에서 조회하는 기능입니다.
+    
     public PatientDTO findPatientById(int patient_number) {
+    	
+    	//연결 객체 생성 및 SQL 쿼리 준비
+    	
         conn = DBConnectionManager.connectDB();
+        
+        //SQL 쿼리는 patient_number 가 매개변수인 SELECT 문으로 ?는 나중에 값을 바인딩합니다.
         String sql = "SELECT * FROM patient WHERE patient_number = ?";
         PatientDTO patientInfo = null;
 
         try {
-            psmt = conn.prepareStatement(sql);
+        	
+        	//객체 생성 및 매개변수 설정
+            //SQL 쿼리를 실행하기 위한
+        	psmt = conn.prepareStatement(sql);
+            //SQL 쿼리의 ?에 patient_number 값을 설정
             psmt.setInt(1, patient_number);
+            
+            //쿼리 실행 및 결과 처리
+            //쿼리를 실행하고, 그 결과를 rs 객체에 저장
             rs = psmt.executeQuery();
-
+            
             if (rs.next()) {
+            	//결과가 있다면 환자 정보를 객체로 생성
                 patientInfo = new PatientDTO(
                         rs.getInt("patient_number"),
                         rs.getInt("patient_status_code"),
@@ -89,7 +104,7 @@ public class PatientDAO {
         }
 
         return patientInfo;
-    }
+    }//이 메서드는 주어진 환자 번호에 해당하는 환자 정보를 데이터베이스에서 조회하고 해당 정보를 patient DTO 객체로 반환
 
     // 다양한 오버로드된 savePatientInfo 메서드 중 하나를 선택
     // (PatientDTO 객체를 인자로 받는 버전)

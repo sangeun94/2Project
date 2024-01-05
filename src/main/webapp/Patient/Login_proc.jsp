@@ -16,15 +16,21 @@
 	
     request.setCharacterEncoding("UTF-8");
 	
+	//id 매개변수의 값을 가져오고
     String id = request.getParameter("id");
+	//pw 매개변수의 값을 가져오고
     String password = request.getParameter("password");
     String name = request.getParameter("name");
    
     System.out.println("Login_proc 파라미터 : " + id + " " + password  );
     
+    //Login 클래스의 객체 생성
     LoginDAO loginDAO = new LoginDAO();
+    //LoginDAO를 사용하여 ID기반으로 사용자 정보를 데이터베이스에서 찾아온다.
     PatientDTO patientInfo = loginDAO.findLoginById(id);
-    session.setAttribute("loginId", id);  //abc
+    //세션에 "loginId" 속성을 설정하여 현재 로그인한 사용자의 ID를 저장합니다. 이것은 사용자가 로그인 상태를 유지하는 데 사용됩니다.
+    session.setAttribute("loginId", id);  //아이디 저장 세션에서
+    
     
     if (patientInfo == null) {
 %>
