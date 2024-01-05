@@ -58,7 +58,7 @@
 					<tr>
 						<td rowspan="3">
 							<p class="pic_area">
-								<span id="idPic">Profile Image</span>
+								<span id="idPic"></span>
 							</p>
 						</td>
 						<th>진료일</th>
