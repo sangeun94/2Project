@@ -24,7 +24,7 @@
                     <li class="menu-item"><a href="../homeMain/Introduce.jsp">병원소개</a>
                     </li>
 
-                    <li class="menu-item"><a href="../reservation/reservation.jsp">진료예약</a>
+                    <li class="menu-item"><a href="../reservation/reservationMain.jsp">진료예약</a>
                     </li>
 
                     <li class="menu-item"><a href="list.jsp">고객의소리</a>
