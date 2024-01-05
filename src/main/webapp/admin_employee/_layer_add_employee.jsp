@@ -51,46 +51,46 @@
 								<th><label for="input_department_name">진료과</label></th>
 								<td><select name="department_name" id="department_select"
 									style="display: none;">
-										<option value="가정의학과">가정의학과</option>
-										<option value="국제진료과">국제진료과</option>
-										<option value="마취통증의학과">마취통증의학과</option>
-										<option value="병리과">병리과</option>
-										<option value="비뇨의학과">비뇨의학과</option>
-										<option value="산부인과">산부인과</option>
-										<option value="성형외과">성형외과</option>
-										<option value="신경과">신경과</option>
-										<option value="신경외과">신경외과</option>
-										<option value="영상의학과">영상의학과</option>
-										<option value="응급의학과">응급의학과</option>
-										<option value="이비인후과">이비인후과</option>
-										<option value="임상약리학과">임상약리학과</option>
-										<option value="정신건강의학과">정신건강의학과</option>
-										<option value="정형외과">정형외과</option>
-										<option value="직업환경의학과">직업환경의학과</option>
-										<option value="진단검사의학과">진단검사의학과</option>
-										<option value="피부과">피부과</option>
-										<option value="핵의학과">핵의학과</option>
-										<option value="흉부외과">흉부외과</option>
-										<optgroup label="내과">
-											<option value="감염내과">감염내과</option>
-											<option value="내분비내과">내분비내과</option>
-											<option value="노년내과">노년내과</option>
-											<option value="류마티스내과">류마티스내과</option>
-											<option value="소화기내과">소화기내과</option>
-											<option value="신장내과">신장내과</option>
-											<option value="알레르기내과">알레르기내과</option>
-											<option value="통합내과">통합내과</option>
-											<option value="혈액내과">혈액내과</option>
-											<option value="호흡기내과">호흡기내과</option>
+										<option class="option" value="가정의학과">가정의학과</option>
+										<option class="option" value="국제진료과">국제진료과</option>
+										<option class="option" value="마취통증의학과">마취통증의학과</option>
+										<option class="option" value="병리과">병리과</option>
+										<option class="option" value="비뇨의학과">비뇨의학과</option>
+										<option class="option" value="산부인과">산부인과</option>
+										<option class="option" value="성형외과">성형외과</option>
+										<option class="option" value="신경과">신경과</option>
+										<option class="option" value="신경외과">신경외과</option>
+										<option class="option" value="영상의학과">영상의학과</option>
+										<option class="option" value="응급의학과">응급의학과</option>
+										<option class="option" value="이비인후과">이비인후과</option>
+										<option class="option" value="임상약리학과">임상약리학과</option>
+										<option class="option" value="정신건강의학과">정신건강의학과</option>
+										<option class="option" value="정형외과">정형외과</option>
+										<option class="option" value="직업환경의학과">직업환경의학과</option>
+										<option class="option" value="진단검사의학과">진단검사의학과</option>
+										<option class="option" value="피부과">피부과</option>
+										<option class="option" value="핵의학과">핵의학과</option>
+										<option class="option" value="흉부외과">흉부외과</option>
+										<optgroup label="내과" class="option">
+											<option class="option" value="감염내과">감염내과</option>
+											<option class="option" value="내분비내과">내분비내과</option>
+											<option class="option" value="노년내과">노년내과</option>
+											<option class="option" value="류마티스내과">류마티스내과</option>
+											<option class="option" value="소화기내과">소화기내과</option>
+											<option class="option" value="신장내과">신장내과</option>
+											<option class="option" value="알레르기내과">알레르기내과</option>
+											<option class="option" value="통합내과">통합내과</option>
+											<option class="option" value="혈액내과">혈액내과</option>
+											<option class="option" value="호흡기내과">호흡기내과</option>
 										</optgroup>
-										<optgroup label="외과">
-											<option value="간담췌외과">간담췌외과</option>
-											<option value="갑상선내분비외과">갑상선내분비외과</option>
-											<option value="대장항문외과">대장항문외과</option>
-											<option value="위장관외과">위장관외과</option>
-											<option value="유방외과">유방외과</option>
-											<option value="이식외과">이식외과</option>
-											<option value="일반외과">일반외과</option>
+										<optgroup class="option" label="외과">
+											<option class="option" value="간담췌외과">간담췌외과</option>
+											<option class="option" value="갑상선내분비외과">갑상선내분비외과</option>
+											<option class="option" value="대장항문외과">대장항문외과</option>
+											<option class="option" value="위장관외과">위장관외과</option>
+											<option class="option" value="유방외과">유방외과</option>
+											<option class="option" value="이식외과">이식외과</option>
+											<option class="option" value="일반외과">일반외과</option>
 										</optgroup>
 								</select></td>
 							</tr>
@@ -161,33 +161,10 @@
 
 
 
-
 	<script>
 	
 	 function showDepartmentOptions(employeeType) {
 	        var departmentSelect = document.getElementById("department_select");
-	        var options = '';
-
-	        // 각 직원 유형에 따른 진료과 옵션 생성
-	        switch (employeeType) {
-	            case '의사':
-	                options += '<option value="내과">내과</option>';
-	                options += '<option value="외과">외과</option>';
-	                // ... (의사에 해당하는 진료과 추가)
-	                break;
-	            case '간호사':
-	                options += '<option value="간호과">간호과</option>';
-	                // ... (간호사에 해당하는 진료과 추가)
-	                break;
-	            case '행정':
-	                options += '<option value="행정과">행정과</option>';
-	                // ... (행정에 해당하는 진료과 추가)
-	                break;
-	            // 추가적인 직원 유형에 대한 처리도 가능
-	        }
-
-	        // 생성한 옵션을 진료과 select에 설정
-	        departmentSelect.innerHTML = options;
 
 	        // 선택된 직원 유형에 따라 진료과 선택 부분을 보이거나 숨김 처리
 	        if (employeeType === '의사' || employeeType === '간호사') {
