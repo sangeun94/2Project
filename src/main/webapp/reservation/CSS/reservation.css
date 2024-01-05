@@ -1,0 +1,657 @@
+/* 예약페이지 CSS */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html, body{
+    height: 100%;
+    background-color: rgb(249, 250, 255);
+}
+
+
+#container{
+    width: 100%;
+    height: 100%;
+}
+
+#container2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+	justify-content: space-between;
+}
+
+/* 예약페이지 메인 CSS */
+#reservationBody{
+	display: flex;
+}
+
+.info{
+	width: 420px;
+	height: 780px;
+	padding: 20px;
+}
+
+.infoBox{
+	width: 400px;
+	height: 100%;
+	padding-top: 30px;
+	border: 2px solid rgb(211, 211, 211);
+	display: flex;
+	justify-content: space-between ;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+}
+
+
+.infoBoxFoot{
+	width: 400px;
+	height: 100%;
+	padding-top: 30px;
+	border: 2px solid rgb(211, 211, 211);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+}
+
+
+.fontM{
+	font-size: 20px;
+}
+
+.bold{
+	font-weight: bolder;;
+}
+
+
+/* 버튼 CSS */
+.buttonM{
+	width: 320px;
+	height: 50px;
+	border: 2px solid #118CCF;
+	border-radius: 50px;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	color: #118CCF;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.buttonM:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+.infoHead{
+	height: 50px;
+}
+
+.infoFoot{
+	margin-bottom: 30px
+}
+
+.infoInput{
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+}
+
+.input{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 320px;
+	height: 50px;
+	font-size: 16px;
+	padding-left: 8px;
+}
+
+
+
+#agreeBox{
+	margin-top: 20px;
+	display: flex;
+	width:320px;
+	}
+	
+.agreeBox{
+	display: flex;
+	align-items: center;
+	width: 150px;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+
+input[type='radio']:checked {
+  background-color: #118CCF;
+  border: 3px solid white;
+  box-shadow: 0 0 0 1.6px #118CCF
+}
+
+
+input[type='date']{
+	width: 300px;
+	height: 30px;
+	font-size: 16px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 5px;
+	font-weight: bold;
+	padding: 5px;
+}
+
+select{
+	width: 300px;
+	height: 110px;
+	font-size: 16px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 5px;
+	font-weight: bold;
+	padding: 5px;
+	overflow: hidden;
+}
+
+#content{
+	width: 300px;
+	height: 30px;
+	font-size: 16px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 5px;
+	padding: 5px;
+}
+
+
+
+.fontS{
+	font-size: 14px;
+}
+
+.call{
+	color: #118CCF;
+	font-size: 40px;
+	font-weight: bold;
+	background-color: white;
+}
+
+#departmentBox{
+	padding: 20px;
+}
+
+#scheduleBox{
+	padding: 20px;
+}
+
+#reservationCheckBox{
+	padding: 20px;
+}
+
+.prevButton{
+	width: 80px;
+	height: 40px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 50px;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	color: gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.nextButton{
+	width: 80px;
+	height: 40px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 50px;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	color: gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.reservationButton{
+	width: 80px;
+	height: 40px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 50px;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	color: gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+
+.departmentButton{
+	width: 180px;
+	height: 65px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 10px;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	color: gray;
+	margin: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.departmentButton:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+
+#employeeBox{
+	padding: 20px;
+	width: 100%;
+	height: 100%;
+}
+
+.employee{
+	width: 220px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+}
+
+#employeeList{
+	display: flex;
+}
+
+
+
+#employeeList2{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: start;
+}
+
+
+
+.employeeButton{
+	border: 2px solid rgb(192, 192, 192);
+	padding: 30px;
+	cursor: pointer;
+	border-radius: 10px;
+	background-color: white;
+}
+
+
+.employeeImg{
+	width: 150px;
+	height: 150px;
+	border-radius: 10px;
+}
+
+.employeeButton:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+.prevButton:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+.reservationButton:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+.nextButton:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+.none{
+	display: none;
+}
+
+.inputM{
+	width: 320px;
+	height: 50px;
+	border: 2px solid gray;
+	border-radius: 50px;
+	background-color: transparent;
+	font-size: 16px;
+	color: gray;
+	padding-left: 30px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.inputM:focus {
+
+	  border-color: #118CCF;
+
+	  outline: none;
+
+}
+	
+.employee3{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.reservationInfo{
+	margin-left: 5px;
+}
+
+.input2{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 320px;
+	height: 40px;
+	font-size: 16px;
+	padding-left: 8px;
+	color: rgb(76, 76, 76);
+	border: none;
+	background-color: rgb(226, 226, 226);
+	pointer-events: none;
+}
+
+.text{
+	width: 100px;
+	height: 30px;
+	font-size: 18px;
+}
+
+.input3{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 320px;
+	height: 80px;
+	font-size: 16px;
+	padding-left: 8px;
+	color: rgb(76, 76, 76);
+	border: none;
+	background-color: rgb(226, 226, 226);
+	pointer-events: none;
+}
+
+
+.reservationInfoBox{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.infoText{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#reservationInfoBox{
+	padding: 20px;
+}
+
+
+.goReservationButton{
+	width: 120px;
+	height: 40px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 50px;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	color: gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.goReservationButton:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+
+.reservationCancelButton{
+	width: 130px;
+	height: 40px;
+	border: 2px solid rgb(211, 211, 211);
+	border-radius: 50px;
+	background-color: transparent;
+	font-size: 16px;
+	font-weight: bold;
+	color: gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	background-color: white;
+}
+
+.reservationCancelButton:hover{
+	border: 2px solid #118CCF;
+	color: white;
+	background-color: #118CCF;
+}
+
+/* 테이블 CSS */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem auto;
+  background-color: white;
+}
+
+thead{
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 테이블 행 */
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  padding: 8px;
+  text-align: left;
+  text-align: center;
+  border-top: 2px solid #118CCF;
+  border-bottom: 2px solid #118CCF;
+  color: #118CCF;
+}
+
+/* 테이블 올렸을 때 */
+tbody tr:hover {
+  background-color: rgb(209, 216, 250);
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+/* 테이블 비율 */
+th:nth-child(1),
+td:nth-child(1) {
+  width: 50px;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 120px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 120px;
+}
+
+th, td {
+  border-left: none;
+  border-right: none;
+}
+
+
+
+/* footer CSS */
+.ft_homWrap {
+    width: 100%;
+}
+
+#footer {
+    margin-top: 30px;
+    background-color: #31354e;
+    height: auto;
+    width: 100%;
+}
+
+#footer li {
+    float: left;
+    position: relative;
+    margin-left: 20px;
+}
+
+.Wrapall_ft {
+    width: 100%;
+    height: 260px;
+    background-color: #31354e;
+}
+
+.footerMenu_top {
+    width: 100%;
+    height: 60px;
+    background-color: #22263b;
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1;
+}
+
+.ftmu_top {
+    color: #fff;
+    list-style:none;
+}
+
+.ftmu_top li::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    width: 1px;
+    height: 16px;
+    margin-top: -6px;
+    background-color: #999999;
+}
+
+.ftmu_top li:first-child::before {
+    display: none;
+}
+
+.ftmu_top_1 {
+    color: #999;
+    list-style: none;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.footerMenu_mid {
+    width: 100%;
+    height: 59px;
+    border-bottom: 1px solid #22263b;
+    list-style:none;
+    color: #cccccc;
+}
+
+.ftmu_top_li_b {
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    margin-right: 15px;
+}
+
+.aacolor {
+    color: #a4e1ff!important;
+}
+
+.footerMenu_bot {
+    width: 100%;
+    height: 140px;
+    float: left;
+    background-color: #31354e;
+    color: #999;
+    font-size: 14px;
+    display: flex; 
+    align-items: flex-start;
+    justify-content: space-around; 
+    flex-direction: row;
+}
+
+.footerMenu_bot p {
+    margin: 5px; 
+    margin-top: 25px;
+}
+
+.ftbot_img {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.ftbot_img img {
+    width: 33px;
+    height: 33px;
+    margin-right: 10px;
+}
+
+.ftbot_img p {
+    margin: 0; 
+}
+/* footer CSS */
