@@ -18,6 +18,7 @@
     ResultSet rs = null;
 
     // 게시물 번호 가져오기
+    //"boardNumber"라는 파라미터를 받아와 정수로 변환합니다. 이는 조회할 게시물의 번호입니다.
     int boardNumber = Integer.parseInt(request.getParameter("boardNumber"));
 
     try {
@@ -30,7 +31,8 @@
         String sql = "SELECT title, content FROM board WHERE board_number = ?";
         pstmt = conn.prepareStatement(sql);
         pstmt.setInt(1, boardNumber);
-
+		
+        //쿼리를 실행하고 결과를 받아옵니다.
         rs = pstmt.executeQuery();
 
         if (rs.next()) {
