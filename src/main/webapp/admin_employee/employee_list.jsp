@@ -92,7 +92,7 @@ List<EmployeeDTO> EmployeeInfoList = employeeInfoDAO.findAllEmployeeInfoList();
 						value="<%=employeeInfo.getEmployee_number()%>"></td>
 					<td><%=employeeInfo.getEmployee_number()%></td>
 					<td>
-						<%-- <a href="./_layer_Employee_detail.jsp?id=<%=EmployeeInfo.getName()%>"></a> --%><%=employeeInfo.getName()%></td>
+						<a href="./_layer_Employee_detail.jsp?id=<%=employeeInfo.getEmployee_number()%>"><%=employeeInfo.getName()%></a></td>
 					<td><%=employeeCategory%></td>
 					<td><%=employeeInfo.getPosition()%></td>
 					<td><%=employeeInfo.getPhone_number()%></td>
@@ -101,9 +101,9 @@ List<EmployeeDTO> EmployeeInfoList = employeeInfoDAO.findAllEmployeeInfoList();
 				<%
 				}
 				%>
+		</form>
 			</tbody>
 		</table>
-		</form>
 
 		<!-- 하단 등록하기 버튼 -->
 		<div class="btns_top register-button mt20">
@@ -117,7 +117,6 @@ List<EmployeeDTO> EmployeeInfoList = employeeInfoDAO.findAllEmployeeInfoList();
 		</div>
 	</article>
 </section>
-
 <link rel="stylesheet"
 	href="../resources/plug-in/jquery-ui/css/jquery-ui-1.8.12.custom.css"
 	type="text/css" />

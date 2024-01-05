@@ -35,36 +35,79 @@
 										<span id="idPic"></span>
 									</p>
 								</td>
-								<th>직원코드</th>
+								<th><label for="input_employee_code">구분</label></th>
 								<td>
-									<input type="radio" id="doctor" name="employee_number" value="1">의사
-									<input type="radio" id="doctor" name="employee_number" value="2">간호사
-									<input type="radio" id="doctor" name="employee_number" value="3">행정
-								<%-- <%= EmployeeInfoList != null ? EmployeeInfoList.size()+1 : 1 %> --%>
+									<div id="employee_code_radio_group">
+										<input type="radio" id="employee_code_1"
+											name="employee_number" value="1"
+											onclick="showDepartmentOptions('의사')">의사 <input
+											type="radio" id="employee_code_2" name="employee_number"
+											value="2" onclick="showDepartmentOptions('간호사')">간호사
+										<input type="radio" id="employee_code_3"
+											name="employee_number" value="3"
+											onclick="showDepartmentOptions('행정')">행정
+									</div>
 								</td>
+								<th><label for="input_department_name">진료과</label></th>
+								<td><select name="department_name" id="department_select"
+									style="display: none;">
+										<option value="가정의학과">가정의학과</option>
+										<option value="국제진료과">국제진료과</option>
+										<option value="마취통증의학과">마취통증의학과</option>
+										<option value="병리과">병리과</option>
+										<option value="비뇨의학과">비뇨의학과</option>
+										<option value="산부인과">산부인과</option>
+										<option value="성형외과">성형외과</option>
+										<option value="신경과">신경과</option>
+										<option value="신경외과">신경외과</option>
+										<option value="영상의학과">영상의학과</option>
+										<option value="응급의학과">응급의학과</option>
+										<option value="이비인후과">이비인후과</option>
+										<option value="임상약리학과">임상약리학과</option>
+										<option value="정신건강의학과">정신건강의학과</option>
+										<option value="정형외과">정형외과</option>
+										<option value="직업환경의학과">직업환경의학과</option>
+										<option value="진단검사의학과">진단검사의학과</option>
+										<option value="피부과">피부과</option>
+										<option value="핵의학과">핵의학과</option>
+										<option value="흉부외과">흉부외과</option>
+										<optgroup label="내과">
+											<option value="감염내과">감염내과</option>
+											<option value="내분비내과">내분비내과</option>
+											<option value="노년내과">노년내과</option>
+											<option value="류마티스내과">류마티스내과</option>
+											<option value="소화기내과">소화기내과</option>
+											<option value="신장내과">신장내과</option>
+											<option value="알레르기내과">알레르기내과</option>
+											<option value="통합내과">통합내과</option>
+											<option value="혈액내과">혈액내과</option>
+											<option value="호흡기내과">호흡기내과</option>
+										</optgroup>
+										<optgroup label="외과">
+											<option value="간담췌외과">간담췌외과</option>
+											<option value="갑상선내분비외과">갑상선내분비외과</option>
+											<option value="대장항문외과">대장항문외과</option>
+											<option value="위장관외과">위장관외과</option>
+											<option value="유방외과">유방외과</option>
+											<option value="이식외과">이식외과</option>
+											<option value="일반외과">일반외과</option>
+										</optgroup>
+								</select></td>
+							</tr>
+							<tr>
 								<th><label for="input_name">이름</label></th>
 								<td><input type="text" id="input_name" name="name"
 									autocomplete="off" class="txt"></td>
-							</tr>
-							<tr>
 								<th>성별</th>
-								<td></td>
-								<th><label for="input_jumin">주민등록번호</label></th>
-								<td><input type="text" id="input_jumin" name="jumin"
-									autocomplete="off" class="txt" maxlength="14"
-									oninput="autoHyphenJumin(this)"></td>
+								<td><input type="radio" id="gender_M" name="gender"
+									value="M">남성 <input type="radio" id="gender_F"
+									name="gender" value="F">여성</td>
 							</tr>
 							<tr>
 								<th><label for="input_phone_number">휴대전화번호</label></th>
 								<td><input type="tel" id="input_phone_number"
 									name="phone_number" autocomplete="off" class="txt"
 									maxlength="13" oninput="autoHyphen(this)"></td>
-								<th><label for="input_email">이메일주소</label></th>
-								<td></td>
-							</tr>
-							<tr>
-								<th><label for="input_id">회원아이디</label></th>
-								<td></td>
 								<th><label>주소</label></th>
 								<td><select name="address">
 										<option value="서울특별시">서울특별시</option>
@@ -85,6 +128,25 @@
 										<option value="경상남도">경상남도</option>
 								</select></td>
 							</tr>
+							<tr>
+								<th><label for="input_email">이메일주소</label></th>
+								<td colspan="2"><input type="text" id="input_email" name="email"
+									autocomplete="off" class="txt" onchage="validEmail(this)"></td>
+							</tr>
+							<tr>
+								<th><label>직급</label></th>
+								<td><select name="position">
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+										<option value=""></option>
+								</select></td>
+								<th><label for="input_employment_status">재직여부</label></th>
+								<td><input type="radio" id="employment_status_Y"
+									name="employment_status" value="Y">재직 <input
+									type="radio" id="employment_status_N" name="employment_status"
+									value="N">퇴사</td>
+							</tr>
 					</tbody>
 				</table>
 				<p class="btn_c">
@@ -101,6 +163,39 @@
 
 
 	<script>
+	
+	 function showDepartmentOptions(employeeType) {
+	        var departmentSelect = document.getElementById("department_select");
+	        var options = '';
+
+	        // 각 직원 유형에 따른 진료과 옵션 생성
+	        switch (employeeType) {
+	            case '의사':
+	                options += '<option value="내과">내과</option>';
+	                options += '<option value="외과">외과</option>';
+	                // ... (의사에 해당하는 진료과 추가)
+	                break;
+	            case '간호사':
+	                options += '<option value="간호과">간호과</option>';
+	                // ... (간호사에 해당하는 진료과 추가)
+	                break;
+	            case '행정':
+	                options += '<option value="행정과">행정과</option>';
+	                // ... (행정에 해당하는 진료과 추가)
+	                break;
+	            // 추가적인 직원 유형에 대한 처리도 가능
+	        }
+
+	        // 생성한 옵션을 진료과 select에 설정
+	        departmentSelect.innerHTML = options;
+
+	        // 선택된 직원 유형에 따라 진료과 선택 부분을 보이거나 숨김 처리
+	        if (employeeType === '의사' || employeeType === '간호사') {
+	            departmentSelect.style.display = 'block';
+	        } else {
+	            departmentSelect.style.display = 'none';
+	        }
+	    }
 	
 	/* 이름 유효성 검사  */
 	let input_name = document.getElementById('input_name');
@@ -163,24 +258,6 @@
 	    return (obj.value.match(pattern)!=null)
 	}
 	
-	
-	/* 회원아이디 유효성 검사  */
-	let input_id = document.getElementById('input_id');
-
-	input_id.addEventListener('input', function () {
-	    validateUserId(this);
-	});
-
-	function validateUserId(input) {
-	    // 영문과 숫자만 허용하는 정규 표현식
-	    var pattern = /^[a-zA-Z0-9]*$/;
-
-	    if (!pattern.test(input.value)) {
-	        alert('회원아이디는 영문과 숫자만 입력 가능합니다.');
-	        input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
-	        input.focus();
-	    }
-	}
 
 	
 	
@@ -239,5 +316,7 @@
 	        }
 		
 	});
+	
+
 
   </script>
