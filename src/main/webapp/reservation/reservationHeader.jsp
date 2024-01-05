@@ -12,7 +12,7 @@
 	<div id="header">
 		<div class="box">
 	        <div class = "logo"><img id = "logo" src="./img/humc_logo.png"></div>
-	        <div class="reservationText" ><span>&nbsp;온라인예약</span></div>
+	        <div class="reservationTextBox" ><div class="reservationText"><span>온라인예약</span></div></div>
         </div>
     </div>
 </body>

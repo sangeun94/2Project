@@ -19,11 +19,22 @@
 	padding-left: 10px;
 }
 
-.reservationText{
+.reservationTextBox{
+	width:150px;	
+	height: 80px;
 	padding-left: 10px;
 	font-size: 26px;
 	color: rgb(192, 192, 192);
 	font-weight: bolder;
+}
+
+.reservationText{
+	width:150px;	
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
 }
 
 .box{
